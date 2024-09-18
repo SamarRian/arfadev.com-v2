@@ -1,0 +1,127 @@
+import { Browser } from "@phosphor-icons/react";
+import { defineType } from "sanity";
+export default defineType({
+  title: "Page",
+  name: "page",
+  type: "document",
+  icon: Browser,
+  groups: [
+    { title: "Content", name: "content", default: true },
+    { title: "Settings", name: "settings" },
+  ],
+  fields: [
+    {
+      name: "category",
+      type: "string",
+      title: "Category",
+      options: {
+        list: [
+          { title: "Post", value: "post" },
+          { title: "Page", value: "page" },
+          { title: "Service", value: "service" },
+          { title: "Team Page", value: "team" },
+          { title: "Other Page", value: "other" },
+          { title: "Error Page", value: "error" },
+        ],
+      },
+      group: "content",
+    },
+    {
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (Rule: any) => Rule.required(),
+      group: "settings",
+    },
+    {
+      title: "Author",
+      name: "author",
+      type: "reference",
+      to: [{ type: "member" }],
+      hidden: ({ parent }) => {
+        return parent.category !== "post";
+      },
+    },
+    {
+      title: "URL Slug",
+      name: "slug",
+      type: "slug",
+      description: "(required)",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (Rule: any) => Rule.required(),
+      group: "settings",
+    },
+    {
+      title: "Overlay header with transparency?",
+      name: "hasTransparentHeader",
+      type: "boolean",
+      description:
+        "When activated the header will overlay the first content module with a transparent background and white text until scrolling is engaged.",
+      initialValue: false,
+      group: "settings",
+    },
+    {
+      title: "Content",
+      name: "content",
+      type: "array",
+      of: [
+        { type: "mission", name: "mission" },
+        { type: "menu", name: "menu" },
+        { type: "bodyContent", name: "body" },
+        { type: "landing-hero", name: "landing-hero" },
+        { type: "hero", name: "hero" },
+        { type: "featured-posts", name: "featured-posts" },
+        { type: "services", name: "services" },
+        { type: "all-blogs", name: "all-blogs" },
+        { type: "testimonial", name: "testimonial" },
+        { type: "all-team", name: "all-team" },
+        { type: "all-services", name: "all-services" },
+        { type: "process", name: "process" },
+        { type: "footer", name: "footer" },
+        { type: "contact", name: "contant" },
+        { type: "one-member", name: "one-member" },
+        { type: "gallery", name: "gallery" },
+        { type: "grid", name: "grid" },
+        { type: "awards", name: "awards" },
+        {
+          type: "reference",
+          title: "Reusable Section",
+          to: [{ type: "section" }],
+        },
+      ],
+      group: "content",
+    },
+
+    {
+      title: "SEO / Share Settings",
+      name: "seo",
+      type: "seo",
+      group: "settings",
+      validation: (Rule: any) => Rule.required(),
+    },
+    // {
+    //   title: "Seo",
+    //   name: "seo",
+    //   type: "seoMetaFields",
+    // },
+  ],
+  initialValue: {
+    category: "page",
+  },
+  preview: {
+    select: {
+      title: "title",
+      slug: "slug",
+    },
+    prepare({ title = "Untitled", slug = {} }: { title: string; slug: any }) {
+      const path = `/${slug?.current}`;
+      return {
+        title,
+        subtitle: slug.current ? path : "(missing slug)",
+      };
+    },
+  },
+});

@@ -1,0 +1,54 @@
+import { getModuleName } from "@/sanity/lib/helper";
+import { ArrowClockwise } from "@phosphor-icons/react/dist/ssr";
+import { subtle } from "crypto";
+
+export default {
+  title: "Resuable Section",
+  name: "section",
+  type: "document",
+  icon: ArrowClockwise,
+  fields: [
+    {
+      title: "Name",
+      name: "name",
+      type: "string",
+      description:
+        "Provide a name to reference this section. For internal use only.",
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      title: "Content",
+      name: "content",
+      type: "array",
+      of: [
+        { type: "menu" },
+        { type: "mission" },
+        { type: "hero" },
+        { type: "featured-posts" },
+        { type: "services" },
+        { type: "team" },
+        { type: "testimonial" },
+        { type: "process" },
+        { type: "footer" },
+        { type: "contact" },
+        { type: "gallery" },
+        { type: "awards" },
+      ],
+      validation: (Rule: any) =>
+        Rule.length(1).error("You can only have one piece of content"),
+    },
+  ],
+  preview: {
+    select: {
+      name: "name",
+      content: "content.0",
+    },
+    prepare({ name, content }: any) {
+      return {
+        title: name,
+        subtle: "Resuable Component",
+        // subtitle: getModuleName(content._type),
+      };
+    },
+  },
+};

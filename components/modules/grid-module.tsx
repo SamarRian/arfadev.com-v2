@@ -1,0 +1,97 @@
+import { cx } from "class-variance-authority";
+import { urlFor } from "@/sanity/lib/image";
+import ContentBody from "./content-body";
+import CustomImage from "../custom-image";
+import { cn, purifyString } from "@/lib/utils";
+
+const GridBlock = ({ block }: any) => {
+  const type = block._type;
+
+  switch (type) {
+    case "customImage":
+      if (!block?.asset) return;
+      return (
+        <div className={`w-full h-[1000px] relative`}>
+          <CustomImage
+            alt="Please enter alt"
+            src={urlFor(block?.asset).url()}
+            imageOBJ={block.asset}
+            height={block?.height}
+            width={block?.width}
+            objectFit={block?.objectFit}
+            className="object-cover"
+          />
+        </div>
+      );
+    case "bodyContent":
+      return <ContentBody module={block} />;
+    default:
+      return null;
+  }
+};
+
+const getGridSize = (
+  breakpoint: any,
+  size: any,
+  justify = "auto",
+  align = "auto",
+  start = "auto"
+) => {
+  const hasBreakpoint = breakpoint && breakpoint.trim();
+  const colSpan = hasBreakpoint
+    ? `${breakpoint}:col-span-${size}`
+    : `col-span-${size}`;
+  const colStart = hasBreakpoint
+    ? `${breakpoint}:col-start-${start}`
+    : `col-start-${start}`;
+
+  const colJustify = hasBreakpoint ? `${breakpoint}:${justify}` : justify;
+  const colAlign = hasBreakpoint ? `${breakpoint}:${align}` : align;
+
+  const classes = [
+    colSpan,
+    start && colStart,
+    justify && colJustify,
+    align && colAlign,
+  ].map((el) => purifyString(el));
+
+  return cx(classes);
+};
+
+function GridModule({ module }: any) {
+  const { size, columns } = module;
+
+  return (
+    <section className="w-full">
+      {/* <div className="w-full"> */}
+      <div className={`grid grid-cols-${size} gap-x-16`}>
+        {columns.map((col, key) => {
+          const { sizes, blocks } = col;
+
+          const className = cx(
+            sizes.map((size) => {
+              return getGridSize(
+                size.breakpoint,
+                size.width,
+                size.justify,
+                size.align,
+                size.start
+              );
+            })
+          ).toLocaleLowerCase();
+
+          return (
+            <div key={key} className={className}>
+              {blocks.map((block, key) => (
+                <GridBlock key={key} block={block} />
+              ))}
+            </div>
+          );
+        })}
+      </div>
+      {/* </div> */}
+    </section>
+  );
+}
+
+export default GridModule;
