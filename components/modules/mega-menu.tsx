@@ -60,7 +60,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function MegaMenu() {
   return (
-    <div className="flex items-center justify-between p-4">
+    <div className="flex items-center justify-between p-4 bg-primary fixed top-0 w-full">
       <Link href="/" className="flex items-center space-x-2">
         {/* <Icons.logo className="h-6 w-6" /> */}
         <span className="font-bold">shadcn/ui</span>
@@ -70,6 +70,9 @@ export function MegaMenu() {
       </div>
       <div className="md:hidden">
         <MobileNav />
+      </div>
+      <div className="sm:block hidden">
+        <Button>Let's Talk</Button>
       </div>
     </div>
   );
@@ -85,7 +88,7 @@ function DesktopNav() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
@@ -98,7 +101,7 @@ function DesktopNav() {
                       paste into your apps. Accessible. Customizable. Open
                       Source.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/docs" title="Introduction">
