@@ -58,7 +58,7 @@ const config: Config = {
       },
     },
     fontFamily: {
-      san: ["var(--font-poppins)", "san-serif"],
+      sans: ["var(--font-poppins)", "san-serif"],
       serif: ["var(--font-serif)", "serif"],
     },
   },

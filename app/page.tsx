@@ -8,7 +8,7 @@ import { homeID, HOMEPAGE_QUERY } from "@/sanity/data/queries";
 import { draftMode } from "next/headers";
 import Module from "@/components/modules/module";
 import { cx } from "class-variance-authority";
-import MegaMenu from "@/components/modules/mega-menu";
+import { MegaMenu } from "@/components/modules/mega-menu";
 
 type Props = {
   params: { slug: string[] | string };
