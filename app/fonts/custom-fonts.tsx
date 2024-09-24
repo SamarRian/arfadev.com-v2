@@ -1,16 +1,16 @@
 import LocalFontLoader from "next/font/local";
 
-// export const playfairFont = LocalFontLoader({
-//   src: [
-//     { path: "/assets/PlayfairDisplay-VariableFont_wght.ttf" },
-//     {
-//       path: "./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf",
-//       style: "italic",
-//     },
-//   ],
-//   variable: "--font-playfair",
-//   display: "swap",
-// });
+export const ebGaramond = LocalFontLoader({
+  src: [
+    { path: "./eb/EBGaramond-VariableFont_wght.ttf" },
+    {
+      path: "./eb/EBGaramond-Italic-VariableFont_wght.ttf",
+      style: "italic",
+    },
+  ],
+  variable: "--font-ebgaramond",
+  display: "swap",
+});
 export const poppinFonts = LocalFontLoader({
   src: [
     { path: "./poppins/Poppins-Regular.ttf", weight: "400" },

@@ -66,7 +66,7 @@ const config: Config = {
     },
     fontFamily: {
       sans: ["var(--font-poppins)", "san-serif"],
-      serif: ["var(--font-serif)", "serif"],
+      serif: ["var(--font-ebgaramond)", "serif"],
     },
 
     keyframes: {

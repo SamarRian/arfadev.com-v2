@@ -1,21 +1,15 @@
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { poppinFonts } from "./fonts/custom-fonts";
-import { EB_Garamond } from "next/font/google";
-import "./globals.css";
+import { poppinFonts, ebGaramond } from "./fonts/custom-fonts";
 import { ThemeProvider } from "./providers/theme-provider";
 import SmoothScrollProvider from "./providers/smooth-scroll";
+
+import "./globals.css";
 
 const VisualEditing = dynamic(() =>
   import("next-sanity").then((mob) => mob.VisualEditing)
 );
-
-const EbFont = EB_Garamond({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-serif",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppinFonts.variable} ${EbFont.variable} antialiased`}
+        className={`${poppinFonts.variable} ${ebGaramond.variable} antialiased`}
       >
         <SmoothScrollProvider>
           <ThemeProvider
