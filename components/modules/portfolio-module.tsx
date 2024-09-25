@@ -53,6 +53,7 @@ import { cn } from "@/lib/utils";
 // }
 
 export interface IPortfolioCard {
+  index: number;
   title: string;
   subtitle: string;
   stats: { title: string; subtitle: string };
@@ -60,10 +61,11 @@ export interface IPortfolioCard {
 }
 
 export function PortfolioCard({
+  index,
   title,
   subtitle,
   stats,
-  options = { reverse: false },
+  options = { reverse: index % 2 !== 0 ? false : true },
 }: IPortfolioCard) {
   return (
     <div
@@ -96,7 +98,11 @@ export function PortfolioCard({
           </h3>
           <p className="text-sm font-sans text-secondary">{stats.subtitle}</p>
         </div>
-        <Button variant={"secondary"} className="w-full" asChild>
+        <Button
+          variant={index % 2 !== 0 ? "secondary" : "outline"}
+          className="w-full"
+          asChild
+        >
           <Link href={"/"}>Case Study</Link>
         </Button>
       </div>
@@ -115,11 +121,13 @@ function PortfolioModuel() {
       }}
     >
       <PortfolioCard
+        index={1}
         stats={{ title: "400%", subtitle: "Growth in first month" }}
         title="1. Chishti Law Firm"
         subtitle="Call anytime for immediate and personal attention at no charge."
       />
       <PortfolioCard
+        index={2}
         options={{ reverse: true }}
         title="2. Shafique Law Firm"
         subtitle="Call anytime for immediate and personal attention at no charge."

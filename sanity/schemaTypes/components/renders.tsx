@@ -1,5 +1,5 @@
+import { cn } from "@/lib/utils";
 import React from "react";
-import cx from "classnames";
 
 export const Header1 = (props: any) => (
   <h1
@@ -86,7 +86,7 @@ export const Button = ({ isButton, styles, children }: any) => {
 
   return (
     <span
-      className={cx("btn", styles?.style, {
+      className={cn("btn", styles?.style, {
         "is-large": styles?.isLarge,
         "is-block": styles?.isBlock,
       })}

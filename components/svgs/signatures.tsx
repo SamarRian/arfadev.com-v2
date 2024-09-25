@@ -16,6 +16,7 @@ function Signatures({ className }: { className?: string }) {
         stroke="#D9B59F"
         stroke-width="3"
         stroke-linecap="round"
+        className="dark:stroke-background"
       />
     </svg>
   );

@@ -18,14 +18,21 @@ function SectionOptions({
   section,
 }: ISectionOptions) {
   return (
-    <div className={cn("flex flex-col space-y-4 max-w-lg pb-24", className)}>
+    <div
+      className={cn(
+        "flex flex-col space-y-4 max-w-[85rem] mx-auto pb-24",
+        className
+      )}
+    >
       {section && (
-        <p className="text-sm font-sans border-b inline-block self-start border-current pb-3">
+        <p className="text-sm font-sans border-b inline-block self-start border-current pb-3 max-w-lg">
           {section}
         </p>
       )}
-      <h2 className="text-4xl font-bold leading-loose font-serif ">{title}</h2>
-      <p className="text-sm font-sans">{subtitle}</p>
+      <h2 className="text-4xl font-bold leading-loose font-serif  max-w-lg">
+        {title}
+      </h2>
+      <p className="text-md font-sans max-w-lg">{subtitle}</p>
     </div>
   );
 }

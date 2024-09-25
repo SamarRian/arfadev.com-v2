@@ -2,7 +2,6 @@ import React from "react";
 import Section from "../section";
 import Image from "next/image";
 import Signatures from "../svgs/signatures";
-import { Button } from "../ui/button";
 import PlayButton from "../svgs/play-button";
 
 function Testimonials({ module }: any) {
@@ -24,19 +23,21 @@ function Testimonials({ module }: any) {
             className="object-cover"
           />
         </div>
-        <figcaption className="font-serif text-2xl leading-loose text-background col-span-2 relative flex items-end flex-col gap-y-8">
-          Partnering with Arfa Developers has been a game-changer for our law
-          firm. Their expertise in website design and development has
-          transformed our online presence. From the initial consultation to the
-          final launch, their team demonstrated a deep understanding of the
-          legal industry and our specific needs.
+        <figcaption className="font-serif  text-2xl leading-loose text-background col-span-2 relative flex items-end flex-col gap-y-8">
+          <p className="italic">
+            "Partnering with Arfa Developers has been a game-changer for our law
+            firm. Their expertise in website design and development has
+            transformed our online presence. From the initial consultation to
+            the final launch, their team demonstrated a deep understanding of
+            the legal industry and our specific needs."
+          </p>
           <Signatures className="absolute top-0 left-0 -translate-x-1/4 translate-y-1/3 z-10 pointer-events-none" />
           <div className="flex gap-x-6 items-center">
             <div className="flex items-end flex-col gap-y-2">
               <p className="text-xl font-medium font-sans text-background">
                 By Adv. Shafique Ahmad
               </p>
-              <p className="text-sm font-sans text-secondary">
+              <p className="text-sm font-sans dark:text-secondary-foreground/80">
                 Play testimonial
               </p>
             </div>

@@ -7,11 +7,11 @@ import { homeID, HOMEPAGE_QUERY } from "@/sanity/data/queries";
 
 import { draftMode } from "next/headers";
 import Module from "@/components/modules/module";
-import { cx } from "class-variance-authority";
 import { MegaMenu } from "@/components/modules/mega-menu";
 import WhyChooseUs from "@/components/modules/why-choose-us";
 import PortfolioModuel from "@/components/modules/portfolio-module";
 import Testimonials from "@/components/modules/testimonial";
+import Services from "@/components/modules/services.module";
 
 type Props = {
   params: { slug: string[] | string };
@@ -73,6 +73,7 @@ export default async function Home({ params }: any) {
       <WhyChooseUs />
       <PortfolioModuel />
       <Testimonials />
+      <Services />
     </main>
   );
 }

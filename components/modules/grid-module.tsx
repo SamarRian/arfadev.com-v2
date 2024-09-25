@@ -65,11 +65,11 @@ function GridModule({ module }: any) {
     <section className="w-full">
       {/* <div className="w-full"> */}
       <div className={`grid grid-cols-${size} gap-x-16`}>
-        {columns.map((col, key) => {
+        {columns.map((col: any, key: number) => {
           const { sizes, blocks } = col;
 
           const className = cx(
-            sizes.map((size) => {
+            sizes.map((size: any) => {
               return getGridSize(
                 size.breakpoint,
                 size.width,
@@ -82,7 +82,7 @@ function GridModule({ module }: any) {
 
           return (
             <div key={key} className={className}>
-              {blocks.map((block, key) => (
+              {blocks.map((block: any, key: number) => (
                 <GridBlock key={key} block={block} />
               ))}
             </div>

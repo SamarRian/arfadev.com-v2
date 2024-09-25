@@ -6,13 +6,19 @@ interface ISection {
   className?: string;
   children: ReactNode;
   options?: ISectionOptions;
+  fullWidth?: boolean;
 }
 
-function Section({ children, className, options }: ISection) {
+function Section({
+  children,
+  className,
+  options,
+  fullWidth = false,
+}: ISection) {
   return (
     <section className={cn("w-full py-24", className)}>
-      <div className="max-w-[85rem] mx-auto">
-        {options && <SectionOptions {...options} />}
+      {options && <SectionOptions {...options} />}
+      <div className={cn(fullWidth ? "w-full" : "max-w-[85rem]", "mx-auto")}>
         {children}
       </div>
     </section>
