@@ -15,7 +15,7 @@ export const portableSimple: any = {
       </p>
     ),
     h1: ({ children }: any) => (
-      <h1 className="font-serif text-3xl md:text-4xl lg:text-6xl font-semibold text-primary dark:text-secondary my-2 md:my-4 lg:my-8 ">
+      <h1 className="font-serif !leading-snug text-3xl md:text-4xl lg:text-6xl font-semibold text-primary dark:text-secondary my-2 md:my-4 lg:my-8 ">
         {children}
       </h1>
     ),
