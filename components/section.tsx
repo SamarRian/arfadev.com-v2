@@ -16,7 +16,7 @@ function Section({
   fullWidth = false,
 }: ISection) {
   return (
-    <section className={cn("w-full py-24", className)}>
+    <section className={cn("w-full py-24 h-full", className)}>
       {options && <SectionOptions {...options} />}
       <div className={cn(fullWidth ? "w-full" : "max-w-[85rem]", "mx-auto")}>
         {children}

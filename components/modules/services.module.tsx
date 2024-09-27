@@ -25,21 +25,25 @@ function Services() {
           index={1}
           className="col-span-1 col-start-1"
           SVGComponent={ToolsSVG}
+          src={"/tools.svg"}
         />
         <ServiceCard
           index={2}
           className="col-span-1 col-start-2"
           SVGComponent={MonitorSVG}
+          src={"/monitor.svg"}
         />
         <ServiceCard
           index={3}
           className="col-span-1 col-start-3"
           SVGComponent={CompassSVG}
+          src={"/compass.svg"}
         />
         <ServiceCard
           index={4}
           className="col-span-1 col-start-4"
           SVGComponent={EyeSVG}
+          src={"/eye.svg"}
         />
         <div className="col-span-1 col-start-5 h-full relative overflow-hidden">
           <StatueOfJustice className="h-full -translate-x-1/3 bottom-0 absolute" />

@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Checkbox } from "./ui/checkbox";
+import { Textarea } from "./ui/textarea";
 
 const formSchema = z.object({
   email: z
@@ -41,6 +42,7 @@ const formSchema = z.object({
   services: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
+  description: z.string().min(1, "Please tell us about your lawfirm."),
 });
 
 export interface IFormComponent {
@@ -90,6 +92,7 @@ export function FormComponent({ className }: IFormComponent) {
       city: "",
       country: "",
       services: ["branding", "web-design"],
+      description: "",
     },
   });
 
@@ -106,7 +109,7 @@ export function FormComponent({ className }: IFormComponent) {
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn("space-y-4 p-8 border-input border", className)}
       >
-        <p className="font-sans font-normal text-sm">Recommended Solution</p>
+        {/* <p className="font-sans font-normal text-sm">Recommended Solution</p> */}
         <h3 className="font-serif font-medium text-3xl">
           Transform Your Firm Online – Schedule a Free Consultation
         </h3>
@@ -221,6 +224,26 @@ export function FormComponent({ className }: IFormComponent) {
                   }}
                 />
               ))}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tell Us More</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us a little bit about yourself"
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Please provide a much details as you want.
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

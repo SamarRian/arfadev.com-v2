@@ -8,13 +8,13 @@
   --brand-black: #031625;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #031625;
     --foreground: #d9b59f;
     --brand-black: #031625;
   }
-}
+} */
 
 @layer utilities {
   .text-balance {
@@ -51,7 +51,7 @@
     --chart-5: 206 85% 28%;
   }
 
-  .dark {
+  /* .dark {
     --background: 206 85% 8%;
     --foreground: 42 38% 91%;
     --card: 17 42% 57%;
@@ -76,7 +76,7 @@
     --chart-3: 186 34% 34%;
     --chart-4: 32 27% 74%;
     --chart-5: 17 42% 57%;
-  }
+  } */
 }
 
 @layer base {

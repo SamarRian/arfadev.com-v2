@@ -1,16 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export interface IServiceCard {
   index: number;
   className?: string;
   SVGComponent?: any;
+  src: any;
 }
 
-function ServiceCard({ index = 0, className, SVGComponent }: IServiceCard) {
+function ServiceCard({
+  index = 0,
+  className,
+  SVGComponent,
+  src,
+}: IServiceCard) {
   return (
     <figure
       className={cn(
@@ -19,9 +25,12 @@ function ServiceCard({ index = 0, className, SVGComponent }: IServiceCard) {
         className
       )}
     >
-      {SVGComponent && (
+      {/* {SVGComponent && (
         <SVGComponent className="mt-32 mb-4 h-[10rem] overflow-hidden" />
-      )}
+      )} */}
+      <div className="mt-32 mb-4 h-[6rem] w-[6rem] overflow-hidden relative">
+        <Image src={src} fill alt="SVG" className="object-contain" />
+      </div>
       <h3 className="text-2xl font-serif text-brand-black">1. Web Designing</h3>
       <p className="text-sm font-sans text-brand-black">
         We Provide elegant web design service to law firm to increase your user
