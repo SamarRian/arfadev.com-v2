@@ -12,16 +12,16 @@ export default defineType({
       name: "title",
       type: "string",
     },
-    {
-      title: "Slug",
-      name: "slug",
-      type: "slug",
-      description: "required",
-      options: {
-        source: "title",
-        maxLength: 30,
-      },
-    },
+    // {
+    //   title: "Slug",
+    //   name: "slug",
+    //   type: "slug",
+    //   description: "required",
+    //   options: {
+    //     source: "title",
+    //     maxLength: 30,
+    //   },
+    // },
     {
       title: "Nav Items",
       name: "items",

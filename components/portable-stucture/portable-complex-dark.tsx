@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
+import CustomImage from "../custom-image";
+import { urlFor } from "@/sanity/lib/image";
 
 export const portableComplexDarkText: any = {
   block: {
@@ -82,8 +84,6 @@ export const portableComplexDarkText: any = {
 
     // Ex. 2: rendering a custom `link` annotation
     link: ({ value, children }: any) => {
-      console.log(value);
-
       // const target = (value?.href || "").startsWith("http")
       //   ? "_blank"
       //   : undefined;
@@ -101,51 +101,54 @@ export const portableComplexDarkText: any = {
       switch (value?.isButton) {
         case true:
           return (
-            <Button
-              asChild
-              variant={value?.styles?.style || "default"}
-              size={value?.styles?.isLarge ? "lg" : "default"}
-              className={cn(value?.styles?.isBlock && "w-full", "py-2")}
+            <Link
+              href={href}
+              target={target}
+              className={buttonVariants({
+                variant: value?.styles?.style || "default",
+                size: value?.styles?.isLarge ? "lg" : "default",
+                className: cn(value?.styles?.isBlock && "w-full", "py-2"),
+              })}
             >
-              <Link href={href} target={target}>
-                {children}
-              </Link>
-            </Button>
+              {children}
+            </Link>
           );
 
         case false:
-          <Button asChild variant={"link"}>
-            <Link href={href} target={target}>
-              {children}
-            </Link>
-          </Button>;
+          <Link
+            href={href}
+            target={target}
+            className={buttonVariants({ variant: "link" })}
+          >
+            {children}
+          </Link>;
         default:
           break;
       }
     },
   },
 
-  // types: {
-  //   image: ({ value }: any) => {
-  //     if (!value) return null;
-  //     let imageOptions: any = {
-  //       alt: value.alt || "Please enter the alt.",
-  //     };
-  //     if (!value.height || !value.width) {
-  //       imageOptions["fill"] = true;
-  //     } else {
-  //       imageOptions["width"] = value.width;
-  //       imageOptions["height"] = value.height;
-  //     }
-  //     return (
-  //       <div className="w-full h-full relative">
-  //         <CustomImage
-  //           src={urlFor(value).url()}
-  //           imageOBJ={value}
-  //           {...imageOptions}
-  //         />
-  //       </div>
-  //     );
-  //   },
-  // },
+  types: {
+    image: ({ value }: any) => {
+      if (!value) return null;
+      let imageOptions: any = {
+        alt: value.alt || "Please enter the alt.",
+      };
+      if (!value.height || !value.width) {
+        imageOptions["fill"] = true;
+      } else {
+        imageOptions["width"] = value.width;
+        imageOptions["height"] = value.height;
+      }
+      return (
+        <div className="w-full h-full relative">
+          <CustomImage
+            src={urlFor(value).url()}
+            imageOBJ={value}
+            {...imageOptions}
+          />
+        </div>
+      );
+    },
+  },
 };

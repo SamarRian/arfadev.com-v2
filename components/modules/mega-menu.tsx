@@ -58,7 +58,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export function MegaMenu() {
+export function MegaMenu({ module }: { module: any }) {
   return (
     <header className="bg-primary fixed top-0 w-full z-20">
       <div className="flex items-center justify-between py-4 max-w-[85rem] mx-auto">
@@ -67,10 +67,10 @@ export function MegaMenu() {
           <span className="font-bold">shadcn/ui</span>
         </Link>
         <div className="hidden md:block">
-          <DesktopNav />
+          <DesktopNav module={module} />
         </div>
         <div className="md:hidden">
-          <MobileNav />
+          <MobileNav module={module} />
         </div>
         <div className="sm:block hidden">
           <Button variant={"secondary"}>Let's Talk</Button>
@@ -81,7 +81,9 @@ export function MegaMenu() {
   );
 }
 
-function DesktopNav() {
+function DesktopNav({ module }: any) {
+  console.log("module", module);
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -148,7 +150,7 @@ function DesktopNav() {
   );
 }
 
-function MobileNav() {
+function MobileNav({ module }: any) {
   return (
     <Sheet>
       <SheetTrigger asChild>

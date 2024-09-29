@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 
 export const portableSimple: any = {
   block: {
@@ -82,8 +82,6 @@ export const portableSimple: any = {
 
     // Ex. 2: rendering a custom `link` annotation
     link: ({ value, children }: any) => {
-      console.log(value);
-
       // const target = (value?.href || "").startsWith("http")
       //   ? "_blank"
       //   : undefined;
@@ -101,24 +99,27 @@ export const portableSimple: any = {
       switch (value?.isButton) {
         case true:
           return (
-            <Button
-              asChild
-              variant={value?.styles?.style || "default"}
-              size={value?.styles?.isLarge ? "lg" : "default"}
-              className={cn(value?.styles?.isBlock && "w-full", "py-2")}
+            <Link
+              href={href}
+              target={target}
+              className={buttonVariants({
+                variant: value?.styles?.style || "default",
+                size: value?.styles?.isLarge ? "lg" : "default",
+                className: cn(value?.styles?.isBlock && "w-full", "py-2"),
+              })}
             >
-              <Link href={href} target={target}>
-                {children}
-              </Link>
-            </Button>
+              {children}
+            </Link>
           );
 
         case false:
-          <Button asChild variant={"link"}>
-            <Link href={href} target={target}>
-              {children}
-            </Link>
-          </Button>;
+          <Link
+            href={href}
+            target={target}
+            className={buttonVariants({ variant: "link" })}
+          >
+            {children}
+          </Link>;
         default:
           break;
       }
