@@ -18,6 +18,8 @@ import { presentationTool } from "sanity/presentation";
 import { resolve } from "./sanity/presentation/resolve";
 import { noteField } from "sanity-plugin-note-field";
 
+import { schemaMarkup } from "@operationnation/sanity-plugin-schema-markup";
+
 export default defineConfig({
   basePath: "/studio",
   projectId,
@@ -25,6 +27,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [
+    schemaMarkup(),
     seoMetaFields(),
     noteField(),
     structureTool({ structure: deskStucture }),

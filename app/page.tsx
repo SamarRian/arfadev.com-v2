@@ -15,6 +15,7 @@ import Services from "@/components/modules/services.module";
 import ContactModule from "@/components/modules/contact.module";
 import BlogsModule from "@/components/modules/blogs-module";
 import FooterModule from "@/components/modules/footer.module";
+import SchemaMarkup from "@/components/schema-markup";
 
 type Props = {
   params: { slug: string[] | string };
@@ -69,7 +70,7 @@ export default async function Home({ params }: any) {
 
   return (
     <main className="w-full h-full">
-      <MegaMenu />
+      {page?.schemaMarkup && <SchemaMarkup schema={page.schemaMarkup} />}
       {content.map((module: any, i: number) => {
         return <Module module={module} key={i} />;
       })}

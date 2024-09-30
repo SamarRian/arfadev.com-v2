@@ -13,6 +13,7 @@ function CustomImage({
   height,
   width,
   objectFit,
+  className,
 }: ICustomeImageProps) {
   const blurDataURL = urlFor(imageOBJ).width(20).height(20).blur(20).url();
   const imageOptions: any = {
@@ -29,6 +30,7 @@ function CustomImage({
   return (
     <Image
       {...imageOptions}
+      className={className}
       src={urlFor(imageOBJ).url()}
       blurDataURL={blurDataURL}
       placeholder={placeholder || "blur"}

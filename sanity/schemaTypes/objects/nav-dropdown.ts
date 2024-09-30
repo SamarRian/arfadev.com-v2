@@ -22,6 +22,9 @@ export default {
       title: "Featured Post",
       name: "featured",
       type: "object",
+      options: {
+        collapsible: true,
+      },
       fields: [
         {
           name: "title",

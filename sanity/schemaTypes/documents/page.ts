@@ -96,12 +96,19 @@ export default defineType({
     },
 
     {
+      title: "Schema Markup",
+      name: "schemaMarkup",
+      type: "schemaMarkup",
+    },
+
+    {
       title: "SEO / Share Settings",
       name: "seo",
       type: "seo",
       group: "settings",
       validation: (Rule: any) => Rule.required(),
     },
+
     // {
     //   title: "Seo",
     //   name: "seo",

@@ -13,6 +13,12 @@ export default {
       description: "Display Text",
     },
     {
+      title: "subtitle",
+      name: "subtitle",
+      type: "string",
+      description: "Optional, Use only in navigation menu",
+    },
+    {
       title: "URL",
       name: "url",
       type: "string",
