@@ -74,7 +74,7 @@ export default async function Home({ params }: any) {
       {content.map((module: any, i: number) => {
         return <Module module={module} key={i} />;
       })}
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       <PortfolioModuel />
       <Testimonials />
       <Services />

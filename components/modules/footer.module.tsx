@@ -5,59 +5,65 @@ import FooterLinks from "./footer/footer-links";
 import LanguageSwitcher from "../language-switcher";
 import FooterSocials from "./footer/footer-social";
 import Banner from "../banner";
+import CustomImage from "../custom-image";
+import { urlFor } from "@/sanity/lib/image";
 
-function FooterModule() {
+function FooterModule({ module }: any) {
+  console.log(module);
+
+  const metaData = module?.metaData || {
+    title: "Untitle",
+    subtitle: "Arfa Developers.",
+    logo: null,
+    newsletter: false,
+  };
+
+  const footerRoutes = module?.footerRoutes || [];
+
+  const socialLinks = module?.socialLinks;
+
   return (
     <footer className="bg-foreground pt-24 w-full">
       <div className="max-w-[85rem] mx-auto grid grid-cols-6 border-b border-secondary/40 pb-12">
         <div className="col-span-2 col-start-1 space-y-3">
-          <Image src={"/logo.svg"} width={200} height={100} alt="logo" />
+          {metaData.logo && (
+            <CustomImage
+              src={urlFor(metaData?.logo?.asset).url()}
+              width={metaData?.logo?.width}
+              height={metaData?.logo?.height}
+              imageOBJ={metaData.logo.asset}
+              alt={metaData?.logo?.alt}
+            />
+          )}
           <h3 className="text-3xl text-secondary font-serif">
-            We growing up your business with our services.
+            {metaData.title}
           </h3>
           <p className="text-sm text-muted-foreground font-sans">
-            Arfa Developers, 2024
+            {metaData.subtitle}
           </p>
         </div>
-        <NewsLetterForm className="col-start-5 col-span-2" dark />
+        {module?.newsletter && (
+          <NewsLetterForm className="col-start-5 col-span-2" dark />
+        )}
       </div>
       <div className="max-w-[85rem] mx-auto grid grid-cols-4 border-b border-secondary/40 gap-x-6 py-12">
-        <FooterLinks
-          title={"Policies"}
-          links={[
-            { url: "/home", title: "Home" },
-            { url: "/home", title: "Cookie Policies" },
-            { url: "/home", title: "Terms & Conditions" },
-          ]}
-        />
-        <FooterLinks
-          title={"Services"}
-          links={[
-            { url: "/home", title: "Home" },
-            { url: "/home", title: "Cookie Policies" },
-            { url: "/home", title: "Terms & Conditions" },
-          ]}
-        />
-        <FooterLinks
-          title={"Featured Articles"}
-          links={[
-            { url: "/home", title: "Home" },
-            { url: "/home", title: "Cookie Policies" },
-            { url: "/home", title: "Terms & Conditions" },
-          ]}
-        />
-        <FooterLinks
-          title={"Other Pages"}
-          links={[
-            { url: "/home", title: "Home" },
-            { url: "/home", title: "Cookie Policies" },
-            { url: "/home", title: "Terms & Conditions" },
-          ]}
-        />
+        {footerRoutes.map(
+          (
+            {
+              title,
+              routes,
+            }: { title: string; routes: { url: string; title: string }[] },
+            key: number
+          ) => {
+            return <FooterLinks title={title} links={routes} key={key} />;
+          }
+        )}
       </div>
       <div className="max-w-[85rem] mx-auto flex justify-between py-12">
-        <LanguageSwitcher />
-        <FooterSocials />
+        {module?.langSupport && (
+          <LanguageSwitcher langSupport={module.langSupport} />
+        )}
+        {socialLinks && <FooterSocials socialLinks={module?.socialLinks} />}
       </div>
       <Banner title="All rights reserved. Arfa Developers 2024." />
     </footer>

@@ -7,21 +7,16 @@ import {
 import Link from "next/link";
 import React from "react";
 
-function FooterSocials() {
+function FooterSocials({ socialLinks }: any) {
   return (
     <div className="flex space-x-6">
-      <Link href={"/insta"}>
-        <InstagramLogo className="fill-secondary hover:fill-muted-foreground transition-all duration-300 h-8 w-8" />
-      </Link>
-      <Link href={"/linkedin"}>
-        <LinkedinLogo className="fill-secondary hover:fill-muted-foreground transition-all duration-300 h-8 w-8" />
-      </Link>
-      <Link href={"/facebook"}>
-        <FacebookLogo className="fill-secondary hover:fill-muted-foreground transition-all duration-300 h-8 w-8" />
-      </Link>
-      <Link href={"/x"}>
-        <XLogo className="fill-secondary hover:fill-muted-foreground transition-all duration-300 h-8 w-8" />
-      </Link>
+      {socialLinks.map(({ icon, url }: any, key: number) => {
+        return (
+          <Link href={url}>
+            <InstagramLogo className="fill-secondary hover:fill-muted-foreground transition-all duration-300 h-8 w-8" />
+          </Link>
+        );
+      })}
     </div>
   );
 }

@@ -21,6 +21,7 @@ export const site = `
 export const homeID = `*[_type=="generalSettings"][0].home->_id`;
 export const errorID = `*[_type=="generalSettings"][0].error->_id`;
 export const servicesBaseURL = `*[_type=="generalSettings"][0].servicesBaseURL`;
+export const languageSupport = `*[_type=="generalSettings"][0].langSupport`;
 
 const page = `
   "type": _type,
@@ -52,7 +53,7 @@ export const modules = `
       _type ==  "services" => {...,content[]{...,defined(page) => {page ->{slug}}},${metaData}},
       _type == "testimonial" => @->,
       _type == "featured-posts" => {...,${metaData},posts[]->{...,author->{name,photo}}},
-      _type == "footer" => {...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}}},
+      _type == "footer" => {...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}},"langSupport":${languageSupport}},
       _type == "one-member" => {...,member->},
       _type == "awards" => {...,${metaData},content[]->},
       _type == "grid" => {...},

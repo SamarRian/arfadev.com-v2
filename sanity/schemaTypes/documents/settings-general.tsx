@@ -67,6 +67,32 @@ export default {
       // group: "details",
     },
     {
+      title: "Language Supports",
+      name: "langSupport",
+      description:
+        "Selete the language you want to support in you application.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "title",
+              title: "Title of language",
+              description: "Ie. English or German",
+            },
+            {
+              type: "string",
+              name: "code",
+              title: "Language Code",
+              description: "i.e. en for english",
+            },
+          ],
+        },
+      ],
+    },
+    {
       title: "Google Tag Manager (GTM)",
       description: "To enable GTM enter your Container ID",
       name: "gtmID",

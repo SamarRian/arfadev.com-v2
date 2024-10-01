@@ -8,14 +8,26 @@ export default defineField({
   icon: SquareHalfBottom,
   fields: [
     {
+      type: "boolean",
+      title: "Newsletter",
+      name: "newsletter",
+      description: "Toggle the newsletter option.",
+    },
+    {
       type: "object",
       name: "metaData",
       fields: [
         {
           type: "string",
-          name: "rights",
+          title: "Title",
+          name: "title",
         },
-        { type: "customImage", name: "logo" },
+        {
+          type: "string",
+          title: "Subtitle",
+          name: "subtitle",
+        },
+        { type: "customImage", name: "logo", title: "Logo" },
         {
           type: "array",
           name: "contactDetails",
@@ -45,19 +57,20 @@ export default defineField({
         },
       ],
     },
-    {
-      type: "array",
-      name: "policies",
-      of: [
-        {
-          type: "navLink",
-        },
-        { type: "navPage" },
-      ],
-      validation(rule) {
-        return rule.required().max(6);
-      },
-    },
+
+    // {
+    //   type: "array",
+    //   name: "policies",
+    //   of: [
+    //     {
+    //       type: "navLink",
+    //     },
+    //     { type: "navPage" },
+    //   ],
+    //   validation(rule) {
+    //     return rule.required().max(6);
+    //   },
+    // },
     {
       type: "array",
       name: "socialLinks",
