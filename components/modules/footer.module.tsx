@@ -9,8 +9,6 @@ import CustomImage from "../custom-image";
 import { urlFor } from "@/sanity/lib/image";
 
 function FooterModule({ module }: any) {
-  console.log(module);
-
   const metaData = module?.metaData || {
     title: "Untitle",
     subtitle: "Arfa Developers.",

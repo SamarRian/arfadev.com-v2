@@ -4,17 +4,23 @@ import BlogCard from "../blog-card";
 import Section from "../section";
 import { Button } from "../ui/button";
 
-function BlogsModule() {
+function BlogsModule({ module }: any) {
+  // const { metaData, posts = [] } = module;
+  const metaData = module?.metaData || {
+    miniTitle: "",
+    title: "",
+    subtitle: "",
+  };
+  const posts = module?.post || [];
+  const href = metaData?.mainLink?.page?.slug?.current || "/";
   return (
-    <Section
-      options={{
-        section: "Blogs",
-        title: "Read blogs to increase your revenue for your law firm;",
-      }}
-    >
+    <Section sectionHeader={metaData}>
       <div className="grid lg:grid-cols-2 gap-6">
-        <BlogCard />
-        <BlogCard />
+        {posts.map((post: any, key: number) => {
+          console.log(post);
+
+          return <BlogCard key={key} {...post} />;
+        })}
       </div>
 
       <div className="flex justify-between items-center mt-24 pt-24 border-t border-primary">

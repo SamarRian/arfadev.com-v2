@@ -114,9 +114,15 @@ export default defineType({
       group: "settings",
     },
     {
+      title: "Hero Section",
+      name: "hero",
+      type: "hero",
+    },
+    {
       title: "Content",
       name: "content",
       type: "array",
+      description: "Please don't add hero & footer, you already have it.",
       of: [
         { type: "mission", name: "mission" },
         { type: "menu", name: "menu" },

@@ -31,8 +31,6 @@ function Services({ module }: any) {
 
   const lineArt = module?.lineArt;
 
-  console.log(metaData);
-
   return (
     <Section fullWidth sectionHeader={metaData}>
       <div className="w-full grid-cols-5 grid">

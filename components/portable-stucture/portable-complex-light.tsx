@@ -4,7 +4,7 @@ import { Button, buttonVariants } from "../ui/button";
 import CustomImage from "../custom-image";
 import { urlFor } from "@/sanity/lib/image";
 
-export const portableComplexDarkText: any = {
+export const portableComplexLightText: any = {
   block: {
     strong: ({ children }: any) => (
       <strong className="font-medium lg:font-semibold  md:e/70  lg:my-8">

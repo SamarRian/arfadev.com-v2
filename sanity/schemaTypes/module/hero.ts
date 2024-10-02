@@ -12,6 +12,7 @@ export default {
     //   type: "bodyComplex",
     // },
     { title: "Full Image", name: "isFullImage", type: "boolean" },
+    { title: "Dark Text", name: "darkText", type: "boolean" },
     { title: "Content", name: "content", type: "simplePortableText" },
     {
       title: "Background Type",
@@ -28,12 +29,15 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: "photos",
-      type: "object",
-      fields: [
-        { name: "mobileImage", type: "customImage" },
-        { name: "desktopImage", type: "customImage" },
-      ],
+      // name: "photos",
+      // type: "object",
+      // fields: [
+      //   { name: "mobileImage", type: "customImage" },
+      //   { name: "desktopImage", type: "customImage" },
+      // ],
+      name: "coverImage",
+      type: "customImage",
+      title: "Cover Image",
       hidden: ({ parent }: any) => {
         return parent.bgType !== "photo";
       },

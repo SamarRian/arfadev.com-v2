@@ -61,6 +61,7 @@ export default {
     },
     { title: "Creator", name: "creator", type: "string" },
     { title: "Publisher", name: "publisher", type: "string" },
+
     {
       title: "Meta Description",
       name: "metaDesc",

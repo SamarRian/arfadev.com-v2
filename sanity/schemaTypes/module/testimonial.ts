@@ -8,13 +8,13 @@ export default defineField({
   fields: [
     { name: "metaData", type: "metaData" },
     {
-      name: "paragraph",
+      name: "feedback",
       type: "text",
       title: "Testimonial",
       rows: 3,
       description: "Enter the testimonial of your client.",
       validation(rule) {
-        return rule.required().max(300).error("Keep it short.");
+        return rule.required().max(600).error("Keep it short.");
       },
     },
     {
@@ -36,6 +36,11 @@ export default defineField({
           validation(rule) {
             return rule.required().max(150);
           },
+        },
+        {
+          type: "customImage",
+          name: "photo",
+          title: "Client's Profile Picture",
         },
       ],
     },

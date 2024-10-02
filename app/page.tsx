@@ -16,6 +16,7 @@ import ContactModule from "@/components/modules/contact.module";
 import BlogsModule from "@/components/modules/blogs-module";
 import FooterModule from "@/components/modules/footer.module";
 import SchemaMarkup from "@/components/schema-markup";
+import VideoModule from "@/components/modules/video-module";
 
 type Props = {
   params: { slug: string[] | string };
@@ -79,6 +80,7 @@ export default async function Home({ params }: any) {
       <Testimonials />
       <Services />
       <ContactModule />
+      {/* <VideoModule /> */}
       <BlogsModule />
       <FooterModule />
     </main>

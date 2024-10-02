@@ -5,9 +5,8 @@ import React from "react";
 export interface IFooterLinks {
   title: string;
   links: { url: string; title: string }[];
-  page: any;
 }
-function FooterLinks({ title, links = [], page }: IFooterLinks) {
+function FooterLinks({ title, links = [] }: IFooterLinks) {
   return (
     <div className="py-4">
       <h3 className="text-2xl font-serif text-secondary mb-4">{title}</h3>

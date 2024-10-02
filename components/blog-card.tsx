@@ -1,16 +1,29 @@
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import CustomImage from "./custom-image";
 
-function BlogCard() {
+function BlogCard({ title, _updatedAt, author, slug, content = [] }: any) {
+  const hero = content.filter((module: any) => module?._type === "hero");
+  console.log("this is content", content, hero);
+
+  const coverImage = hero.length && hero[0]?.coverImage;
   return (
-    <a className="group sm:flex focus:outline-none" href="#">
+    <Link
+      className="group sm:flex focus:outline-none"
+      href={slug?.current || "/"}
+    >
       <div className="shrink-0 relative overflow-hidden h-[300px] sm:w-[300px] sm:h-[450px] w-full group">
-        <Image
-          className="size-full absolute top-0 start-0 object-cover group-hover:scale-110 transition-all duration-500 ease-in-out"
-          src={"/deal.jpg"}
-          alt="Blog Image"
-          fill
-        />
+        {coverImage && (
+          <CustomImage
+            className="size-full absolute top-0 start-0 object-cover group-hover:scale-110 transition-all duration-500 ease-in-out"
+            src={urlFor(coverImage?.asset).url()}
+            alt={coverImage?.alt}
+            fill
+            imageOBJ={coverImage?.asset}
+          />
+        )}
       </div>
 
       <div className="grow">
@@ -21,7 +34,7 @@ function BlogCard() {
             </p>
           </div>
           <h3 className="text-lg sm:text-2xl font-bold font-serif hover:text-primary">
-            Preline becomes an official Instagram Marketing Partner
+            {title || "Preline becomes an official Instagram Marketing Partner"}
           </h3>
           <p className="mt-2 font-sans">Great news we're eager to share.</p>
 
@@ -45,7 +58,7 @@ function BlogCard() {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
