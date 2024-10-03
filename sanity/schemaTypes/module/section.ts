@@ -21,7 +21,7 @@ export default {
       name: "content",
       type: "array",
       of: [
-        { type: "menu" },
+        { type: "reference", to: [{ type: "menu" }] },
         { type: "mission" },
         { type: "hero" },
         { type: "featured-posts" },

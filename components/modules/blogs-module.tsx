@@ -6,12 +6,14 @@ import { Button } from "../ui/button";
 
 function BlogsModule({ module }: any) {
   // const { metaData, posts = [] } = module;
+
   const metaData = module?.metaData || {
     miniTitle: "",
     title: "",
     subtitle: "",
   };
-  const posts = module?.post || [];
+  const posts = module?.posts || [];
+  console.log("these are posts", posts);
   const href = metaData?.mainLink?.page?.slug?.current || "/";
   return (
     <Section sectionHeader={metaData}>

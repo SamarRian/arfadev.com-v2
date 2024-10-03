@@ -22,14 +22,10 @@ export default (S: any) =>
             .filter('_type == "page" && category == "page"')
         ),
       S.divider(),
-      S.listItem()
-        .title("Posts")
-        .icon(Package)
-        .child(
-          S.documentTypeList("page")
-            .title("Post")
-            .filter('_type == "page" && category == "post"')
-        ),
+      S.listItem().title("Posts").icon(Package).child(
+        S.documentTypeList("post").title("Posts")
+        // .filter('_type == "page" && category == "post"')
+      ),
       S.listItem()
         .title("Services")
         .icon(Toolbox)

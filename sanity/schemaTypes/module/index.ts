@@ -32,7 +32,6 @@ export default [
   allTeam,
   allServices,
   ourProcess,
-  footer,
   contact,
   oneMember,
   gallery,

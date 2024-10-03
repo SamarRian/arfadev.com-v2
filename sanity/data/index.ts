@@ -1,5 +1,5 @@
 import { client } from "../lib/client";
-import { modules, site } from "./queries";
+import { footerQuery, menuQuery, modules, POST_QUERY, site } from "./queries";
 import { token } from "../lib/token";
 import { QueryOptions } from "next-sanity";
 
@@ -41,6 +41,39 @@ export async function getPage(
         `;
 
   const data = await client.fetch(query, {}, queryOptions);
+
+  return data;
+}
+
+export async function getPost(slug: string, isDraftMode?: boolean) {
+  const slugs = JSON.stringify([slug, `/${slug}`, `/${slug}/`]);
+
+  const queryOptions: QueryOptions = isDraftMode
+    ? { perspective: "previewDrafts", token, stega: true, useCdn: false }
+    : { perspective: "published", useCdn: true, cache: "force-cache" };
+
+  const query = `{
+          "page": *[_type == "post" && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
+            "id": _id,
+            hasTransparentHeader,
+            author{name,photo},
+            content[]{
+            defined(_ref)=>{...@->content[0]{${modules}}},
+            !defined(_ref)=>{${modules}}
+            },
+            !defined(_ref)=>{
+            ${modules}
+            },
+            title,
+            seo
+          },
+          "footer":${footerQuery},
+          "menu":${menuQuery},
+           ${site}
+
+        }`;
+
+  const data = await client.fetch(query, { slugs }, queryOptions);
 
   return data;
 }

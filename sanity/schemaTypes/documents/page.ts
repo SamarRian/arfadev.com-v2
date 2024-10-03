@@ -71,7 +71,6 @@ export default defineType({
         { type: "mission", name: "mission" },
         { type: "menu", name: "menu" },
         { type: "bodyContent", name: "body" },
-        { type: "landing-hero", name: "landing-hero" },
         { type: "hero", name: "hero" },
         { type: "featured-posts", name: "featured-posts" },
         { type: "services", name: "services" },

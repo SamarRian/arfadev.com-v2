@@ -79,7 +79,11 @@ export const Header6 = (props: any) => (
   </h6>
 );
 
-export const Divider = (props: any) => <hr className="border-white/40"></hr>;
+export const Divider = (props: any) => (
+  <span>
+    <hr className="border-white/40"></hr>
+  </span>
+);
 
 export const Button = ({ isButton, styles, children }: any) => {
   if (!isButton) return children;

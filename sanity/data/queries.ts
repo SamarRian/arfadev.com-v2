@@ -4,6 +4,10 @@ export const ALL_POSTS_QUERY = groq`*[_type == "page"  && category == "post"][0.
 export const ALL_SERVICES_QUERY = groq`*[_type == "service"  && defined(slug)]`;
 export const ALL_TEAM_QUERY = groq`*[_type == "page" && category == "team"]{slug,content[_type == "one-member"]{member->}[0]}`;
 
+export const metaData = `metaData{...,mainLink{...,page->{slug}}}`;
+
+export const navPage = `_type == "navPage" =>{...,title,page->}`;
+
 export const moduleQueries = `{
     ...,
       _type == 'menu' => @->,
@@ -22,6 +26,8 @@ export const homeID = `*[_type=="generalSettings"][0].home->_id`;
 export const errorID = `*[_type=="generalSettings"][0].error->_id`;
 export const servicesBaseURL = `*[_type=="generalSettings"][0].servicesBaseURL`;
 export const languageSupport = `*[_type=="generalSettings"][0].langSupport`;
+export const footerQuery = `*[_type=="footer"][0]{...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}},"langSupport":${languageSupport}}`;
+export const menuQuery = `*[_type=="menu"][0]{...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${navPage}}},featured{...,page->}}}`;
 
 const page = `
   "type": _type,
@@ -37,10 +43,6 @@ export const ptContent = `
   },
   
 `;
-
-export const metaData = `metaData{...,mainLink{...,page->{slug}}}`;
-
-export const navPage = `_type == "navPage" =>{...,title,page->}`;
 
 export const modules = `
       ...,
@@ -79,24 +81,24 @@ export const HOMEPAGE_QUERY = `*[_type == "page" && _id == ${homeID}] | order(_u
     seo}
   `;
 
-export const POST_QUERY = `
-        {
-          "page": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc)[0]{
-            "id": _id,
-            hasTransparentHeader,
-            content[]{
-            defined(_ref)=>{...@->content[0]{${modules}}},
-            !defined(_ref)=>{${modules}}
-            },
-            !defined(_ref)=>{
-            ${modules}
-            },
-            title,
-            seo
-          },
-           ${site}
-        }
-        `;
+// export const POST_QUERY = `
+//         {
+//           "page": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc)[0]{
+//             "id": _id,
+//             hasTransparentHeader,
+//             content[]{
+//             defined(_ref)=>{...@->content[0]{${modules}}},
+//             !defined(_ref)=>{${modules}}
+//             },
+//             !defined(_ref)=>{
+//             ${modules}
+//             },
+//             title,
+//             seo
+//           },
+//            ${site}
+//         }
+//         `;
 
 export const SERVICE_QUERY = `
         {
@@ -133,6 +135,28 @@ export const PAGE_QUERY = `
            ${site}
         }
         `;
+
+// export const POST_QUERY = `
+//         {
+//           "page": *[_type == "post" && slug.current in $slugs] | order(_updatedAt desc)[0]{
+//             "id": _id,
+//             "footer":${footerQuery},
+//             "menu":${menuQuery},
+//             hasTransparentHeader,
+//             author{name,photo},
+//             content[]{
+//             defined(_ref)=>{...@->content[0]{${modules}}},
+//             !defined(_ref)=>{${modules}}
+//             },
+//             !defined(_ref)=>{
+//             ${modules}
+//             },
+//             title,
+//             seo
+//           },
+//            ${site}
+//         }
+//         `;
 
 export const NOT_FOUND = `
     *[_type == "page" && _id == ${errorID}] | order(_updatedAt desc)[0]{
