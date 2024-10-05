@@ -12,7 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "../ui/scroll-area";
 import ListItem from "./mega-menu/list-item-menu";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const NaviationMenuLink = dynamic(
   () => import("./mega-menu/navigation-menu-link")
@@ -21,8 +24,42 @@ const NaviationMenuLink = dynamic(
 const NavigationDropDown = dynamic(() => import("./mega-menu/drop-down-menu"));
 
 export function MegaMenu({ module }: { module: any }) {
+  const [hidden, setHidden] = useState(false);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() as number;
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
+  // scroll(
+  //   (progress: any) => {
+  //     if (progress * 100 > 20) {
+  //       console.log("sticky", progress);
+
+  //       setIsSticky(true);
+  //     } else {
+  //       console.warn("not sticky", progress);
+  //       setIsSticky(false);
+  //     }
+  //   },
+  //   {
+  //     axis: "y",
+  //   }
+  // );
+
   return (
-    <header className="bg-primary fixed top-0 w-full z-20">
+    <motion.header
+      variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      animate={hidden ? "hidden" : "visible"}
+      className={cn("bg-primary w-full z-20 sticky top-0")}
+    >
       <div className="flex items-center justify-between py-4 max-w-[85rem] mx-auto">
         <Link href="/" className="flex items-center space-x-2">
           {/* <Icons.logo className="h-6 w-6" /> */}
@@ -39,7 +76,7 @@ export function MegaMenu({ module }: { module: any }) {
           {/* <ModeToggle/> */}
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
 

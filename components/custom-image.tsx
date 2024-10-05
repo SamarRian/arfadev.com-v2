@@ -18,7 +18,7 @@ function CustomImage({
   const blurDataURL = urlFor(imageOBJ).width(20).height(20).blur(20).url();
   const imageOptions: any = {
     alt: "Please enter alt.",
-    style: { objectFit: objectFit || "cover" },
+    style: { objectFit: objectFit || "fill" },
   };
   if (width && height) {
     imageOptions["width"] = width;

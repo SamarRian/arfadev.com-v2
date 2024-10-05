@@ -1,5 +1,5 @@
 import { client } from "../lib/client";
-import { footerQuery, menuQuery, modules, POST_QUERY, site } from "./queries";
+import { footerQuery, menuQuery, modules, site } from "./queries";
 import { token } from "../lib/token";
 import { QueryOptions } from "next-sanity";
 
@@ -32,7 +32,7 @@ export async function getPage(
             defined(_ref)=>{...@->content[0]{${modules}}},
             !defined(_ref)=>{${modules}}
             },
-            
+            body,
             title,
             seo
           },
@@ -56,7 +56,6 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
           "page": *[_type == "post" && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
             "id": _id,
             hasTransparentHeader,
-            author{name,photo},
             content[]{
             defined(_ref)=>{...@->content[0]{${modules}}},
             !defined(_ref)=>{${modules}}
@@ -65,10 +64,13 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
             ${modules}
             },
             title,
-            seo
+            seo,
+            tags,
+            author->{name,photo},
           },
           "footer":${footerQuery},
           "menu":${menuQuery},
+          
            ${site}
 
         }`;

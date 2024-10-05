@@ -11,7 +11,6 @@ import testimonial from "./testimonial";
 import allTeam from "./all-team";
 import allServices from "./all-services";
 import ourProcess from "./our-process";
-import footer from "./footer";
 import contact from "./contact";
 import oneMember from "./one-member";
 import gallery from "./gallery";

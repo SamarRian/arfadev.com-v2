@@ -81,7 +81,7 @@ export const Header6 = (props: any) => (
 
 export const Divider = (props: any) => (
   <span>
-    <hr className="border-white/40"></hr>
+    <hr className="border-white/40">{props.children}</hr>
   </span>
 );
 

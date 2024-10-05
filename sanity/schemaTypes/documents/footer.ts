@@ -16,6 +16,7 @@ export default defineField({
     {
       type: "object",
       name: "metaData",
+      title: "Footer Metadata",
       fields: [
         {
           type: "string",
@@ -74,7 +75,7 @@ export default defineField({
     {
       type: "array",
       name: "socialLinks",
-
+      title: "Social Links",
       of: [
         {
           type: "object",
@@ -119,7 +120,7 @@ export default defineField({
     prepare({ metaData = {}, footerRoutes }: any) {
       return {
         title: metaData.title,
-        subtitle: `${footerRoutes.length} link(s)`,
+        subtitle: `${footerRoutes?.length || 0} link(s)`,
         media: metaData.logo,
       };
     },

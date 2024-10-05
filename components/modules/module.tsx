@@ -5,6 +5,7 @@ import FooterModule from "./footer.module";
 import Testimonials from "./testimonial";
 import Hero from "./hero";
 import BlogsModule from "./blogs-module";
+import ContentBody from "./content-body";
 
 const GridModule = dynamic(() => import("./grid-module"));
 
@@ -25,6 +26,8 @@ function Module({ module }: any) {
       return <Testimonials module={module} />;
     case "featured-posts":
       return <BlogsModule module={module} />;
+    case "body":
+      return <ContentBody module={module} />;
     default:
       return null;
   }

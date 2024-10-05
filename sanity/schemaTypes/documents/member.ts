@@ -37,14 +37,13 @@ export default defineField({
       title: "Phone No.",
       type: "string",
       description: "Please provide your professional Phone No. only.",
-      validation(rule) {
-        return rule.required();
-      },
     },
     {
       name: "professions",
-      title: "Specialized In",
+      title: "Skills & Technologies",
       type: "array",
+      description:
+        "Put only one skill per input. ie. ReactJs Developer or C# Developer.",
       of: [
         {
           type: "string",
@@ -52,7 +51,7 @@ export default defineField({
           title: "Profession",
           icon: Target,
           validation(rule) {
-            return rule.required().error("Please provide the profession.");
+            return rule.required().error("Please provide your skillset.");
           },
         },
       ],

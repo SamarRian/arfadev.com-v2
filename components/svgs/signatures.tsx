@@ -1,9 +1,13 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import * as motion from "framer-motion/client";
 import { framerMotionDraw } from "@/lib/utils";
+import { useInView } from "framer-motion";
 
 function Signatures({ className }: { className?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <motion.svg
       width="311"
@@ -12,8 +16,10 @@ function Signatures({ className }: { className?: string }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       initial="hidden"
-      animate="visible"
+      animate={isInView && "visible"}
       className={className}
+      ref={ref}
+      transition={{ duration: 1, ease: "easeIn" }}
     >
       <motion.path
         opacity="0.4"

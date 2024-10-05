@@ -16,6 +16,7 @@ import routes from "./routes";
 import input from "./input";
 import gridSize from "./grid-size";
 import gridColume from "./grid-colume";
+import breaks from "./breaks";
 // import bodyComplexText from "./body-complex-text";
 
 export default [
@@ -35,6 +36,7 @@ export default [
   portableComplex,
   portableSimple,
   input,
+  breaks,
 
   gridSize,
   gridColume,

@@ -59,12 +59,14 @@ export default {
           },
         },
         {
-          title: "H5",
+          title: "H6",
           value: "h6",
           blockEditor: {
             render: Header6,
           },
         },
+        { title: "Quote", value: "blockquote" },
+        { title: "Caption", value: "figcaption" },
       ],
       lists: [
         { title: "Bullet", value: "bullet" },
@@ -74,12 +76,6 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
-          {
-            title: "Divider",
-            value: "divider",
-            component: Divider,
-            icon: Minus,
-          },
         ],
         annotations: [
           {
@@ -162,6 +158,14 @@ export default {
                 ],
                 hidden: ({ parent }: any) => !parent.isButton,
               },
+
+              // {
+              //   title: "Divider",
+              //   type:"s",
+              //   value: "divider",
+              //   component: Divider,
+              //   icon: Minus,
+              // },
             ],
           },
         ],
@@ -188,6 +192,13 @@ export default {
         },
       ],
     }),
+
+    {
+      type: "break",
+      blockEditor: {
+        render: Divider,
+      },
+    },
     // customImage(),
     // {
     //   type: "horizontalRule",

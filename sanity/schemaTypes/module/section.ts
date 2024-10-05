@@ -1,6 +1,4 @@
-import { getModuleName } from "@/sanity/lib/helper";
 import { ArrowClockwise } from "@phosphor-icons/react/dist/ssr";
-import { subtle } from "crypto";
 
 export default {
   title: "Resuable Section",
@@ -21,7 +19,12 @@ export default {
       name: "content",
       type: "array",
       of: [
-        { type: "reference", to: [{ type: "menu" }] },
+        {
+          type: "reference",
+          to: [{ type: "menu" }],
+          name: "menu",
+          title: "Menu",
+        },
         { type: "mission" },
         { type: "hero" },
         { type: "featured-posts" },
@@ -29,7 +32,12 @@ export default {
         { type: "team" },
         { type: "testimonial" },
         { type: "process" },
-        { type: "footer" },
+        {
+          type: "reference",
+          to: [{ type: "footer" }],
+          name: "footer",
+          title: "Footer",
+        },
         { type: "contact" },
         { type: "gallery" },
         { type: "awards" },

@@ -18,7 +18,7 @@ function FooterModule({ module }: any) {
 
   const footerRoutes = module?.footerRoutes || [];
 
-  const socialLinks = module?.socialLinks;
+  const socialLinks = module?.socialLinks || [];
 
   return (
     <footer className="bg-foreground pt-24 w-full">

@@ -1,79 +1,5 @@
 import { ArticleNyTimes } from "@phosphor-icons/react/dist/ssr";
 
-// export default {
-//   type: "document",
-//   name: "post",
-//   title: "Post",
-//   icon: ArticleNyTimes,
-//   fields: [
-//     {
-//       name: "cover",
-//       title: "Cover image",
-//       type: "image",
-//       options: {
-//         hotspot: true,
-//         metadata: [
-//           "blurHash", // Default: included
-//           "lqip", // Default: included
-//           "palette", // Default: included
-//           "exif", // Default: not included
-//           "location", // Default: not included
-//         ],
-//       },
-//       fields: [
-//         {
-//           name: "alt",
-//           type: "string",
-//           title: "Alternative Text",
-//         },
-//       ],
-//     },
-//     {
-//       type: "string",
-//       name: "title",
-//       Title: "Post Title",
-//       validation: (Rule: any) => Rule.required().max(200),
-//     },
-//     {
-//       type: "string",
-//       name: "description",
-//       title: "Description",
-//       validation: (Rule: any) => Rule.required().max(400),
-//     },
-//     {
-//       type: "slug",
-//       title: "Slug",
-//       name: "slug",
-//       options: {
-//         source: "title",
-//         maxLength: 96,
-//       },
-//       validation: (Rule: any) => Rule.required(),
-//     },
-//     { type: "body", name: "body" },
-//     {
-//       type: "seo",
-//       name: "seo",
-//       title: "SEO Settings",
-//       // group: "settings",
-//     },
-//   ],
-//   preview: {
-//     select: {
-//       title: "title",
-//       media: "cover",
-//     },
-//     prepare(selection: any) {
-//       const { title, media } = selection;
-//       // return { ...selection, subtitle: author && `by ${author}` };
-//       return {
-//         title: title,
-//         media: media,
-//       };
-//     },
-//   },
-// };
-
 import { defineType } from "sanity";
 export default defineType({
   title: "Post",
@@ -81,8 +7,9 @@ export default defineType({
   type: "document",
   icon: ArticleNyTimes,
   groups: [
-    { title: "Content", name: "content", default: true },
-    { title: "Settings", name: "settings" },
+    { title: "Content", name: "content" },
+    { title: "Settings", name: "settings", default: true },
+    { title: "SEO", name: "seo" },
   ],
   fields: [
     {
@@ -102,32 +29,26 @@ export default defineType({
       title: "Title",
       type: "string",
       validation: (Rule: any) => Rule.required(),
-      group: "content",
+      group: "settings",
     },
     {
       name: "description",
       title: "Description",
       type: "text",
       validation: (Rule: any) => Rule.required().max(400),
-      group: "content",
+      group: "settings",
     },
     {
       name: "cover",
-      type: "object",
-      fields: [
-        {
-          name: "card",
-          type: "customImage",
-          description: "Cover Picture for cards.",
-        },
-        {
-          name: "main",
-          type: "customImage",
-          description: "Cover Picture for article.",
-        },
-      ],
+      type: "customImage",
+      description: "Cover Picture for article.",
+      title: "Cover Image",
+      options: {
+        collapsible: true,
+      },
+
       validation: (Rule: any) => Rule.required(),
-      group: "content",
+      group: "settings",
     },
     {
       title: "Tags",
@@ -148,18 +69,20 @@ export default defineType({
       group: "settings",
     },
     {
-      title: "Menu",
-      name: "menu",
-      type: "reference",
-      to: [{ type: "menu" }],
-      validation: (Rule) => Rule.required(),
+      title: "Blog Body",
+      name: "body",
+      type: "bodyContent",
+      validation(rule) {
+        return rule.required();
+      },
+      group: "content",
+      description: "Here you will add content to your blog.",
     },
     {
-      title: "Content",
+      title: "Other Modules",
       name: "content",
       type: "array",
       of: [
-        { type: "bodyContent", name: "body" },
         { type: "services", name: "services" },
         { type: "testimonial", name: "testimonial" },
         { type: "all-team", name: "all-team" },
@@ -178,35 +101,61 @@ export default defineType({
       group: "content",
     },
     {
-      title: "Footer",
-      name: "footer",
       type: "reference",
-      to: [{ type: "footer" }],
-      validation: (Rule) => Rule.required(),
+      title: "Author",
+      name: "author",
+      to: [{ type: "member" }],
+      validation(rule) {
+        return rule.required();
+      },
+      group: "content",
     },
+    {
+      type: "array",
+      name: "relatedPosts",
+      title: "Relative Posts",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "post" }],
+        },
+      ],
+      group: "settings",
+    },
+
     {
       title: "Schema Markup",
       name: "schemaMarkup",
       type: "schemaMarkup",
-      group: "settings",
+      group: "seo",
     },
     {
       title: "SEO / Share Settings",
       name: "seo",
       type: "seo",
-      group: "settings",
+      group: "seo",
     },
   ],
   preview: {
     select: {
       title: "title",
       slug: "slug",
+      cover: "cover",
     },
-    prepare({ title = "Untitled", slug = {} }: { title: string; slug: any }) {
+    prepare({
+      title = "Untitled",
+      slug = {},
+      cover,
+    }: {
+      title: string;
+      slug: any;
+      cover: any;
+    }) {
       const path = `/${slug?.current}`;
       return {
         title,
         subtitle: slug.current ? path : "(missing slug)",
+        media: cover.asset,
       };
     },
   },

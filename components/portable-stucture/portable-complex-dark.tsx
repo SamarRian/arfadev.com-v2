@@ -54,12 +54,12 @@ export const portableComplexDarkText: any = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="mt-xl text-lg list-disc !font-sans ml-4 text-white/70">
+      <ul className="mt-xl text-lg list-disc !font-sans ml-4 text-foreground">
         {children}
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mt-lg text-lg list-decimal !font-sans ml-4 text-white/70">
+      <ol className="mt-lg text-lg list-decimal !font-sans ml-4 text-foreground">
         {children}
       </ol>
     ),
@@ -84,6 +84,8 @@ export const portableComplexDarkText: any = {
 
     // Ex. 2: rendering a custom `link` annotation
     link: ({ value, children }: any) => {
+      console.log(value, children);
+
       // const target = (value?.href || "").startsWith("http")
       //   ? "_blank"
       //   : undefined;

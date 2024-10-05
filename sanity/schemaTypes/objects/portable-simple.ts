@@ -111,5 +111,9 @@ export default {
         ],
       },
     },
+
+    {
+      type: "break",
+    },
   ],
 };

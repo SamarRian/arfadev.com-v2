@@ -8,9 +8,15 @@ import {
   BreadcrumbPage,
 } from "./ui/breadcrumb";
 
-function ArticleBreadCrumbs({ slug }: { slug: string }) {
+function ArticleBreadCrumbs({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) {
   return (
-    <Breadcrumb className="py-4">
+    <Breadcrumb className="py-4 font-sans" className={className}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>

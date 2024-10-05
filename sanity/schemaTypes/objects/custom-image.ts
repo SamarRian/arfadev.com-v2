@@ -2,6 +2,7 @@ export default {
   name: "customImage",
   title: "Image",
   type: "image",
+
   fields: [
     {
       name: "alt",

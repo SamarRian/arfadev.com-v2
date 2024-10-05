@@ -47,7 +47,7 @@ export const ptContent = `
 export const modules = `
       ...,
       // _type == "menu" =>  {...,items[]{...,"navPage":{page->}},...},  
-      _type == "menu" => {...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${navPage}}},featured{...,page->}}},
+      _type == "menu" => @->{...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${navPage}}},featured{...,page->}}},
       _type == "section" => @->,
       _type == "mission" => @->,
       _type == "gallery" => @->,
@@ -55,7 +55,7 @@ export const modules = `
       _type ==  "services" => {...,content[]{...,defined(page) => {page ->{slug}}},${metaData}},
       _type == "testimonial" => @->,
       _type == "featured-posts" => {...,${metaData},posts[]->{...,author->{name,photo}}},
-      _type == "footer" => {...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}},"langSupport":${languageSupport}},
+      _type == "footer" => @->{...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}},"langSupport":${languageSupport}},
       _type == "one-member" => {...,member->},
       _type == "awards" => {...,${metaData},content[]->},
       _type == "grid" => {...},

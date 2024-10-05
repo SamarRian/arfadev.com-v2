@@ -13,7 +13,6 @@ function BlogsModule({ module }: any) {
     subtitle: "",
   };
   const posts = module?.posts || [];
-  console.log("these are posts", posts);
   const href = metaData?.mainLink?.page?.slug?.current || "/";
   return (
     <Section sectionHeader={metaData}>
