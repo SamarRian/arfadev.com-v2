@@ -13,10 +13,10 @@ import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 
 import deskStucture from "./sanity/deskStucture";
-import { seoMetaFields } from "sanity-plugin-seo";
 import { presentationTool } from "sanity/presentation";
 import { resolve } from "./sanity/presentation/resolve";
-import { noteField } from "sanity-plugin-note-field";
+
+import { codeInput } from "@sanity/code-input";
 
 import { schemaMarkup } from "@operationnation/sanity-plugin-schema-markup";
 
@@ -27,9 +27,8 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [
+    codeInput(),
     schemaMarkup(),
-    seoMetaFields(),
-    noteField(),
     structureTool({ structure: deskStucture }),
     visionTool({ defaultApiVersion: apiVersion }),
     // Vision is for querying with GROQ from inside the Studio

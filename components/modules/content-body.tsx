@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { cn } from "@/lib/utils";
 import { portableSimple } from "../portable-stucture/portable-simple";
 import { portableComplexDarkText } from "../portable-stucture/portable-complex-dark";
+import { portableComplex } from "../portable-stucture/portable-complex";
 
 function ContentBody({ module }: { module: any; lightMode?: boolean }) {
   const { body, wide } = module;
@@ -13,11 +14,11 @@ function ContentBody({ module }: { module: any; lightMode?: boolean }) {
     <section>
       <article
         className={cn(
-          "w-full mx-auto ",
-          wide ? "max-w-article-wide" : "max-w-article"
+          "w-full prose prose-headings:font-serif lg:prose-md md:prose-lg prose-p:font-sans"
+          // wide ? "max-w-article-wide" : "max-w-article "
         )}
       >
-        <PortableText value={body} components={portableComplexDarkText} />
+        <PortableText value={body} components={portableComplex} />
       </article>
     </section>
   );

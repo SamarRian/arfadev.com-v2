@@ -14,29 +14,6 @@ export default defineField({
   ],
   fields: [
     {
-      name: "gridSizeNote",
-      type: "note",
-      options: {
-        icon: Question,
-        headline: "How to setup column sizes",
-        message: (
-          <>
-            Always start with a "Default" breakpoint and work your way up.
-            Visually, think about how many grid "spaces" you want your column to
-            occupy at each breakpoint.
-            <br />
-            <br />
-            You can also offset your column if you want it to have a gap in the
-            grid spaces, just set the "space" you want the column to start in.
-            <br />
-            <br />
-            The "Justify" and "Align" options can help position the column
-            within the grid.
-          </>
-        ),
-      },
-    },
-    {
       title: "Breakpoint",
       name: "breakpoint",
       type: "string",

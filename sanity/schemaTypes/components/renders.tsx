@@ -79,6 +79,12 @@ export const Header6 = (props: any) => (
   </h6>
 );
 
+export const Hightlight = (props: any) => {
+  return (
+    <span className="bg-primary text-primary-foreground">{props.children}</span>
+  );
+};
+
 export const Divider = (props: any) => (
   <span>
     <hr className="border-white/40">{props.children}</hr>

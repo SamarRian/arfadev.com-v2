@@ -1,4 +1,4 @@
-import { defineArrayMember } from "sanity";
+import { BlockEditor, defineArrayMember } from "sanity";
 import {
   Divider,
   Header1,
@@ -7,8 +7,9 @@ import {
   Header4,
   Header5,
   Header6,
+  Hightlight,
 } from "../components/renders";
-import { Minus } from "@phosphor-icons/react/dist/ssr";
+import { Highlighter, Minus } from "@phosphor-icons/react/dist/ssr";
 
 export default {
   title: "Rich Text",
@@ -76,6 +77,17 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          { title: "Strike", value: "strike-through" },
+          { title: "Code", value: "code" },
+          { title: "Underline", value: "underline" },
+          {
+            title: "Highlight",
+            value: "highlight",
+            icon: Highlighter,
+            blockEditor: {
+              render: Hightlight,
+            },
+          },
         ],
         annotations: [
           {
@@ -184,21 +196,35 @@ export default {
           name: "height",
           type: "number",
           title: "Height",
+          description: "Recommended height. 600px.",
         },
         {
           name: "width",
           type: "number",
           title: "Width",
+          description: "Recommended width. 1200px",
+        },
+        {
+          name: "description",
+          type: "string",
+          title: "Description",
+          description: "Provide description of the image.",
+        },
+        {
+          name: "refLink",
+          type: "object",
+          title: "Reference Link",
+          fields: [
+            { type: "url", title: "URL", name: "url" },
+            { type: "string", title: "Title", name: "title" },
+          ],
+          description: "(Optional.) Provide the reference link of the img.",
+          options: { collapsable: true },
         },
       ],
     }),
+    { type: "code" },
 
-    {
-      type: "break",
-      blockEditor: {
-        render: Divider,
-      },
-    },
     // customImage(),
     // {
     //   type: "horizontalRule",

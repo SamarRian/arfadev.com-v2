@@ -69,9 +69,9 @@ export default defineType({
       group: "settings",
     },
     {
-      title: "Blog Body",
+      title: "Content Body",
       name: "body",
-      type: "bodyContent",
+      type: "complexPortableText",
       validation(rule) {
         return rule.required();
       },

@@ -26,7 +26,7 @@ const NavigationDropDown = dynamic(() => import("./mega-menu/drop-down-menu"));
 export function MegaMenu({ module }: { module: any }) {
   const [hidden, setHidden] = useState(false);
 
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() as number;
@@ -55,10 +55,11 @@ export function MegaMenu({ module }: { module: any }) {
 
   return (
     <motion.header
-      variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
+      variants={{ visible: { y: 0 }, hidden: { y: "-95%" } }}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       animate={hidden ? "hidden" : "visible"}
       className={cn("bg-primary w-full z-20 sticky top-0")}
+      whileHover={{ y: 0 }}
     >
       <div className="flex items-center justify-between py-4 max-w-[85rem] mx-auto">
         <Link href="/" className="flex items-center space-x-2">
@@ -76,6 +77,14 @@ export function MegaMenu({ module }: { module: any }) {
           {/* <ModeToggle/> */}
         </div>
       </div>
+      <motion.div
+        className="h-1 bg-secondary w-full"
+        style={{
+          scaleX: scrollYProgress,
+          display: hidden ? "block" : "none",
+        }}
+        transition={{ delay: 0.35 }}
+      ></motion.div>
     </motion.header>
   );
 }

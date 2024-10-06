@@ -20,7 +20,12 @@ export async function getPage(
 
   const queryOptions: QueryOptions = isDraftMode
     ? { perspective: "previewDrafts", token, stega: true, useCdn: false }
-    : { perspective: "published", useCdn: true, cache: "force-cache" };
+    : {
+        perspective: "published",
+        useCdn: true,
+        cache: "force-cache",
+        stega: false,
+      };
 
   const query = `
         {
@@ -50,7 +55,12 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
 
   const queryOptions: QueryOptions = isDraftMode
     ? { perspective: "previewDrafts", token, stega: true, useCdn: false }
-    : { perspective: "published", useCdn: true, cache: "force-cache" };
+    : {
+        perspective: "published",
+        useCdn: true,
+        cache: "force-cache",
+        stega: false,
+      };
 
   const query = `{
           "page": *[_type == "post" && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
@@ -67,6 +77,7 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
             seo,
             tags,
             author->{name,photo},
+            relatedPosts[]->{cover,author->{name,photo},title,publishedAt,slug}
           },
           "footer":${footerQuery},
           "menu":${menuQuery},
@@ -83,7 +94,7 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
 export async function getStaticPage(pageData: any, isDraftMode?: boolean) {
   const queryOptions: QueryOptions = isDraftMode
     ? { perspective: "previewDrafts", token, stega: true, useCdn: false }
-    : { perspective: "published", useCdn: true };
+    : { perspective: "published", useCdn: true, stega: false };
 
   const query = `
     {

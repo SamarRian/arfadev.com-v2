@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Twitter, Facebook, Linkedin, Link2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function ShareButtons() {
+export default function ShareButtons({ className }: { className?: string }) {
   const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
@@ -29,8 +30,10 @@ export default function ShareButtons() {
   };
 
   return (
-    <div className="flex flex-wrap gap-2 items-center">
-      <span className="text-sm font-medium text-foreground">Share:</span>
+    <div className={cn("flex flex-wrap gap-2 items-center", className)}>
+      <span className="text-sm font-medium text-foreground font-sans">
+        Share:
+      </span>
       <Link href={shareLinks.twitter} target="_blank" rel="noopener noreferrer">
         <Button variant="outline" size="icon" aria-label="Share on Twitter">
           <Twitter className="h-4 w-4" />

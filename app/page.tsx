@@ -70,7 +70,7 @@ export default async function Home({ params }: any) {
   const { content } = page;
 
   return (
-    <main className="w-full h-full">
+    <main className="w-full h-full bg-background">
       {page?.schemaMarkup && <SchemaMarkup schema={page.schemaMarkup} />}
       {content.map((module: any, i: number) => {
         return <Module module={module} key={i} />;

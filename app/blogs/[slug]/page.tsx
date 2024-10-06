@@ -1,19 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import ArticleBreadCrumbs from "@/components/article-breadcrumb";
-import { getPost } from "@/sanity/data";
 import { draftMode } from "next/headers";
-import ShareButtons from "@/components/social-media-share";
 import { notFound } from "next/navigation";
+import { getPost } from "@/sanity/data";
+
+import { PortableText } from "@portabletext/react";
+import { urlFor } from "@/sanity/lib/image";
+import { purifyString } from "@/lib/utils";
+
 import { MegaMenu } from "@/components/modules/mega-menu";
 import FooterModule from "@/components/modules/footer.module";
-import { urlFor } from "@/sanity/lib/image";
 import CustomImage from "@/components/custom-image";
-import { PortableText } from "@portabletext/react";
-import { portableComplexDarkText } from "@/components/portable-stucture/portable-complex-dark";
-import Module from "@/components/modules/module";
-import { purifyString } from "@/lib/utils";
-import ContentBody from "@/components/modules/content-body";
+import { portableComplex } from "@/components/portable-stucture/portable-complex";
+
+import ArticleBreadCrumbs from "@/components/article-breadcrumb";
+import ShareButtons from "@/components/social-media-share";
+import { Badge } from "@/components/ui/badge";
+import RelatedBlogCard from "@/components/related-blog-card";
+import Author from "@/components/author";
 
 export default async function Component({
   params: { slug },
@@ -30,9 +32,18 @@ export default async function Component({
   const menu = pageData?.menu;
   const footer = pageData?.footer;
 
-  const { title, cover, tags, content, description, author, body } = page;
+  const {
+    title,
+    cover,
+    tags,
+    content,
+    description,
+    author,
+    body,
+    relatedPosts = [],
+  } = page;
 
-  console.log(body, "this is page");
+  console.log(relatedPosts);
 
   return (
     <main>
@@ -50,7 +61,7 @@ export default async function Component({
         )}
         <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center"></div>
       </div>
-      <div className="grid grid-cols-12 max-w-[85rem] mx-auto">
+      <div className="grid grid-cols-12 max-w-[85rem] mx-auto auto-rows-auto">
         <ArticleBreadCrumbs
           className="col-start-1 col-span-8 pt-8"
           slug={slug}
@@ -59,41 +70,32 @@ export default async function Component({
           {title}
         </h1>
 
-        <div className="flex items-center space-x-4 mb-6 col-start-1 col-span-8">
-          <Avatar>
-            {author?.photo && (
-              <AvatarImage
-                alt={author?.photo?.alt}
-                src={urlFor(author?.photo?.asset).width(70).height(70).url()}
-              />
-            )}
-            <AvatarFallback>AN</AvatarFallback>
-          </Avatar>
-          <div>
-            <p className="text-lg font-light font-sans ">
-              {author && author?.name}
-            </p>
-          </div>
-        </div>
+        <Author author={author} />
 
         <p className="text-lg font-light font-sans col-start-1 col-span-8 text-primary">
           Posted on August 24, 2023
         </p>
 
-        <article className="w-full col-start-1 col-span-8">
-          <p className="text-base font-sans py-10">
-            {purifyString(description)}
-          </p>
-          {<ContentBody module={body} />}
+        <article className="prose prose-blockquote:border-l-4 prose-blockquote:border-primary md:prose-base prose-headings:font-serif font-sans lg:prose-lg prose-stone !max-w-none !w-full col-start-1 col-span-8">
+          <p className="py-10">{purifyString(description)}</p>
+          <PortableText value={body} components={portableComplex} />
         </article>
 
-        <div className="mt-8 flex space-x-4">
+        <div className="col-start-1 col-span-8 flex gap-4 py-6">
           {tags &&
             tags.map((tag: string, key: number) => {
               return <Badge key={key}>{tag}</Badge>;
             })}
         </div>
-        <ShareButtons />
+        <ShareButtons className="col-start-1 col-span-8 py-6" />
+
+        <div className="col-span-3 col-start-10 self-start">
+          <h3>Related Posts</h3>
+          {relatedPosts?.length &&
+            relatedPosts.map((blog: any, key: number) => {
+              return <RelatedBlogCard {...blog} key={key} />;
+            })}
+        </div>
       </div>
 
       {footer && <FooterModule module={footer} />}
