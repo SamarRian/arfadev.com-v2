@@ -3,19 +3,17 @@ import { PortableText } from "@portabletext/react";
 // import Section from "../section";
 
 import { cn } from "@/lib/utils";
-import { portableSimple } from "../portable-stucture/portable-simple";
-import { portableComplexDarkText } from "../portable-stucture/portable-complex-dark";
 import { portableComplex } from "../portable-stucture/portable-complex";
 
 function ContentBody({ module }: { module: any; lightMode?: boolean }) {
   const { body, wide } = module;
 
   return (
-    <section>
+    <section className="py-24">
       <article
         className={cn(
-          "w-full prose prose-headings:font-serif lg:prose-md md:prose-lg prose-p:font-sans dark:text-foreground prose-headings:dark:text-primary"
-          // wide ? "max-w-article-wide" : "max-w-article "
+          "dark:text-foreground prose-headings:text-foreground prose-strong:text-foreground prose-blockquote:text-foreground prose-a:text-primary prose prose-blockquote:border-l-4 prose-blockquote:border-primary md:prose-base prose-headings:font-serif font-sans lg:prose-lg prose-stone !max-w-none !w-full col-start-1 col-span-8 mx-auto",
+          wide ? "!max-w-[50rem]" : "max-w-prose"
         )}
       >
         <PortableText value={body} components={portableComplex} />

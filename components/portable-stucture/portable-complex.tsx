@@ -6,6 +6,7 @@ import { urlFor } from "@/sanity/lib/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { LinkSimple } from "@phosphor-icons/react/dist/ssr";
+import DataTable from "../data-table";
 
 export const portableComplex: any = {
   block: {
@@ -92,8 +93,6 @@ export const portableComplex: any = {
         imageOptions["height"] = value.height;
       }
 
-      console.log(imageOptions);
-
       return (
         <figure>
           <CustomImage
@@ -122,6 +121,12 @@ export const portableComplex: any = {
           {value.code}
         </SyntaxHighlighter>
       );
+    },
+    table: ({ value }: any) => {
+      const { rows = [] } = value;
+      const [firstRow, ...dataRows] = rows;
+
+      return <DataTable firstRow={firstRow} dataRow={dataRows} />;
     },
   },
 };

@@ -39,7 +39,8 @@ export async function getPage(
             },
             body,
             title,
-            seo
+            seo,
+            schemaMarkup,
           },
            ${site}
         }
@@ -70,9 +71,8 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
             defined(_ref)=>{...@->content[0]{${modules}}},
             !defined(_ref)=>{${modules}}
             },
-            !defined(_ref)=>{
-            ${modules}
-            },
+            body,
+            description,
             title,
             seo,
             tags,

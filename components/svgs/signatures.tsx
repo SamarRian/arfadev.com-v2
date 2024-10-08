@@ -27,7 +27,7 @@ function Signatures({ className }: { className?: string }) {
         strokeWidth="3"
         strokeLinecap="round"
         className="stroke-background opacity-40 fill-none line-clamp-1"
-        variants={framerMotionDraw}
+        variants={framerMotionDraw({ duration: 1 })}
         custom={1}
       />
     </motion.svg>

@@ -17,6 +17,7 @@ import { presentationTool } from "sanity/presentation";
 import { resolve } from "./sanity/presentation/resolve";
 
 import { codeInput } from "@sanity/code-input";
+import { table } from "@sanity/table";
 
 import { schemaMarkup } from "@operationnation/sanity-plugin-schema-markup";
 
@@ -28,7 +29,10 @@ export default defineConfig({
   schema,
   plugins: [
     codeInput(),
+    table(),
+
     schemaMarkup(),
+
     structureTool({ structure: deskStucture }),
     visionTool({ defaultApiVersion: apiVersion }),
     // Vision is for querying with GROQ from inside the Studio

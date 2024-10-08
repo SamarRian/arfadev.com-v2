@@ -8,6 +8,7 @@ export default defineType({
   groups: [
     { title: "Content", name: "content", default: true },
     { title: "Settings", name: "settings" },
+    { title: "SEO", name: "seo" },
   ],
   fields: [
     {
@@ -104,13 +105,14 @@ export default defineType({
       title: "Schema Markup",
       name: "schemaMarkup",
       type: "schemaMarkup",
+      group: "seo",
     },
 
     {
       title: "SEO / Share Settings",
       name: "seo",
       type: "seo",
-      group: "settings",
+      group: "seo",
       validation: (Rule: any) => Rule.required(),
     },
 

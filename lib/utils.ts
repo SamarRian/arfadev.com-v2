@@ -13,7 +13,11 @@ export const purifyString = (str: string): string => {
     .replace(/[^\x20-\x7E]/g, ""); // Remove non-printable ASCII characters (except common spaces)
 };
 
-export const framerMotionDraw = {
+export const framerMotionDraw = ({
+  duration = 1.5,
+}: {
+  duration?: number;
+}) => ({
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i: number) => {
     const delay = 1 + i * 0.5;
@@ -21,9 +25,14 @@ export const framerMotionDraw = {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
+        pathLength: { delay, type: "spring", duration: duration, bounce: 0 },
         opacity: { delay, duration: 0.01 },
       },
     };
   },
+});
+
+export const joinSlugs = (slugArr: any) => {
+  const joinedStr = slugArr.join("/");
+  return joinedStr;
 };

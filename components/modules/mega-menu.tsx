@@ -56,10 +56,15 @@ export function MegaMenu({ module }: { module: any }) {
 
   return (
     <motion.header
-      variants={{ visible: { y: 0 }, hidden: { y: "-95%" } }}
+      variants={{
+        visible: { y: 0, borderBottom: 2 },
+        hidden: { y: "-95%", borderBottom: 0 },
+      }}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       animate={hidden ? "hidden" : "visible"}
-      className={cn("w-full z-20 fixed top-0 backdrop-blur-sm !bg-primary")}
+      className={cn(
+        "w-full z-20 fixed top-0 backdrop-blur-sm bg-white dark:bg-secondary border-b-2 shadow-sm border-secondary dark:border-primary"
+      )}
       whileHover={{ y: 0 }}
     >
       <div className="flex  items-center justify-between py-4 max-w-[85rem] mx-auto">
@@ -82,7 +87,7 @@ export function MegaMenu({ module }: { module: any }) {
         </div>
       </div>
       <motion.div
-        className="h-1 bg-secondary dark:bg-primary w-full"
+        className="h-1 bg-primary dark:bg-primary w-full"
         style={{
           scaleX: scrollYProgress,
           display: hidden ? "block" : "none",

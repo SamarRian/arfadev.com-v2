@@ -224,6 +224,7 @@ export default {
       ],
     }),
     { type: "code" },
+    { type: "table" },
 
     // customImage(),
     // {

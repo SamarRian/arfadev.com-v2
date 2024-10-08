@@ -1,25 +1,61 @@
+import { cache } from "react";
+import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getPost } from "@/sanity/data";
 
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
-import { purifyString } from "@/lib/utils";
+
+import FooterModule from "@/components/modules/footer.module";
+import { portableComplex } from "@/components/portable-stucture/portable-complex";
+import SchemaMarkup from "@/components/schema-markup";
 
 import { MegaMenu } from "@/components/modules/mega-menu";
-import FooterModule from "@/components/modules/footer.module";
-import CustomImage from "@/components/custom-image";
-import { portableComplex } from "@/components/portable-stucture/portable-complex";
-
 import ArticleBreadCrumbs from "@/components/article-breadcrumb";
 import ShareButtons from "@/components/social-media-share";
-import { Badge } from "@/components/ui/badge";
 import Author from "@/components/author";
 import BlogCard from "@/components/blog-card";
 import ArticleCover from "@/components/modules/article-cover";
 import CaseStudyCard from "@/components/case-study-card";
 import Module from "@/components/modules/module";
-import SchemaMarkup from "@/components/schema-markup";
+import { Badge } from "@/components/ui/badge";
+
+const getPostData = cache(async (slug: string, isDraftMode = false) => {
+  const pageData = await getPost(slug, isDraftMode);
+  return pageData;
+});
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { isEnabled: isDraftMode } = draftMode();
+  const pageData = await getPostData(slug, isDraftMode);
+
+  const { page } = pageData;
+  const { seo } = page;
+
+  return {
+    title: seo.metaTitle,
+    description: seo.metaDesc,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
+    alternates: {
+      canonical: page?.slug ? `/blogs/${page.slug.current}` : `/`,
+    },
+
+    authors: seo.authors,
+    keywords: seo.keywords,
+    creator: seo.creator,
+    publisher: seo.publisher,
+    openGraph: {
+      images: [urlFor(seo.shareGraphic).url()],
+      title: seo.shareTitle,
+      description: seo.shareDesc,
+    },
+  };
+}
 
 export default async function Component({
   params: { slug },
@@ -27,7 +63,8 @@ export default async function Component({
   params: { slug: string };
 }) {
   const { isEnabled: isDraftMode } = draftMode();
-  const pageData = await getPost(slug, isDraftMode);
+  // const pageData = await getPost(slug, isDraftMode);
+  const pageData = await getPostData(slug, isDraftMode);
 
   const page = pageData?.page;
 
@@ -48,14 +85,12 @@ export default async function Component({
     schemaMarkup,
   } = page;
 
-  console.log(relatedPosts);
-
   return (
     <main className="flex flex-col">
       {schemaMarkup && <SchemaMarkup schema={schemaMarkup} />}
       {menu && <MegaMenu module={menu} />}
       <ArticleCover cover={cover} title={title} />
-      <div className="flex max-w-[85rem] mx-auto gap-x-8 items-start">
+      <section className="flex max-w-[85rem] mx-auto gap-x-8 items-start">
         <div className="flex-initial max-w-[calc(85rem-30rem)] mx-auto auto-rows-auto">
           <ArticleBreadCrumbs
             className="col-start-1 col-span-8 pt-8 font-sans pb-8"
@@ -68,7 +103,7 @@ export default async function Component({
           </div>
 
           <article className="dark:text-foreground prose-headings:text-foreground prose-strong:text-foreground prose-blockquote:text-foreground prose-a:text-primary prose prose-blockquote:border-l-4 prose-blockquote:border-primary md:prose-base prose-headings:font-serif font-sans lg:prose-lg prose-stone !max-w-none !w-full col-start-1 col-span-8">
-            <p className="py-10">{purifyString(description)}</p>
+            <p className="py-10">{description}</p>
             <PortableText value={body} components={portableComplex} />
           </article>
 
@@ -80,16 +115,8 @@ export default async function Component({
           </div>
           <ShareButtons className="col-start-1 col-span-8 pb-12" />
           <hr />
-          {relatedPosts?.length && (
-            <div className="col-span-3 col-start-10 self-start py-6 space-y-4">
-              <h3 className="text-3xl font-serif py-6">Related Posts</h3>
-              {relatedPosts.map((blog: any, key: number) => {
-                return <BlogCard {...blog} key={key} />;
-              })}
-            </div>
-          )}
         </div>
-        <div className="max-w-[30rem] pt-12 pb-6 sticky top-8 left-0">
+        <aside className="max-w-[30rem] pt-12 pb-6 sticky top-8 left-0">
           <h3 className="text-2xl font-serif font-semibold">
             Read Case Studies
           </h3>
@@ -99,8 +126,18 @@ export default async function Component({
           <div className="flex flex-col gap-3 pt-8">
             <CaseStudyCard />
           </div>
-        </div>
-      </div>
+        </aside>
+      </section>
+      {relatedPosts?.length && (
+        <section className="max-w-[85rem] mx-auto  py-6 space-y-4">
+          <h3 className="text-3xl font-serif py-6">Related Posts</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {relatedPosts.map((blog: any, key: number) => {
+              return <BlogCard {...blog} key={key} />;
+            })}
+          </div>
+        </section>
+      )}
       {content &&
         content.map((module: any, key: number) => {
           return <Module module={module} key={key} />;
