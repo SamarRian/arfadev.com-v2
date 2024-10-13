@@ -24,6 +24,7 @@ export default {
       of: [
         { type: "bodyContent" },
         { type: "customImage" },
+        { type: "form" },
         // { type: "productCard" },
       ],
     },

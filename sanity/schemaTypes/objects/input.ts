@@ -14,6 +14,8 @@ export default defineField({
       options: {
         list: [
           { title: "Textbox", value: "text" },
+          { title: "Email", value: "email" },
+          { title: "Phone", value: "tel" },
           { title: "Password", value: "password" },
           { title: "Textarea", value: "textarea" },
           { title: "Submit", value: "submit" },
@@ -22,6 +24,14 @@ export default defineField({
     },
     { type: "string", title: "Placeholder", name: "placeholder" },
     { name: "wide", title: "Wide", type: "boolean" },
+    {
+      name: "defaultText",
+      title: "Default Value",
+      type: "string",
+      hidden: ({ parent }: any) => {
+        return parent.type !== "text" || parent.type !== "textarea";
+      },
+    },
   ],
   initialValue: {
     wide: true,

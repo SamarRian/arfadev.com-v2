@@ -3,6 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import ContentBody from "./content-body";
 import CustomImage from "../custom-image";
 import { cn, purifyString } from "@/lib/utils";
+import { FormComponent } from "../form";
 
 const GridBlock = ({ block }: any) => {
   const type = block._type;
@@ -25,6 +26,9 @@ const GridBlock = ({ block }: any) => {
       );
     case "bodyContent":
       return <ContentBody module={block} />;
+    case "form":
+      return <FormComponent module={block} />;
+
     default:
       return null;
   }

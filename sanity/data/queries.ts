@@ -58,7 +58,7 @@ export const modules = `
       _type == "footer" => @->{...,footerRoutes[]{...,routes[]{...,${navPage}}},policies[]{...,${navPage}},"langSupport":${languageSupport}},
       _type == "one-member" => {...,member->},
       _type == "awards" => {...,${metaData},content[]->},
-      _type == "grid" => {...},
+      _type == "grid" => {...,defined(_ref) => {form->}},
       _type == "body" => {...,body[]{...,_type == "cta" => @->}},
       _type == "portfolio" => {...,projects[]{...,page->{slug}}},
       _type == "whyChooseUs" => {...},

@@ -26,27 +26,29 @@ import {
 } from "./ui/select";
 import { Checkbox } from "./ui/checkbox";
 import { Textarea } from "./ui/textarea";
+import { createFormSchema } from "@/lib/form-helpers";
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, {
-      message: "Please provide your valid business email.",
-    })
-    .email("Please provide your valid business email."),
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  city: z.string(),
-  country: z.string().min(1, "Please select a country"),
-  services: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one item.",
-  }),
-  description: z.string().min(1, "Please tell us about your lawfirm."),
-});
+// const formSchema = z.object({
+//   email: z
+//     .string()
+//     .min(1, {
+//       message: "Please provide your valid business email.",
+//     })
+//     .email("Please provide your valid business email."),
+//   name: z.string().min(2, {
+//     message: "Name must be at least 2 characters.",
+//   }),
+//   city: z.string(),
+//   country: z.string().min(1, "Please select a country"),
+//   services: z.array(z.string()).refine((value) => value.some((item) => item), {
+//     message: "You have to select at least one item.",
+//   }),
+//   description: z.string().min(1, "Please tell us about your lawfirm."),
+// });
 
 export interface IFormComponent {
   className?: string;
+  module: any;
 }
 
 const countries = [
@@ -82,7 +84,10 @@ const items = [
   },
 ] as const;
 
-export function FormComponent({ className }: IFormComponent) {
+export function FormComponent({ module, className }: IFormComponent) {
+  const { title = "", form: inputs = [] } = module;
+
+  const formSchema = createFormSchema(inputs);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -107,12 +112,10 @@ export function FormComponent({ className }: IFormComponent) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("space-y-4 p-8 border-input border", className)}
+        className={cn("space-y-4 p-8 border-border border bg-card", className)}
       >
         {/* <p className="font-sans font-normal text-sm">Recommended Solution</p> */}
-        <h3 className="font-serif font-medium text-3xl">
-          Transform Your Firm Online – Schedule a Free Consultation
-        </h3>
+        <h3 className="font-serif font-medium text-3xl">{title}</h3>
         <FormField
           control={form.control}
           name="email"
@@ -191,7 +194,7 @@ export function FormComponent({ className }: IFormComponent) {
                   Please select the services you would like to have.
                 </FormDescription>
               </div>
-              {items.map((item) => (
+              {items.map((item: any) => (
                 <FormField
                   key={item.id}
                   control={form.control}

@@ -46,7 +46,6 @@ function Testimonials({ module }: any) {
           <p className="italic">{feedback}</p>
           <Signatures className="absolute top-0 left-0 -translate-x-1/4 translate-y-1/3 z-10 pointer-events-none" />
           <div className="flex gap-x-6 items-center">
-            :
             <div className="flex items-end flex-col gap-y-2">
               <p className="text-xl font-medium font-sans text-primary">
                 {client?.name}

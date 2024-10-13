@@ -4,16 +4,15 @@ const Column = ({ title, tagline }: { title: string; tagline: string }) => {
   return (
     <div className="max-w-[20rem] space-y-3 text-center">
       <h3 className="text-primary  text-xl font-serif font-bold">{title}</h3>
-      <hr className="border-secondary-foreground" />
-      <p className="text-secondary-foreground/80 text-sm font-sans">
-        {tagline}
-      </p>
+      <hr className="border-secondary-foreground/40" />
+      <p className="text-muted-foreground text-sm font-sans">{tagline}</p>
     </div>
   );
 };
 
 function WhyChooseUs({ module }: any) {
   const { title = "", content = [] } = module;
+
   return (
     <section className="bg-none">
       <div className="w-[85rem] mx-auto bg-secondary flex py-24 items-center  -translate-y-1/2 ">

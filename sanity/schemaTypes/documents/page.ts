@@ -92,7 +92,7 @@ export default defineType({
         { type: "grid", name: "grid" },
         { type: "awards", name: "awards" },
         { type: "portfolio", name: "portfolio" },
-        { type: "whyChooseUs", name: "WhyChooseUs" },
+        { type: "whyChooseUs", name: "whyChooseUs" },
         {
           type: "reference",
           title: "Reusable Section",

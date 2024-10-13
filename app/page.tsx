@@ -64,6 +64,8 @@ export default async function Home() {
 
   const { content } = page;
 
+  console.log(content);
+
   return (
     <main className="w-full h-full">
       {page?.schemaMarkup && <SchemaMarkup schema={page.schemaMarkup} />}

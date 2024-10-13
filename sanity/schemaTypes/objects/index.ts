@@ -18,6 +18,7 @@ import gridColume from "./grid-colume";
 import breaks from "./breaks";
 import tags from "./tags";
 import sectionFooter from "./section-footer";
+import form from "./form";
 // import bodyComplexText from "./body-complex-text";
 
 export default [
@@ -32,6 +33,7 @@ export default [
   sectionId,
   routes,
   tags,
+  form,
   // body,
   category,
   heroBody,

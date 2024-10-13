@@ -30,8 +30,6 @@ function SectionFooter({
       break;
   }
 
-  console.log("sectionfooter.tsx", urlType);
-
   return (
     <div className="flex justify-between items-center container mx-auto py-12 border-t max-w-[85rem] mt-24">
       <p className="text-sm leading-normal font-sans max-w-md text-muted-foreground">

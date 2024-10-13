@@ -21,7 +21,7 @@ function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col space-y-3 max-w-[85rem] mx-auto pb-20",
+        "flex flex-col space-y-3 max-w-[85rem] mx-auto pb-20 z-20 relative",
         className
       )}
     >

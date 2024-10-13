@@ -43,6 +43,7 @@ export default {
         { type: "awards" },
         { type: "portfolio" },
         { type: "whyChooseUs" },
+        { type: "grid" },
       ],
       validation: (Rule: any) =>
         Rule.length(1).error("You can only have one piece of content"),
