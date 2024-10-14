@@ -2,8 +2,8 @@ import { getDynamicRoute, getStaticRoute } from "@/sanity/lib/helper";
 import { LinkSimpleHorizontal } from "@phosphor-icons/react";
 
 export default {
-  title: "Page",
-  name: "navPage",
+  title: "Menu Link",
+  name: "menuLink",
   type: "object",
   icon: LinkSimpleHorizontal,
   fields: [
@@ -12,6 +12,13 @@ export default {
       name: "title",
       type: "string",
       description: "Display Text",
+    },
+    {
+      title: "Subtitle",
+      name: "subtitle",
+      type: "string",
+      description:
+        "Brief detail of the link. ie incase of service give details about service you're providing",
     },
     {
       title: "Page",

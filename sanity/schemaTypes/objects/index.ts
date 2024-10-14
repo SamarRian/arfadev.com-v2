@@ -19,6 +19,7 @@ import breaks from "./breaks";
 import tags from "./tags";
 import sectionFooter from "./section-footer";
 import form from "./form";
+import menuLink from "./menuLink";
 // import bodyComplexText from "./body-complex-text";
 
 export default [
@@ -26,6 +27,7 @@ export default [
   seo,
   navlink,
   navDropdown,
+  menuLink,
   customImage,
   sectionMetadata,
   // cta,

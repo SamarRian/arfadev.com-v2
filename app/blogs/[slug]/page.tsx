@@ -55,17 +55,34 @@ export async function generateMetadata({
     description: seo.metaDesc,
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
     alternates: {
-      canonical: page?.slug ? `/blogs/${page.slug.current}` : `/`,
+      // canonical: page?.slug ? `/blogs/${slug}` : `/`,
+      canonical: `/blogs/${slug}`,
     },
 
     authors: seo.authors,
     keywords: seo.keywords,
     creator: seo.creator,
     publisher: seo.publisher,
+
     openGraph: {
-      images: [urlFor(seo.shareGraphic).url()],
-      title: seo.shareTitle,
-      description: seo.shareDesc,
+      images: [urlFor(seo?.shareGraphic).url()],
+      publishedTime: page._createdOn,
+      title: seo?.shareTitle,
+      description: seo?.shareDesc,
+    },
+
+    robots: {
+      index: seo?.noindex,
+      follow: seo?.nofollow,
+      nocache: seo?.cache,
+      googleBot: {
+        index: seo?.index,
+        follow: seo?.follow,
+        noimageindex: seo?.imageindex,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -162,3 +179,5 @@ export default async function Component({
     </main>
   );
 }
+
+export const revalidate = 60 * 10;

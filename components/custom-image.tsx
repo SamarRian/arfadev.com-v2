@@ -1,10 +1,9 @@
 import { urlFor } from "@/sanity/lib/image";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image, { ImageProps } from "next/image";
 import React from "react";
 
 interface ICustomeImageProps extends ImageProps {
-  imageOBJ: SanityImageSource;
+  imageOBJ: any;
 }
 
 function CustomImage({
@@ -19,6 +18,8 @@ function CustomImage({
   const imageOptions: any = {
     alt: "Please enter alt.",
     style: { objectFit: objectFit || "fill" },
+    priority: imageOBJ?.priority || false,
+    loading: imageOBJ?.loading || "lazy",
   };
   if (width && height) {
     imageOptions["width"] = width;
@@ -36,7 +37,7 @@ function CustomImage({
       placeholder={placeholder || "blur"}
       quality={90}
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 60vw"
-      loading="lazy"
+
       // layout="responsive"
     />
   );

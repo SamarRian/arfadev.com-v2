@@ -44,11 +44,11 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
   return (
     <div
       className={cn(
-        "flex flex-col lg:space-y-4 md:space-y-2 max-w-md lg:mb-8 md:mb-6",
+        "flex flex-col lg:space-y-4 md:space-y-2 max-w-md lg:mb-8  md:mb-6 mb-4",
         className
       )}
     >
-      <h3 className="lg:text-3xl md:text-2xl font-bold leading-loose font-serif">
+      <h3 className="lg:text-3xl text-2xl font-bold leading-loose font-serif">
         {title}
       </h3>
       <p className="text-md md:text-base font-sans text-muted-foreground">

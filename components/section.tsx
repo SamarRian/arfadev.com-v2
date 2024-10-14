@@ -20,7 +20,7 @@ function Section({
   return (
     <section
       className={cn(
-        "w-full lg:py-24 md:py-16 h-full px-4 md:px-6 lg:px-0",
+        "w-full lg:py-24 md:py-20 sm:py-16 py-14 h-full px-4 md:px-6 lg:px-0",
         className
       )}
     >

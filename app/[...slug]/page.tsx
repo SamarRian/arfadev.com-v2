@@ -63,13 +63,13 @@ export async function generateMetadata(
     },
 
     robots: {
-      index: true,
-      follow: true,
-      nocache: true,
+      index: seo?.noindex,
+      follow: seo?.nofollow,
+      nocache: seo?.cache,
       googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
+        index: seo?.index,
+        follow: seo?.follow,
+        noimageindex: seo?.imageindex,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -117,6 +117,6 @@ async function Page({
   );
 }
 
-export const revalidate = 60;
-
 export default Page;
+
+export const revalidate = 60 * 10;

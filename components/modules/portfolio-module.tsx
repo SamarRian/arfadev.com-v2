@@ -78,13 +78,13 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "max-w-[85rem] mx-auto grid grid-cols-12 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-muted-foreground mb-24"
+        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-muted-foreground lg:mb-24 md:mb-20 sm:mb-16 mb-14"
       )}
     >
       <div
         className={cn(
-          "lg:col-span-6 md:col-span-5 relative lg:h-[42rem] md:h-[30rem]",
-          options.reverse && "order-last"
+          "lg:col-span-6 md:col-span-5 col-span-1 relative lg:h-[42rem] md:h-[30rem] sm:inline-block hidden",
+          options.reverse && "md:order-last"
         )}
       >
         {firstCover?.asset && (
@@ -102,8 +102,8 @@ export function PortfolioCard({
       </div>
       <div
         className={cn(
-          "lg:col-span-4 md:col-span-5",
-          options.reverse && "order-2"
+          "lg:col-span-4 md:col-span-5 col-span-1",
+          options.reverse && "md:order-2"
         )}
       >
         <PortfolioOptions
@@ -126,16 +126,21 @@ export function PortfolioCard({
           )}
         </div>
       </div>
-      <div className={cn("col-span-2", options.reverse && "order-first")}>
-        <div className="mb-10 -rotate-90 -translate-y-full">
-          <h3 className="text-5xl font-serif font-medium text-foreground">
+      <div
+        className={cn(
+          "md:col-span-2 col-span-1 flex flex-row md:inline-block gap-x-8 md:gap-x-0 justify-between py-8 md:py-0 items-end",
+          options.reverse && "md:order-first"
+        )}
+      >
+        <div className="md:mb-10 md:-rotate-90 md:-translate-y-full">
+          <h3 className="md:text-5xl sm:text-3xl text-2xl font-serif font-medium text-foreground">
             {resultOne}
           </h3>
           <p className="text-sm font-sans text-foreground">{resultSecond}</p>
         </div>
         <Button
           variant={index !== 1 ? "outline" : "default"}
-          className="w-full"
+          className="sm:w-full w-1/2"
           asChild
         >
           <Link href={page?.slug?.current || "/not-found"}>Case Study</Link>

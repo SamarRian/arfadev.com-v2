@@ -2,10 +2,42 @@ export default {
   title: "SEO / Share Settings",
   name: "seo",
   type: "object",
+  groups: [
+    { title: "On Page", name: "on-page", default: true },
+    { title: "SEO Bots", name: "bots" },
+  ],
   options: {
     collapsible: true,
   },
   fields: [
+    {
+      title: "Index this page?",
+      name: "noindex",
+      type: "boolean",
+      default: false,
+      group: "bots",
+    },
+    {
+      title: "Follow this Page?",
+      name: "nofollow",
+      type: "boolean",
+      default: false,
+      group: "bots",
+    },
+    {
+      title: "Cache this Page?",
+      name: "cache",
+      type: "boolean",
+      default: false,
+      group: "bots",
+    },
+    {
+      title: "Images index?",
+      name: "imageindex",
+      type: "boolean",
+      default: false,
+      group: "bots",
+    },
     {
       title: "Change Frequency",
       name: "changeFrequency",
@@ -18,6 +50,7 @@ export default {
           { title: "Weekly", value: "weekly" },
         ],
       },
+      group: "on-page",
     },
     {
       title: "Priority",
@@ -27,12 +60,14 @@ export default {
         "Enter the prority no. 1 means highest priority 0 means lowest priority.",
       validation: (Rule: any) => Rule.required().max(1).min(0).positive(),
       initial: 0.5,
+      group: "on-page",
     },
     {
       title: "kewords",
       name: "keywords",
       type: "array",
       of: [{ type: "string" }],
+      group: "on-page",
     },
     {
       title: "Meta Title",
@@ -43,6 +78,7 @@ export default {
         Rule.required()
           .max(50)
           .warning("Longer titles may be truncated by search engines"),
+      group: "on-page",
     },
     {
       title: "Authors",
@@ -58,9 +94,10 @@ export default {
           ],
         },
       ],
+      group: "on-page",
     },
-    { title: "Creator", name: "creator", type: "string" },
-    { title: "Publisher", name: "publisher", type: "string" },
+    { title: "Creator", name: "creator", type: "string", group: "on-page" },
+    { title: "Publisher", name: "publisher", type: "string", group: "on-page" },
 
     {
       title: "Meta Description",
@@ -72,6 +109,7 @@ export default {
         Rule.required()
           .max(150)
           .warning("Longer descriptions may be truncated by search engines"),
+      group: "on-page",
     },
     {
       title: "Share Title",
@@ -80,6 +118,7 @@ export default {
       description: "Title used for social sharing cards",
       validation: (Rule: any) =>
         Rule.max(50).warning("Longer titles may be truncated by social sites"),
+      group: "on-page",
     },
     {
       title: "Share Description",
@@ -91,12 +130,14 @@ export default {
         Rule.max(150).warning(
           "Longer descriptions may be truncated by social sites"
         ),
+      group: "on-page",
     },
     {
       title: "Share Graphic",
       name: "shareGraphic",
       type: "image",
       description: "Recommended size: 1200x630 (PNG or JPG)",
+      group: "on-page",
     },
   ],
 };

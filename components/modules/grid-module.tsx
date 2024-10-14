@@ -12,7 +12,7 @@ const GridBlock = ({ block }: any) => {
     case "customImage":
       if (!block?.asset) return;
       return (
-        <div className={`w-full h-[1000px] relative`}>
+        <div className={`w-full relative`}>
           <CustomImage
             alt="Please enter alt"
             src={urlFor(block?.asset).url()}

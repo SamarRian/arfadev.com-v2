@@ -31,5 +31,23 @@ export default {
       type: "number",
       title: "Height",
     },
+    {
+      name: "loading",
+      type: "string",
+      title: "Image Loading",
+      description: "Eager is recommended for the hero section images.",
+      options: {
+        list: [
+          { title: "Lazy", value: "lazy" },
+          { title: "Eager", value: "eager" },
+        ],
+      },
+    },
+    {
+      name: "priority",
+      type: "boolean",
+      title: "Image Priority",
+      description: "Priority is recommended for the hero section images.",
+    },
   ],
 };

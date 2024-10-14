@@ -8,6 +8,8 @@ export const metaData = `metaData{...,sectionFooter{...,defined(navPage)=>{navPa
 
 export const navPage = `_type == "navPage" =>{...,title,page->}`;
 
+export const menuLink = `_type == "menuLink" =>{...,title,page->{slug}}`;
+
 export const fullLogo = `*[_type=="generalSettings"][0].logo.fullLogo`;
 export const logoMark = `*[_type=="generalSettings"][0].logo.logoMark`;
 
@@ -50,7 +52,7 @@ export const ptContent = `
 export const modules = `
       ...,
       // _type == "menu" =>  {...,items[]{...,"navPage":{page->}},...},  
-      _type == "menu" => @->{...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${navPage}}},featured{...,page->}},"logo":${fullLogo}},
+      _type == "menu" => @->{...,items[]{...,${menuLink},_type == "navDropdown" =>{dropdownItems[]{...,${menuLink}}},featured{...,page->}},"logo":${fullLogo}},
       _type == "section" => @->,
       _type == "mission" => @->,
       _type == "gallery" => @->,
@@ -190,6 +192,6 @@ export const NOT_FOUND = `
     }
   `;
 
-export const SITEMAP_QUERY = `*[_type == "page" && category != "error"]{_updatedAt,slug,"priority":seo.priority,"changeFrequency":seo.changeFrequency}`;
+export const SITEMAP_QUERY = `*[_type == $page && category != "error"]{_updatedAt,slug,"priority":seo.priority,"changeFrequency":seo.changeFrequency}`;
 
 // "authors":seo.authors,"creator":seo.creator,"keywords":seo.keywords,"publisher":seo.publisher

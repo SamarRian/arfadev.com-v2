@@ -7,7 +7,7 @@ import { sanityFetch } from "@/sanity/lib/client";
 const fetchPosts = async () => {
   const data = await sanityFetch<SanityDocument[]>({
     query: SITEMAP_QUERY,
-    params: { page: "page" },
+    params: { page: "post" },
   });
 
   return data;
@@ -27,11 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   );
 
-  return [
-    { url: `${process.env.NEXT_PUBLIC_BASE_URL}` },
-    { url: `${process.env.NEXT_PUBLIC_BASE_URL}/blogs/sitemap.xml` },
-    ...postEntries,
-  ];
+  return postEntries;
 }
 
 export const revalidate = 60;

@@ -148,6 +148,7 @@ function DesktopNav({ module }: any) {
 
 function MobileNav({ module }: any) {
   const items = module?.items || [];
+  const { logo = null } = module;
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -157,15 +158,23 @@ function MobileNav({ module }: any) {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="bg-accent w-full md:w-auto">
-        <p className="text-accent-foreground pb-4 border-b text-lg border-secondary mb-4">
-          {module?.title}
-        </p>
-        <div className="flex gap-2 self-start mb-4">
+        {logo && (
+          <Image
+            src={urlFor(logo).url()}
+            width={150}
+            height={70}
+            alt="Arfa Developers Logo"
+            className="mb-8"
+          />
+        )}
+
+        <div className="flex gap-2 self-start my-4">
           <ModeToggle />
           <Button variant={"outline"} className="border-foreground">
             Let's Talk
           </Button>
         </div>
+
         <ScrollArea className="h-full">
           <NavigationMenu className="flex flex-col items-start space-y-6 list-none">
             {items.map((item: any, key: number) => {
