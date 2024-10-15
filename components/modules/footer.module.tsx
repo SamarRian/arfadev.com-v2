@@ -5,7 +5,6 @@ import FooterLinks from "./footer/footer-links";
 import LanguageSwitcher from "../language-switcher";
 import FooterSocials from "./footer/footer-social";
 import Banner from "../banner";
-import CustomImage from "../custom-image";
 import { urlFor } from "@/sanity/lib/image";
 
 function FooterModule({ module }: any) {
@@ -44,7 +43,7 @@ function FooterModule({ module }: any) {
         )}
       </div>
       <div className="mt-6 sm:mt-0 max-w-[85rem] lg:mx-auto md:mx-6 mx-4 grid grid-cols-4 border-b border-secondary/40 gap-x-6 lg:py-12 md:pb-8 ">
-        {footerRoutes.map(
+        {footerRoutes?.map(
           (
             {
               title,
