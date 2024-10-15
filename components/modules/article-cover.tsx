@@ -9,9 +9,10 @@ function ArticleCover({ cover, title }: { cover: any; title: string }) {
         <CustomImage
           alt={cover?.alt}
           className="object-cover"
-          fill
+          height={cover?.height}
+          width={cover?.width}
           src={urlFor(cover?.asset).url()}
-          imageOBJ={cover?.asset}
+          imageOBJ={cover}
           objectFit={cover?.objectFit}
         />
       )}

@@ -89,7 +89,7 @@ export function PortfolioCard({
       >
         {firstCover?.asset && (
           <CustomImage
-            imageOBJ={firstCover?.asset}
+            imageOBJ={firstCover}
             src={urlFor(firstCover?.asset)
               .width(secondCover.width || 1000)
               .height(secondCover.height || 1000)
@@ -114,7 +114,7 @@ export function PortfolioCard({
         <div className="w-full h-[24rem] relative">
           {secondCover?.asset && (
             <CustomImage
-              imageOBJ={secondCover?.asset}
+              imageOBJ={secondCover}
               src={urlFor(secondCover?.asset)
                 .width(secondCover.width || 400)
                 .height(secondCover.height || 400)

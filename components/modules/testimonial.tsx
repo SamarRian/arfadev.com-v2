@@ -35,7 +35,7 @@ function Testimonials({ module }: any) {
           {client?.photo && (
             <CustomImage
               src={urlFor(client?.photo?.asset).url()}
-              imageOBJ={client?.photo?.asset}
+              imageOBJ={client?.photo}
               width={250}
               height={400}
               alt={client?.photo?.alt}
@@ -79,7 +79,7 @@ export const TestimonialsPortable = ({ module }: any) => {
         {client?.photo && (
           <CustomImage
             src={urlFor(client?.photo?.asset).url()}
-            imageOBJ={client?.photo?.asset}
+            imageOBJ={client?.photo}
             width={200}
             height={400}
             alt={client?.photo?.alt}

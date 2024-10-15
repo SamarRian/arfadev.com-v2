@@ -8,6 +8,10 @@ import { FormComponent } from "../form";
 const GridBlock = ({ block }: any) => {
   const type = block._type;
 
+  if (type === block) {
+    console.log("this is block in grid", block);
+  }
+
   switch (type) {
     case "customImage":
       if (!block?.asset) return;
@@ -15,8 +19,8 @@ const GridBlock = ({ block }: any) => {
         <div className={`w-full relative`}>
           <CustomImage
             alt="Please enter alt"
-            src={urlFor(block?.asset).url()}
-            imageOBJ={block.asset}
+            src={urlFor(block).url()}
+            imageOBJ={block}
             height={block?.height}
             width={block?.width}
             objectFit={block?.objectFit}

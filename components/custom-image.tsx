@@ -14,9 +14,15 @@ function CustomImage({
   objectFit,
   className,
 }: ICustomeImageProps) {
-  const blurDataURL = urlFor(imageOBJ).width(20).height(20).blur(20).url();
+  console.log("this is imageOBJ", imageOBJ);
+
+  const blurDataURL = urlFor(imageOBJ?.asset)
+    .width(20)
+    .height(20)
+    .blur(20)
+    .url();
   const imageOptions: any = {
-    alt: "Please enter alt.",
+    alt: imageOBJ?.alt || "Please enter alt.",
     style: { objectFit: objectFit || "fill" },
     priority: imageOBJ?.priority || false,
     loading: imageOBJ?.loading || "lazy",
@@ -37,7 +43,8 @@ function CustomImage({
       placeholder={placeholder || "blur"}
       quality={90}
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 60vw"
-
+      priority={imageOBJ?.priority || false}
+      loading={imageOBJ?.loading || "lazy"}
       // layout="responsive"
     />
   );

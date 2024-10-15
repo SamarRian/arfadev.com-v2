@@ -3,8 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import CustomImage from "../custom-image";
 import { cn } from "@/lib/utils";
-import { portableComplexLightText } from "../portable-stucture/portable-complex-light";
-import { portableComplexDarkText } from "../portable-stucture/portable-complex-dark";
+
 import { portableComplex } from "../portable-stucture/portable-complex";
 
 function Hero({ module }: any) {
@@ -20,13 +19,13 @@ function Hero({ module }: any) {
       >
         {coverImage?.asset && (
           <CustomImage
-            imageOBJ={coverImage.asset}
+            imageOBJ={coverImage}
             fill
             objectFit={coverImage.objectFit}
             className="w-full bg-fixed fixed top-0 blur-[2px] scale-105"
             src={urlFor(coverImage.asset).url()}
-            alt="Blog Image"
             priority
+            alt={coverImage?.alt}
           />
         )}
       </div>

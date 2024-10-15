@@ -37,7 +37,7 @@ function ServiceCard({
       {icon && (
         <div className="lg:mt-32 md:mt-28 sm:mt-20 mt-16 mb-4 h-[6rem] w-[6rem] overflow-hidden relative">
           <CustomImage
-            src={urlFor(icon?.asset).url()}
+            src={urlFor(icon).url()}
             imageOBJ={icon?.asset}
             fill
             alt="SVG"

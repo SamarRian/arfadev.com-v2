@@ -48,12 +48,12 @@ export default defineField({
       validation: (Rule: any) =>
         Rule.max(4).error("You can add only 4 services here."),
     },
-    {
-      type: "customImage",
-      name: "lineArt",
-      title: "Line Art",
-      description: "Try to use a lineart with svg for better results. ",
-    },
+    // {
+    //   type: "customImage",
+    //   name: "lineArt",
+    //   title: "Line Art",
+    //   description: "Try to use a lineart with svg for better results. ",
+    // },
   ],
   preview: {
     select: {

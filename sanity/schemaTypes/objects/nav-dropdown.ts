@@ -33,6 +33,12 @@ export default {
           validation: (Rule: any) => Rule.required(),
         },
         {
+          name: "cover",
+          type: "customImage",
+          title: "Cover Image",
+          description: "Cover picture will only be used for menu.",
+        },
+        {
           name: "page",
           type: "reference",
           to: [{ type: "page" }],

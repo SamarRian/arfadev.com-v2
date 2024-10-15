@@ -17,7 +17,7 @@ const GridBlock = ({ block }: any) => {
           <CustomImage
             alt={block?.assets?.alt || "Please enter alt"}
             src={urlFor(block?.asset).url()}
-            imageOBJ={block.asset}
+            imageOBJ={block}
             height={block?.height}
             width={block?.width}
             objectFit={block?.objectFit}

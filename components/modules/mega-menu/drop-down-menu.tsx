@@ -42,13 +42,15 @@ function NavigationDropDown({
                   <p className="text-sm leading-tight text-muted-foreground font-sans z-10">
                     {featured?.title}
                   </p>
-                  <CustomImage
-                    imageOBJ={featured?.page?.seo?.shareGraphic}
-                    alt={"Featured Image"}
-                    src={urlFor(featured?.page?.seo?.shareGraphic).url()}
-                    fill
-                    className="-z-1 !opacity-20"
-                  />
+                  {featured?.cover?.asset && (
+                    <CustomImage
+                      imageOBJ={featured?.cover}
+                      alt={featured?.cover?.alt}
+                      src={urlFor(featured?.cover?.asset).url()}
+                      fill
+                      className="-z-1 !opacity-20"
+                    />
+                  )}
                 </Link>
               </NavigationMenuLink>
             </li>

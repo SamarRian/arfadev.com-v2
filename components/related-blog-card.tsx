@@ -1,13 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import CustomImage from "./custom-image";
 import Author from "./author";
-import TimeAgo from "javascript-time-ago";
-import es from "javascript-time-ago/locale/es";
+// import TimeAgo from "javascript-time-ago";
+// import es from "javascript-time-ago/locale/es";
 
-TimeAgo.addLocale(es);
+// TimeAgo.addLocale(es);
 
 function RelatedBlogCard({ slug, cover, author, publishedAt, title }: any) {
   //   const timeAgo = new TimeAgo("en-US");
@@ -17,9 +16,11 @@ function RelatedBlogCard({ slug, cover, author, publishedAt, title }: any) {
         {cover && (
           <CustomImage
             src={urlFor(cover?.asset).url()}
-            fill
+            height={400}
+            width={500}
             alt={cover?.alt}
-            imageOBJ={cover?.asset}
+            imageOBJ={cover}
+            objectFit={cover?.objectFit}
           />
         )}
       </figure>

@@ -1,6 +1,5 @@
-import { BlockEditor, defineArrayMember } from "sanity";
+import { defineArrayMember } from "sanity";
 import {
-  Divider,
   Header1,
   Header2,
   Header3,
@@ -9,7 +8,7 @@ import {
   Header6,
   Hightlight,
 } from "../components/renders";
-import { GridFour, Highlighter, Minus } from "@phosphor-icons/react/dist/ssr";
+import { GridFour, Highlighter } from "@phosphor-icons/react/dist/ssr";
 
 export default {
   title: "Rich Text",

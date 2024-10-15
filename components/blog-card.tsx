@@ -40,7 +40,7 @@ function BlogCard({
             alt={cover?.alt}
             fill
             objectFit={cover.objectFit}
-            imageOBJ={cover?.asset}
+            imageOBJ={cover}
           />
         )}
       </div>
