@@ -144,7 +144,13 @@ export function FormComponent({ module, className }: IFormComponent) {
               label,
               placeholder,
               type,
-            }: { label: string; placeholder: string; type: string },
+              description,
+            }: {
+              label: string;
+              placeholder: string;
+              type: string;
+              description: string;
+            },
             key: number
           ) => {
             return (
@@ -158,9 +164,9 @@ export function FormComponent({ module, className }: IFormComponent) {
                     <FormControl>
                       {getInputComponent({ type, placeholder, field })}
                     </FormControl>
-                    <FormDescription>
-                      Only provide you business email.
-                    </FormDescription>
+                    {description && (
+                      <FormDescription>{description}</FormDescription>
+                    )}
                     <FormMessage />
                   </FormItem>
                 )}
