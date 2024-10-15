@@ -8,10 +8,6 @@ import { FormComponent } from "../form";
 const GridBlock = ({ block }: any) => {
   const type = block._type;
 
-  if (type === block) {
-    console.log("this is block in grid", block);
-  }
-
   switch (type) {
     case "customImage":
       if (!block?.asset) return;

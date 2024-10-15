@@ -14,9 +14,7 @@ function CustomImage({
   objectFit,
   className,
 }: ICustomeImageProps) {
-  console.log("this is imageOBJ", imageOBJ);
-
-  const blurDataURL = urlFor(imageOBJ?.asset)
+  const blurDataURL = urlFor(imageOBJ?.asset || imageOBJ)
     .width(20)
     .height(20)
     .blur(20)
@@ -38,13 +36,13 @@ function CustomImage({
     <Image
       {...imageOptions}
       className={className}
-      src={urlFor(imageOBJ).url()}
+      src={urlFor(imageOBJ?.asset || imageOBJ).url()}
       blurDataURL={blurDataURL}
       placeholder={placeholder || "blur"}
       quality={90}
       sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 60vw"
-      priority={imageOBJ?.priority || false}
-      loading={imageOBJ?.loading || "lazy"}
+      priority={(imageOBJ?.priority && imageOBJ?.loading === "eager") || false}
+      loading={imageOBJ?.loading === "eager" ? "eager" : "lazy"}
       // layout="responsive"
     />
   );
