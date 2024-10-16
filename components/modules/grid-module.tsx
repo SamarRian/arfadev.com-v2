@@ -73,7 +73,12 @@ function GridModule({ module }: any) {
   const { size, columns, deviceScreen = false } = module;
 
   return (
-    <section className={cn("w-full", deviceScreen ? "h-screen" : "h-auto")}>
+    <section
+      className={cn(
+        "w-full lg:py-24 md:py-20 sm:py-16 py-14",
+        deviceScreen ? "h-screen" : "h-auto"
+      )}
+    >
       {/* <div className="w-full"> */}
       <div
         className={`grid grid-cols-${size} lg:gap-x-16 md:gap-x-8 sm:gap-x-4 gap-x-0`}
