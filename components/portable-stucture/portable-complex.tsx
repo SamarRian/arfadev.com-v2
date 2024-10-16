@@ -52,11 +52,11 @@ export const portableComplex: any = {
 
     // Ex. 2: rendering a custom `link` annotation
     link: ({ value, children }: any) => {
+      console.log("this is link in portable complex", value);
+
       let href = "/not-found";
       if (value.linkType === "external") {
         href = value?.url;
-      } else {
-        href = value?.page?.slug?.current;
       }
       const target = (value?.href || "").startsWith("http")
         ? "_blank"

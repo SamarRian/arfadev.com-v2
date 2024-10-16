@@ -38,14 +38,22 @@ const page = `
   "type": _type,
   "slug": slug.current,
   "isHome": _id == ${homeID},
+  
 `;
-
 export const ptContent = `
   ...,
   markDefs[]{
-  isButton,
-  page->
+    ...,
+    _type == "link" => {
+      "url": @.url,
+      "isButton": @.isButton,
+      "styles": @.styles{style, isLarge, isBlock},
+      "page":@.page->{
+        ${page}
+      }
+    }
   },
+  
   
 `;
 
@@ -72,7 +80,7 @@ export const modules = `
             markDefs[]{
               ...,page->{slug,title}
               }
-           }
+           }  
         }
 
 `;
