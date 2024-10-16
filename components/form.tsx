@@ -134,10 +134,15 @@ export function FormComponent({ module, className }: IFormComponent) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("space-y-4 p-8 border-border border bg-card", className)}
+        className={cn(
+          "space-y-4 lg:p-8 md:p-6 p-4 border-border border bg-card",
+          className
+        )}
       >
         {/* <p className="font-sans font-normal text-sm">Recommended Solution</p> */}
-        <h3 className="font-serif font-medium text-3xl">{title}</h3>
+        <h3 className="font-serif font-medium lg:text-3xl md:text-2xl sm:text-xl">
+          {title}
+        </h3>
         {inputs.map(
           (
             {
