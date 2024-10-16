@@ -58,7 +58,7 @@ function NavigationDropDown({
 
           {dropdownItems.map((item: any, key: number) => {
             switch (item._type) {
-              case "navPage":
+              case "menuLink":
                 return (
                   <ListItem
                     href={item?.page?.slug?.current || "/invalid-slug"}

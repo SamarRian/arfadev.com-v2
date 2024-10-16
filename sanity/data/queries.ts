@@ -6,7 +6,7 @@ export const ALL_TEAM_QUERY = groq`*[_type == "page" && category == "team"]{slug
 
 export const metaData = `metaData{...,sectionFooter{...,defined(navPage)=>{navPage->{slug}}}}`;
 
-export const navPage = `_type == "navPage" =>{...,title,page->}`;
+export const navPage = `_type == "navPage" =>{...,title,page->{slug}}`;
 
 export const menuLink = `_type == "menuLink" =>{...,title,page->{slug}}`;
 

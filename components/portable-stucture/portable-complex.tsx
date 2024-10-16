@@ -54,7 +54,9 @@ export const portableComplex: any = {
     link: ({ value, children }: any) => {
       let href = "/not-found";
       if (value.linkType === "external") {
-        href = value.url;
+        href = value?.url;
+      } else {
+        href = value?.page?.slug?.current;
       }
       const target = (value?.href || "").startsWith("http")
         ? "_blank"

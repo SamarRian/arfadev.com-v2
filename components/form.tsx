@@ -140,9 +140,7 @@ export function FormComponent({ module, className }: IFormComponent) {
         )}
       >
         {/* <p className="font-sans font-normal text-sm">Recommended Solution</p> */}
-        <h3 className="font-serif font-medium lg:text-3xl md:text-2xl sm:text-xl">
-          {title}
-        </h3>
+        <h3 className="font-serif font-medium md:text-3xl text-2xl">{title}</h3>
         {inputs.map(
           (
             {
