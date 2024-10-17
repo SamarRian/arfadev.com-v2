@@ -3,7 +3,7 @@ export default {
   name: "seo",
   type: "object",
   groups: [
-    { title: "On Page", name: "on-page", default: true },
+    { title: "On Page", name: "on-page" },
     { title: "SEO Bots", name: "bots" },
   ],
   options: {
