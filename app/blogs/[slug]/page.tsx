@@ -58,22 +58,22 @@ export async function generateMetadata({
   const { seo } = page;
 
   return {
-    title: seo.metaTitle,
-    description: seo.metaDesc,
+    title: seo?.metaTitle,
+    description: seo?.metaDesc,
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
     alternates: {
       // canonical: page?.slug ? `/blogs/${slug}` : `/`,
       canonical: `/blogs/${slug}`,
     },
 
-    authors: seo.authors,
-    keywords: seo.keywords,
-    creator: seo.creator,
-    publisher: seo.publisher,
+    authors: seo?.authors,
+    keywords: seo?.keywords,
+    creator: seo?.creator,
+    publisher: seo?.publisher,
 
     openGraph: {
       images: [urlFor(seo?.shareGraphic).url()],
-      publishedTime: page._createdOn,
+      publishedTime: page?._createdOn,
       title: seo?.shareTitle,
       description: seo?.shareDesc,
     },

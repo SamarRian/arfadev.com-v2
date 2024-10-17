@@ -57,14 +57,14 @@ export async function generateMetadata(
     alternates: {
       canonical: planSlug,
     },
-    authors: seo.authors,
-    keywords: seo.keywords,
-    creator: seo.creator,
-    publisher: seo.publisher,
+    authors: seo?.authors,
+    keywords: seo?.keywords,
+    creator: seo?.creator,
+    publisher: seo?.publisher,
 
     openGraph: {
       images: [urlFor(seo?.shareGraphic).url()],
-      publishedTime: page._createdOn,
+      publishedTime: page?._createdOn,
       title: seo?.shareTitle,
       description: seo?.shareDesc,
     },
