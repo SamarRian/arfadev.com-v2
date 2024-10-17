@@ -75,6 +75,19 @@ const gridModule = `{...,columns[]{sizes,blocks[]{...,body[]{
     
   }}}}`;
 
+const cta = `{cta{...,columns[]{...,blocks[]{...,body[]{...,
+  markDefs[]{
+    ...,
+    _type == "link" => {
+      "url": @.url,
+      "isButton": @.isButton,
+      "styles": @.styles{style, isLarge, isBlock},
+      "page":@.page->{
+        ${page}
+      }
+    }
+  }}}}}}`;
+
 export const modules = `
       ...,
       _type == "menu" => @->{...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${menuLink}}},featured{...,page->}},"logo":${fullLogo}},
@@ -89,7 +102,7 @@ export const modules = `
       _type == "one-member" => {...,member->},
       _type == "awards" => {...,${metaData},content[]->},
       _type == "grid" => ${gridModule},
-      _type == "body" => {...,body[]{...,${ptContent},_type == "cta" => @->}},
+      _type == "body" => {...,body[]{...,${ptContent},_type == "cta" => @->${cta} }},
       _type == "portfolio" => {...,projects[]{...,page->{slug}}},
       _type == "whyChooseUs" => {...},
       _type == 'hero' => {...,content[]{${ptContent}}}

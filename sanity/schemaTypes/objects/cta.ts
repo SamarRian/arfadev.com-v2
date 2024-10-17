@@ -11,6 +11,12 @@ export default defineField({
       type: "string",
       validation: (Rule: any) => Rule.required().max(150),
     },
-    { type: "navPage", name: "action" },
+    {
+      title: "Text",
+      name: "tagline",
+      type: "string",
+      validation: (Rule: any) => Rule.required().max(150),
+    },
+    { type: "navPage", name: "navPage" },
   ],
 });
