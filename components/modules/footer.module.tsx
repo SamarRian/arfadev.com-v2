@@ -22,7 +22,7 @@ function FooterModule({ module }: any) {
 
   return (
     <footer className="lg:pt-24 md:pt-16 sm:pt-14 pt-12 w-full dark:bg-white bg-black">
-      <div className="max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 gap-y-8 md:gap-y-0 grid md:grid-cols-6 grid-cols-1 border-b border-secondary/40 lg:pb-12 md:pb-8">
+      <div className="max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 gap-y-8 md:gap-y-0 grid md:grid-cols-6 grid-cols-1 border-b border-secondary/40 lg:pb-12 md:pb-8 sm:pb-6 pb-4">
         <div className="lg:col-span-2 md:col-span-3 col-span-1 col-start-1 space-y-3">
           {logo && (
             <Image
@@ -42,7 +42,7 @@ function FooterModule({ module }: any) {
           <NewsLetterForm className="lg:col-start-5 col-start-1 lg:col-span-2 md:col-span-3 col-span-1" />
         )}
       </div>
-      <div className="mt-6 sm:mt-0 max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 grid grid-cols-4 border-b border-secondary/40 gap-x-6 lg:py-12 md:pb-8 ">
+      <div className="mt-6 sm:mt-0 max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 border-b border-secondary/40 gap-x-6 lg:py-12 md:pb-8 sm:pb-6 pb-4">
         {footerRoutes?.map(
           (
             {
