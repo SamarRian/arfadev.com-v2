@@ -19,7 +19,8 @@ function FooterLinks({ title, links = [] }: IFooterLinks) {
               href={href}
               className={buttonVariants({
                 variant: "link",
-                className: "text-secondary !px-0",
+                className:
+                  "text-secondary !px-0 !md:text-base !text-sm font-sans",
               })}
             >
               {title}

@@ -47,10 +47,13 @@ function ServiceCard({
       <h3 className="text-2xl font-serif text-brand-black">{title}</h3>
       <p className="text-sm font-sans text-brand-black">{subtitle}</p>
       <Link
-        className={buttonVariants({ variant: "link" })}
+        className={buttonVariants({
+          variant: "link",
+          className: "!text-base mx-0 px-0",
+        })}
         href={page?.slug?.current || "/"}
       >
-        Learn More
+        Learn About {title}
       </Link>
     </figure>
   );

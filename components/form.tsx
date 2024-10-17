@@ -163,12 +163,16 @@ export function FormComponent({ module, className }: IFormComponent) {
                 name={label}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{label}</FormLabel>
+                    <FormLabel className="text-sm font-sans text-primary">
+                      {label}
+                    </FormLabel>
                     <FormControl>
                       {getInputComponent({ type, placeholder, field })}
                     </FormControl>
                     {description && (
-                      <FormDescription>{description}</FormDescription>
+                      <FormDescription className="text-sm font-sans text-muted-foreground">
+                        {description}
+                      </FormDescription>
                     )}
                     <FormMessage />
                   </FormItem>

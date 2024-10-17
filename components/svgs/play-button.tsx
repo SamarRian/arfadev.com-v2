@@ -23,6 +23,7 @@ function PlayButton() {
           rx="36"
           fill="#D9B59F"
           className="dark:fill-white group-hover:!fill-primary  transition-all duration-200 fill-black"
+          id="circlePath"
         />
         <path
           d="M53 35.5L26.75 50.6554L26.75 20.3446L53 35.5Z"

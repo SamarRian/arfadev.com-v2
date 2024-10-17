@@ -76,7 +76,7 @@ function GridModule({ module }: any) {
     <section
       className={cn(
         "w-full lg:py-24 md:py-20 sm:py-16 py-14",
-        deviceScreen ? "h-screen" : "h-auto"
+        deviceScreen ? "h-[90vh]" : "h-auto"
       )}
     >
       {/* <div className="w-full"> */}

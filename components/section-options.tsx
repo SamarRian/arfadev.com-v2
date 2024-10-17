@@ -21,7 +21,7 @@ function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col space-y-3 max-w-[85rem] mx-auto pb-20 z-20 relative",
+        "flex flex-col space-y-3 max-w-[85rem] mx-auto lg:pb-24 md:pb-20 sm:pb-16 pb-14 z-20 relative",
         className
       )}
     >
@@ -30,10 +30,10 @@ function SectionHeader({
           {miniTitle}
         </p>
       )}
-      <h2 className="text-4xl font-semibold leading-normal font-serif max-w-lg">
+      <h2 className="lg:text-4xl md:text-3xl text-2xl leading-normal font-serif max-w-lg">
         {title}
       </h2>
-      <p className="text-md font-sans max-w-lg text-muted-foreground">
+      <p className="text-md text-sm sm:text-base font-sans max-w-lg text-muted-foreground">
         {subtitle}
       </p>
     </div>
@@ -48,10 +48,10 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
         className
       )}
     >
-      <h3 className="lg:text-3xl text-2xl font-bold leading-loose font-serif">
+      <h3 className="lg:text-4xl md:text-3xl text-2xl font-bold leading-loose font-serif">
         {title}
       </h3>
-      <p className="text-md md:text-base font-sans text-muted-foreground">
+      <p className="text-md sm:text-base text-sm font-sans text-muted-foreground">
         {subtitle}
       </p>
     </div>
