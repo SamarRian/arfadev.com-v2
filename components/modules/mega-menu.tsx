@@ -71,7 +71,7 @@ export function MegaMenu({ module }: { module: any }) {
       )}
       whileHover={{ y: 0 }}
     >
-      <div className="flex  items-center justify-between py-4 max-w-[85rem] lg:mx-auto md:mx-6 sm:mx-4 mx-2">
+      <div className="flex  items-center justify-between py-4 max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 sm:mx-4 mx-2">
         <Link href="/" className="flex items-center space-x-2">
           {/* <Icons.logo className="h-6 w-6" /> */}
           {/* <span className="font-bold">shadcn/ui</span>
