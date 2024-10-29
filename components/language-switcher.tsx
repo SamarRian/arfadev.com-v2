@@ -10,7 +10,7 @@ import { useSlugAndLang } from "@/hooks/use-lang-slug";
 function LanguageSwitcher({
   langSupport = [
     { title: "English", code: "en" },
-    { title: "Deutsch (German)", code: "de" },
+    { title: "Deutsch", code: "de" },
   ],
 }: any) {
   const { lang, slug } = useSlugAndLang();

@@ -181,8 +181,8 @@ function MobileNav({ module }: any) {
           />
         )}
 
+        <LanguageSwitcher />
         <div className="flex gap-2 self-start my-4">
-          <LanguageSwitcher />
           <ModeToggle />
           <Button variant={"outline"} className="border-foreground">
             Let's Talk
