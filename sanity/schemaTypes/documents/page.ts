@@ -1,3 +1,4 @@
+import { isUniqueOtherThanLanguage } from "@/sanity/lib/is-unique-slug-language";
 import { Browser } from "@phosphor-icons/react";
 import { defineType } from "sanity";
 export default defineType({
@@ -56,6 +57,7 @@ export default defineType({
       options: {
         source: "title",
         maxLength: 96,
+        isUnique:isUniqueOtherThanLanguage,
       },
       validation: (Rule: any) => Rule.required(),
       group: "settings",

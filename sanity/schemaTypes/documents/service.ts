@@ -1,3 +1,4 @@
+import { isUniqueOtherThanLanguage } from "@/sanity/lib/is-unique-slug-language";
 import { Gavel } from "@phosphor-icons/react";
 import { defineType } from "sanity";
 export default defineType({
@@ -23,6 +24,7 @@ export default defineType({
       type: "slug",
       description: "(required)",
       options: {
+        isUnique:isUniqueOtherThanLanguage,
         source: "title",
         maxLength: 96,
       },

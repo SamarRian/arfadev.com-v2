@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.6",
     "@hookform/resolvers": "^3.9.0",
     "@next/bundle-analyzer": "^14.2.15",
     "@operationnation/sanity-plugin-schema-markup": "^1.0.15",
@@ -25,6 +26,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@sanity/code-input": "^4.1.4",
+    "@sanity/document-internationalization": "^3.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/table": "^1.1.2",
     "@sanity/vision": "^3.57.4",
@@ -35,12 +37,14 @@
     "javascript-time-ago": "^2.5.11",
     "lenis": "^1.1.13",
     "lucide-react": "^0.441.0",
+    "negotiator": "^1.0.0",
     "next": "14.2.12",
     "next-sanity": "^9.4.7",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
+    "react-multi-carousel": "^2.8.5",
     "react-responsive": "^10.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "sanity": "^3.57.4",
@@ -56,6 +60,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "@types/classnames": "^2.3.1",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

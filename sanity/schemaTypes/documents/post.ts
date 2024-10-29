@@ -1,3 +1,4 @@
+import { isUniqueOtherThanLanguage } from "@/sanity/lib/is-unique-slug-language";
 import { ArticleNyTimes } from "@phosphor-icons/react/dist/ssr";
 
 import { defineType } from "sanity";
@@ -18,6 +19,7 @@ export default defineType({
       type: "slug",
       description: "(required)",
       options: {
+        isUnique:isUniqueOtherThanLanguage,
         source: "title",
         maxLength: 96,
       },
