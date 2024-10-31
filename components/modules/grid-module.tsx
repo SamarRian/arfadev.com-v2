@@ -70,7 +70,7 @@ const getGridSize = (
 };
 
 function GridModule({ module }: any) {
-  const { size, columns, deviceScreen = false, padding = true } = module;
+  const { size, columns, deviceScreen = false, padding = false } = module;
 
   return (
     <section
