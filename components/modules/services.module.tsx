@@ -20,7 +20,7 @@ function Services({ module }: any) {
           }
         })}
 
-        <div className="col-span-1 lg:col-start-5 md:col-start-3 col-start-1 h-[30rem] md:h-full relative">
+        <div className="col-span-1 lg:col-start-5 md:col-start-3 col-start-1 h-[30rem] md:h-full relative overflow-x-hidden">
           <StatueOfJustice className="absolute bottom-0 w-full md:w-auto md:left-0 right-0 stroke-primary" />
         </div>
       </div>
