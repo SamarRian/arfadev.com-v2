@@ -37,7 +37,7 @@ export const config = {
   matcher: [
     // Skip all internal paths (_next)
     // '/((?!_next).*)',
-    "/((?!_next|studio|favicon|public|assets|icon|api).*)",
+    "/((?!_next|studio|favicon|public|assets|icon|api|sitemap).*)",
     // Optional: only run on root (/) URL
     // '/'
   ],

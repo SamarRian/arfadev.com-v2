@@ -19,10 +19,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postEntries = posts.map(
     ({ slug, _updatedAt, priority, changeFrequency }: any) => {
       return {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/${slug.current}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/en/${slug.current}`,
         lastModified: _updatedAt,
         priority,
         changeFrequency,
+        alternates: {
+          languages: {
+            de: `${process.env.NEXT_PUBLIC_BASE_URL}/de/${slug.current}`,
+          },
+        },
       };
     }
   );
