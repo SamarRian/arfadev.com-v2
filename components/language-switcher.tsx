@@ -4,7 +4,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { CaretDown, Translate } from "@phosphor-icons/react/dist/ssr";
 import { Button, buttonVariants } from "./ui/button";
 import { useParams } from "next/navigation";
-import { joinSlugs, purifyString } from "@/lib/utils";
+import { cn, joinSlugs, purifyString } from "@/lib/utils";
 import { useSlugAndLang } from "@/hooks/use-lang-slug";
 
 function LanguageSwitcher({
@@ -12,6 +12,7 @@ function LanguageSwitcher({
     { title: "English", code: "en" },
     { title: "Deutsch", code: "de" },
   ],
+  light = true,
 }: any) {
   const { lang, slug } = useSlugAndLang();
 
@@ -26,7 +27,12 @@ function LanguageSwitcher({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="flex items-center gap-2 dark:text-white text-slate-900 dark:hover:text-white"
+          className={cn(
+            "flex items-center gap-2 dark:hover:text-white",
+            light
+              ? "dark:text-white text-slate-900"
+              : "text-white dark:text-slate-900"
+          )}
         >
           <Translate className="h-5 w-5" />
           <span>{defaultLang}</span>

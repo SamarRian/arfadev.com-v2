@@ -56,9 +56,10 @@ function FooterModule({ module }: any) {
         )}
       </div>
       <div className="max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 flex justify-between lg:py-12 md:py-8 py-4 md:mx-">
-        {module?.langSupport && (
-          <LanguageSwitcher langSupport={module.langSupport} />
-        )}
+        {/* {module?.langSupport && (
+          // <LanguageSwitcher langSupport={module.langSupport} />
+        )} */}
+        <LanguageSwitcher />
         {socialLinks && <FooterSocials socialLinks={module?.socialLinks} />}
       </div>
       <Banner title="All rights reserved. Arfa Developers 2024." />
