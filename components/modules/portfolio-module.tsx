@@ -125,17 +125,19 @@ export function PortfolioCard({
         )}
       >
         <div className="md:mb-10 md:-rotate-90 md:-translate-y-full">
-          <h3 className="md:text-5xl sm:text-3xl text-2xl font-serif font-medium text-foreground">
+          <h3 className="md:text-3xl sm:text-2xl text-xl font-serif text-primary">
             {resultOne}
           </h3>
-          <p className="text-sm font-sans text-foreground">{resultSecond}</p>
+          <p className="text-sm font-sans text-primary">{resultSecond}</p>
         </div>
         <Button
           variant={index !== 1 ? "outline" : "default"}
           className="sm:w-full w-1/2"
           asChild
         >
-          <Link href={page?.slug?.current || "/not-found"}>Case Study</Link>
+          <Link href={`/${page?.slug?.current}` || "/not-found"}>
+            Case Study
+          </Link>
         </Button>
       </div>
     </div>

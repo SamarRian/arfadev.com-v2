@@ -48,7 +48,7 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
         className
       )}
     >
-      <h3 className="lg:text-4xl md:text-3xl text-2xl font-bold leading-loose font-serif">
+      <h3 className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-primary">
         {title}
       </h3>
       <p className="text-md sm:text-base text-sm font-sans text-muted-foreground">
