@@ -7,6 +7,17 @@ export default defineField({
   title: "Content",
   fields: [
     {
+      type: "string",
+      name: "wrapper",
+      title: "Wrapping Tag",
+      options: {
+        list: [
+          { title: "Div", value: "div" },
+          { title: "section", value: "section" },
+        ],
+      },
+    },
+    {
       name: "wide",
       type: "boolean",
       title: "Make article wide",
