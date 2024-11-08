@@ -78,7 +78,7 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-muted-foreground lg:mb-24 md:mb-20 sm:mb-16 mb-14"
+        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-muted-foreground lg:mb-24 md:mb-20 sm:mb-16 mb-14 last:mb-0 last:pb-0 last:border-0"
       )}
     >
       <div
@@ -135,7 +135,7 @@ export function PortfolioCard({
           className="sm:w-full w-1/2"
           asChild
         >
-          <Link href={`/${page?.slug?.current}` || "/not-found"}>
+          <Link href={`/${page?.slug?.current}` || "/invalid-url"}>
             Case Study
           </Link>
         </Button>

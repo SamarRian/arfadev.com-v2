@@ -4,7 +4,7 @@ export const ALL_POSTS_QUERY = groq`*[_type == "page"  && category == "post"][0.
 export const ALL_SERVICES_QUERY = groq`*[_type == "service"  && defined(slug)]`;
 export const ALL_TEAM_QUERY = groq`*[_type == "page" && category == "team"]{slug,content[_type == "one-member"]{member->}[0]}`;
 
-export const metaData = `metaData{...,sectionFooter{...,defined(navPage)=>{navPage->{slug}}}}`;
+export const metaData = `metaData{...,sectionFooter{...,defined(navPage)=>{navPage{page->{slug,language}}}}}`;
 
 export const navPage = `_type == "navPage" =>{...,title,page->{slug}}`;
 
@@ -91,7 +91,7 @@ const cta = `{cta{...,columns[]{...,blocks[]{...,body[]{...,
 export const modules = `
       ...,
       _type == "menu" => @->{...,items[]{...,${navPage},_type == "navDropdown" =>{dropdownItems[]{...,${menuLink}}},featured{...,page->}},"logo":${fullLogo}},
-      _type == "section" => @->,
+      _type == "section" => @->{...,${metaData}},
       _type == "mission" => @->,
       _type == "gallery" => @->,
       _type == "team" => {...,team[]->,${metaData}},
@@ -103,7 +103,7 @@ export const modules = `
       _type == "awards" => {...,${metaData},content[]->},
       _type == "grid" => ${gridModule},
       _type == "body" => {...,body[]{...,${ptContent},_type == "cta" => @->${cta} }},
-      _type == "portfolio" => {...,projects[]{...,page->{slug}}},
+      _type == "portfolio" => {...,projects[]{...,page->{slug}},${metaData}},
       _type == "whyChooseUs" => {...},
       _type == 'hero' => {...,content[]{${ptContent}}}
 

@@ -13,14 +13,14 @@ function SectionFooter({
   description: string;
   btnText?: string;
   urlType?: string;
-  navPage?: { slug: { current: string } };
+  navPage?: { page: { language: string; slug: { current: string } } };
   navLink?: string;
   slugPage?: string;
 }) {
   let href;
   switch (urlType) {
     case "internal":
-      href = navPage?.slug?.current;
+      href = `/${navPage?.page?.language}/${navPage?.page?.slug?.current}`;
       break;
     case "external":
       href = navLink;
@@ -38,7 +38,7 @@ function SectionFooter({
 
       <Link
         className={buttonVariants({ variant: "outline", size: "lg" })}
-        href={href || "/not-found"}
+        href={href || "/invalid-url"}
       >
         {btnText}
       </Link>
