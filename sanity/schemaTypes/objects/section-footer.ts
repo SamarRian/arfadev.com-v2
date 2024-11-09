@@ -12,7 +12,7 @@ export default {
       row: 2,
       description:
         "Please provide the a brief description, about what a user can expect?",
-      validation: (Rule: any) => Rule.required().max(100),
+      validation: (Rule: any) => Rule.required().max(300),
     },
     {
       name: "btnText",
