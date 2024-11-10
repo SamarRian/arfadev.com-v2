@@ -48,7 +48,7 @@ const getGridSize = (
   hidden = false
 ) => {
   const hasBreakpoint = breakpoint && purifyString(breakpoint.trim());
-  const isHidden = hidden ? "hidden" : "inline-block";
+  const isHidden = purifyString(hidden) ? "hidden" : "inline-block";
   const colSpan = hasBreakpoint
     ? `${breakpoint}:col-span-${size}`
     : `col-span-${size}`;

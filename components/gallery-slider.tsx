@@ -32,6 +32,8 @@ function GallerySlider({ content }: any) {
               alt={image?.alt}
               fill
               imageOBJ={image}
+              quality={100}
+              sizes={"(max-width: 600px) 40vw, (max-width: 1200px) 70vw, 100vw"}
             />
           </div>
         );
