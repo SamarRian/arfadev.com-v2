@@ -20,7 +20,7 @@ export function SearchInput() {
     replace(`${pathname}?${params.toString()}`);
   }, 300);
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5 relative">
+    <div className="grid w-full max-w-md items-center gap-1.5 relative">
       <Input
         type="search"
         id="search"

@@ -12,8 +12,10 @@ import {
 
 import PaginationSearchParams from "@/components/pagination-search-params";
 import BlogsTags from "./blogs-tag";
-import BlogCard from "./blog-card";
+import BlogCard, { LargeBlogCard } from "./blog-card";
 import { SearchInput } from "./search-input";
+import { client } from "@/sanity/lib/client";
+import { ALL_POSTS_QUERY, POST_SEARCH_QUERY } from "@/sanity/data/queries";
 
 // Mock data for blog posts
 const blogPosts = [
@@ -87,11 +89,17 @@ const blogPosts = [
 
 // All unique tags
 
+const fetchPosts = async (lang: string, page: string) => {
+  const data = await client.fetch(ALL_POSTS_QUERY, { lang, page: 10 }, {});
+  return data;
+};
+
 async function BlogsPage(props: {
   searchParams?: Promise<{
     query?: string;
     page?: string;
   }>;
+  lang: string;
 }) {
   // const [searchTerm, setSearchTerm] = useState("");
   // const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -104,15 +112,23 @@ async function BlogsPage(props: {
   // );
 
   const searchParams = await props.searchParams;
+  const posts = await fetchPosts(
+    props.lang || "en",
+    searchParams?.page || "10"
+  );
+  console.log(posts);
+
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
 
   const filteredPosts = blogPosts;
 
+  const firstPost = posts[0];
+
   return (
     <div className="w-full">
       {/* Cover Image */}
-      <div className="relative h-[50vh]">
+      {/* <div className="relative h-[50vh]">
         <Image
           src="https://images.pexels.com/photos/4427813/pexels-photo-4427813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Blog Cover"
@@ -124,13 +140,12 @@ async function BlogsPage(props: {
           <h1 className="text-2xl md:text-xl font-serif font-bold text-center text-primary">
             Stay up-to-date with legal world.
           </h1>
-          <SearchInput />
         </div>
-      </div>
+      </div> */}
 
       <div className="px-4 py-8 max-w-[85rem] mx-auto">
         {/* Search Bar */}
-        <div className="mb-8 flex w-full self-center justify-between gap-x-4 items-start">
+        <div className="mb-8 flex w-full self-center justify-between gap-y-4 items-start">
           {/* <div className="relative w-full"> */}
           {/* <Input
               type="text"
@@ -148,6 +163,7 @@ async function BlogsPage(props: {
             Search
           </Button> */}
           <BlogsTags posts={blogPosts} />
+          <SearchInput />
         </div>
 
         {/* Tags */}
@@ -155,8 +171,8 @@ async function BlogsPage(props: {
         {/* Featured Blog Posts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Large Featured Post */}
-          <Card className="lg:col-span-2 col-start-1">
-            <CardHeader className="p-0">
+          {/* <Card className="lg:col-span-2 col-start-1 group">
+            <CardHeader className="p-0 overflow-hidden">
               <Image
                 src={
                   "https://images.pexels.com/photos/5990047/pexels-photo-5990047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -165,7 +181,7 @@ async function BlogsPage(props: {
                 width={600}
                 height={300}
                 layout="responsive"
-                className="rounded-t-lg"
+                className="rounded-t-lg group-hover:scale-105 transition-transform"
               />
             </CardHeader>
             <CardContent className="p-6">
@@ -185,11 +201,21 @@ async function BlogsPage(props: {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="default" className="w-full">
-                Read More
+              <Button variant="default" size={"lg"}>
+                Read more about blog
               </Button>
             </CardFooter>
-          </Card>
+          </Card> */}
+          <div className="col-start-1 lg:col-span-2">
+            <LargeBlogCard
+              _createdAt={firstPost._updatedAt}
+              author={firstPost.author}
+              cover={firstPost.cover}
+              description={firstPost.description}
+              slug={firstPost.slug}
+              title={firstPost.title}
+            />
+          </div>
 
           {/* Smaller Featured Posts */}
           <div className="space-y-6 sticky top-0 self-start">

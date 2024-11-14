@@ -92,4 +92,47 @@ function BlogCard({
   );
 }
 
+export function LargeBlogCard({
+  cover,
+  title,
+  _createdAt,
+  author,
+  slug,
+  description,
+}: {
+  cover: any;
+  title: string;
+  description: string;
+  slug: { current: string };
+  author: any;
+  _createdAt: string;
+}) {
+  // const { title, description, updatedAt, createdAt, slug } = data;
+  return (
+    <div className="w-full group flex flex-col transition duration-300 group">
+      <div className="aspect-w-16 aspect-h-11 relative h-[12rem] sm:h-[20rem] md:h-[32rem]">
+        <CustomImage
+          imageOBJ={cover}
+          fill
+          className="w-full object-cover"
+          alt="Blog Image"
+        />
+      </div>
+
+      <Link href={`/blogs/${slug.current}`}>
+        <div className="my-6">
+          <time className="text-sm sm:text-base font-sans text-white/70">
+            {new Date(_createdAt).toDateString()}
+          </time>
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold underline text-foreground hover:underline group-hover:text-primary transition-colors">
+            {title}
+          </h3>
+          <p className="mt-5 text-muted-foreground">{description}</p>
+        </div>
+        <Author author={author} postedAt={_createdAt} />
+      </Link>
+    </div>
+  );
+}
+
 export default BlogCard;
