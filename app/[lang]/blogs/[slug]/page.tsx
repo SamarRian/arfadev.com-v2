@@ -34,18 +34,20 @@ const Badge = dynamic(() =>
 const SchemaMarkup = dynamic(() => import("@/components/schema-markup"));
 const Module = dynamic(() => import("@/components/modules/module"));
 
-const getPostData = cache(async (slug: string, isDraftMode = false) => {
-  const pageData = await getPost(slug, isDraftMode);
-  return pageData;
-});
+const getPostData = cache(
+  async (slug: string, lang: string, isDraftMode = false) => {
+    const pageData = await getPost(slug, lang, isDraftMode);
+    return pageData;
+  }
+);
 
 export async function generateMetadata({
-  params: { slug },
+  params: { slug, lang },
 }: {
-  params: { slug: string };
+  params: { slug: string; lang: string };
 }): Promise<Metadata> {
   const { isEnabled: isDraftMode } = draftMode();
-  const pageData = await getPostData(slug, isDraftMode);
+  const pageData = await getPostData(slug, lang, isDraftMode);
 
   if (!pageData || !pageData?.page)
     return {
@@ -95,13 +97,13 @@ export async function generateMetadata({
 }
 
 export default async function Component({
-  params: { slug },
+  params: { slug, lang },
 }: {
-  params: { slug: string };
+  params: { slug: string; lang: string };
 }) {
   const { isEnabled: isDraftMode } = draftMode();
   // const pageData = await getPost(slug, isDraftMode);
-  const pageData = await getPostData(slug, isDraftMode);
+  const pageData = await getPostData(slug, lang, isDraftMode);
 
   const page = pageData?.page;
 

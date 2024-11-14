@@ -9,34 +9,51 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "./ui/pagination";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 function PaginationSearchParams() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const page = Number(searchParams.get("page") || 2);
+  const page = Number(searchParams.get("page") || 1);
+
+  const createPageURL = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (pageNumber <= 0) {
+      params.set("page", "1");
+    } else params.set("page", pageNumber.toString());
+
+    return `${pathname}?${params.toString()}`;
+  };
 
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious isActive={false} href={`?page=${page - 1 - 1}`} />
+          <PaginationPrevious href={createPageURL(page - 1)} />
         </PaginationItem>
+        {page > 1 && (
+          <PaginationItem>
+            <PaginationLink href={createPageURL(page - 1)}>
+              {page - 1}
+            </PaginationLink>
+          </PaginationItem>
+        )}
         <PaginationItem>
-          <PaginationLink href={`?page=${page - 1}`}>{page - 1}</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href={`?page=${page}`} isActive>
+          <PaginationLink href={createPageURL(page)} isActive>
             {page}
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href={`?page=${page + 1}`}>{page + 1}</PaginationLink>
+          <PaginationLink href={createPageURL(page + 1)}>
+            {page + 1}
+          </PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href={`?page=${page + 1}`} />
+          <PaginationNext href={createPageURL(page + 1)} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

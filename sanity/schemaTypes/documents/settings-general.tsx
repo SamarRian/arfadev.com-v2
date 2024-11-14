@@ -12,13 +12,13 @@ export default {
   //   { title: "Advanced", name: "advanced" },
   // ],
   fields: [
-     defineField({
-  // should match 'languageField' plugin configuration setting, if customized
-  name: 'language',
-  type: 'string',
-  readOnly: true,
-  hidden: true,
-}),
+    defineField({
+      // should match 'languageField' plugin configuration setting, if customized
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     {
       title: "Home Page",
       name: "home",
@@ -47,6 +47,12 @@ export default {
       description:
         "This page will show for any URL at your domain that does not exist yet",
       // group: "displays",
+    },
+    {
+      title: "Featured Case Studies",
+      name: "caseStudies",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "page" }] }],
     },
     {
       title: "Site Title",

@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { Label } from "./label";
+import { Mail } from "lucide-react";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}

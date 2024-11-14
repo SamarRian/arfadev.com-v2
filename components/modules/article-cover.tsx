@@ -8,8 +8,8 @@ function ArticleCover({ cover, title }: { cover: any; title: string }) {
         <CustomImage
           alt={cover?.alt}
           className="object-cover"
-          height={cover?.height}
-          width={cover?.width}
+          height={400}
+          width={1200}
           imageOBJ={cover}
           objectFit={cover?.objectFit}
         />

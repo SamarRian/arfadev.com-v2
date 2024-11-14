@@ -1,8 +1,4 @@
-"use client";
-import React from "react";
-import { useState } from "react";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -13,11 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Search } from "lucide-react";
 
 import PaginationSearchParams from "@/components/pagination-search-params";
 import BlogsTags from "./blogs-tag";
 import BlogCard from "./blog-card";
+import { SearchInput } from "./search-input";
 
 // Mock data for blog posts
 const blogPosts = [
@@ -91,16 +87,27 @@ const blogPosts = [
 
 // All unique tags
 
-function BlogsPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+async function BlogsPage(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  const filteredPosts = blogPosts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedTags.length === 0 ||
-        selectedTags.some((tag) => post.tags.includes(tag)))
-  );
+  // const filteredPosts = blogPosts.filter(
+  //   (post) =>
+  //     post.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+  //     (selectedTags.length === 0 ||
+  //       selectedTags.some((tag) => post.tags.includes(tag)))
+  // );
+
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const filteredPosts = blogPosts;
 
   return (
     <div className="w-full">
@@ -111,20 +118,21 @@ function BlogsPage() {
           alt="Blog Cover"
           layout="fill"
           objectFit="cover"
-          className="brightness-50"
+          className="brightness-[20%]"
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-center text-white">
+        <div className="absolute inset-0 flex items-center justify-center gap-y-8 flex-col">
+          <h1 className="text-2xl md:text-xl font-serif font-bold text-center text-primary">
             Stay up-to-date with legal world.
           </h1>
+          <SearchInput />
         </div>
       </div>
 
       <div className="px-4 py-8 max-w-[85rem] mx-auto">
         {/* Search Bar */}
-        <div className="mb-8 flex w-full self-center justify-between gap-x-4 items-center">
-          <div className="relative w-full">
-            <Input
+        <div className="mb-8 flex w-full self-center justify-between gap-x-4 items-start">
+          {/* <div className="relative w-full"> */}
+          {/* <Input
               type="text"
               placeholder="Search blogs..."
               value={searchTerm}
@@ -134,15 +142,15 @@ function BlogsPage() {
             <Search
               className="absolute left-3 top-1/2 transform -translate-y-1/2"
               size={20}
-            />
-          </div>
-          <Button variant={"default"} className="px-8">
+            /> */}
+          {/* </div> */}
+          {/* <Button variant={"default"} className="px-8">
             Search
-          </Button>
+          </Button> */}
+          <BlogsTags posts={blogPosts} />
         </div>
 
         {/* Tags */}
-        <BlogsTags posts={blogPosts} />
 
         {/* Featured Blog Posts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">

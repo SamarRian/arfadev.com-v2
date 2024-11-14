@@ -76,7 +76,11 @@ export async function getPostsPage(isDraftMode?: boolean) {
   return data;
 }
 
-export async function getPost(slug: string, isDraftMode?: boolean) {
+export async function getPost(
+  slug: string,
+  lang: string,
+  isDraftMode?: boolean
+) {
   const slugs = JSON.stringify([slug, `/${slug}`, `/${slug}/`]);
 
   const queryOptions: QueryOptions = isDraftMode
@@ -89,7 +93,7 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
       };
 
   const query = `{
-          "page": *[_type == "post" && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
+          "page": *[_type == "post" && language == $lang && slug.current in ${slugs}] | order(_updatedAt desc)[0]{
             "id": _id,
             hasTransparentHeader,
             content[]{
@@ -114,7 +118,7 @@ export async function getPost(slug: string, isDraftMode?: boolean) {
 
         }`;
 
-  const data = await client.fetch(query, { slugs }, queryOptions);
+  const data = await client.fetch(query, { slugs, lang }, queryOptions);
 
   return data;
 }

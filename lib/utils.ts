@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const purifyString = (str: string): string => {
   // if (typeof str !== "string") return str;
   // Use regular expressions to remove unwanted characters
+
   return str
     ?.trim() // Remove leading and trailing spaces
     ?.replace(/[\u200B-\u200D\uFEFF]/g, "") // Remove zero-width spaces (ZWSP, ZWNJ, ZWJ, FEFF)

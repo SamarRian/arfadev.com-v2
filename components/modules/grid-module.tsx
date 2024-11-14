@@ -48,7 +48,7 @@ const getGridSize = (
   hidden = false
 ) => {
   const hasBreakpoint = breakpoint && purifyString(breakpoint.trim());
-  const isHidden = purifyString(hidden) ? "hidden" : "inline-block";
+  const isHidden = hidden ? "hidden" : "inline-block";
   const colSpan = hasBreakpoint
     ? `${breakpoint}:col-span-${size}`
     : `col-span-${size}`;
@@ -64,7 +64,9 @@ const getGridSize = (
     justify && colJustify,
     align && colAlign,
     hasBreakpoint ? `${breakpoint}:${isHidden}` : isHidden,
-  ].map((el) => purifyString(el));
+  ].map((el) => {
+    return purifyString(el);
+  });
 
   return cx(classes);
 };

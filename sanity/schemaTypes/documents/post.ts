@@ -1,25 +1,33 @@
 import { isUniqueOtherThanLanguage } from "@/sanity/lib/is-unique-slug-language";
 import { ArticleNyTimes } from "@phosphor-icons/react/dist/ssr";
 
-import { defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 export default defineType({
   title: "Post",
   name: "post",
   type: "document",
   icon: ArticleNyTimes,
+
   groups: [
     { title: "Content", name: "content" },
     { title: "Settings", name: "settings", default: true },
     { title: "SEO", name: "seo" },
   ],
   fields: [
+    defineField({
+      // should match 'languageField' plugin configuration setting, if customized
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     {
       title: "URL Slug",
       name: "slug",
       type: "slug",
       description: "(required)",
       options: {
-        isUnique:isUniqueOtherThanLanguage,
+        isUnique: isUniqueOtherThanLanguage,
         source: "title",
         maxLength: 96,
       },

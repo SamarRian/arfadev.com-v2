@@ -1,17 +1,29 @@
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const useSlugAndLang = () => {
-  const params = useParams();
+  // const params = useParams();
 
-  let { slug = "" } = params;
+  // const pathname = usePathname();
 
-  // Ensure slug is a string or join if it's an array
-  slug = Array.isArray(slug) ? slug.join("/") : slug;
+  // console.log(params, pathname);
 
-  // Match and remove "en/" or "de/" if they are at the start of the slug
-  const match = slug.match(/^(en|de)\/?(.*)/);
-  const lang = match ? match[1] : params?.lang;
-  const cleanedSlug = match ? match[2] : slug;
+  // let { slug = "" } = params;
 
-  return { lang, slug: cleanedSlug };
+  // // Ensure slug is a string or join if it's an array
+  // slug = Array.isArray(slug) ? slug.join("/") : slug;
+
+  // // Match and remove "en/" or "de/" if they are at the start of the slug
+  // const match = slug.match(/^(en|de)\/?(.*)/);
+
+  // console.log("match", match);
+
+  // const lang = match ? match[1] : params?.lang;
+
+  // const cleanedSlug = match ? match[2] : slug;
+
+  const pathname = usePathname();
+
+  const [_, lang, ...cleanedSlug] = pathname.split("/");
+
+  return { lang, slug: cleanedSlug.join("/") };
 };
