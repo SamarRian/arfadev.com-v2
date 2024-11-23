@@ -3,6 +3,7 @@ import { SanityDocument } from "next-sanity";
 
 import { SITEMAP_QUERY } from "@/sanity/data/queries";
 import { sanityFetch } from "@/sanity/lib/client";
+import { uniqueEntries } from "@/lib/utils";
 
 const fetchPosts = async () => {
   return await sanityFetch<SanityDocument[]>({
@@ -11,26 +12,12 @@ const fetchPosts = async () => {
   });
 };
 
-const uniqueEntries = (data: any) =>
-  Object.values(
-    data.reduce((acc: any, entry: any) => {
-      const key = entry.slug.current;
-      if (
-        !acc[key] ||
-        new Date(acc[key]._updatedAt) < new Date(entry._updatedAt)
-      ) {
-        acc[key] = entry;
-      }
-      return acc;
-    }, {})
-  );
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const docs: any = await fetchPosts();
 
-  const uniqueDoc = uniqueEntries(docs);
+  const filterDoc = uniqueEntries(docs);
 
-  const postEntries = uniqueDoc.map(
+  const postEntries = filterDoc.map(
     ({
       slug,
       _updatedAt,

@@ -79,3 +79,17 @@ export const convertToSitemap = (arr: Array<any>) => {
     };
   });
 };
+
+export const uniqueEntries = (data: any) =>
+  Object.values(
+    data.reduce((acc: any, entry: any) => {
+      const key = entry.slug.current;
+      if (
+        !acc[key] ||
+        new Date(acc[key]._updatedAt) < new Date(entry._updatedAt)
+      ) {
+        acc[key] = entry;
+      }
+      return acc;
+    }, {})
+  );

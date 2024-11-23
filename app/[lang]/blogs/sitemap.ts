@@ -3,6 +3,7 @@ import { SanityDocument } from "next-sanity";
 
 import { SITEMAP_QUERY } from "@/sanity/data/queries";
 import { sanityFetch } from "@/sanity/lib/client";
+import { uniqueEntries } from "@/lib/utils";
 
 const fetchPosts = async () => {
   const data = await sanityFetch<SanityDocument[]>({
@@ -16,7 +17,9 @@ const fetchPosts = async () => {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const docs: any = await fetchPosts();
 
-  const postEntries = docs.map(
+  const filterDocs = uniqueEntries(docs);
+
+  const postEntries = filterDocs.map(
     ({
       slug,
       _updatedAt,
