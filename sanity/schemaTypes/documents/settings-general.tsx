@@ -58,6 +58,47 @@ export default {
       },
     },
     {
+      title: "Featured Case Studies",
+      name: "featuredCaseStudies",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "doc",
+          title: "Page",
+          fields: [
+            {
+              title: "Case Study",
+              name: "ref",
+              type: "reference",
+              to: [{ type: "page" }],
+            },
+            {
+              title: "Title",
+              name: "title",
+              type: "string",
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              title: "Thumbnail",
+              name: "image",
+              type: "customImage",
+            },
+            {
+              title: "Description",
+              name: "description",
+              rows: 3,
+              type: "text",
+              validation: (Rule: any) => Rule.required().max(300),
+            },
+          ],
+        },
+      ],
+      validation: (rule: any) => {
+        return rule.length < 4;
+      },
+    },
+    {
       title: "Site Title",
       name: "siteTitle",
       type: "string",

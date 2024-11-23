@@ -112,6 +112,8 @@ export default async function Component({
   const menu = pageData?.menu;
   const footer = pageData?.footer;
 
+  const featuredCaseStudies = pageData?.featuredCaseStudies;
+
   const {
     title,
     cover,
@@ -164,7 +166,9 @@ export default async function Component({
             Learn how we help our clients.
           </p>
           <div className="flex flex-col gap-3 pt-8">
-            <CaseStudyCard />
+            {featuredCaseStudies && (
+              <CaseStudyCard docs={featuredCaseStudies} />
+            )}
           </div>
         </aside>
       </section>

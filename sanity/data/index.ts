@@ -1,5 +1,11 @@
 import { client } from "../lib/client";
-import { footerQuery, menuQuery, modules, site } from "./queries";
+import {
+  featuredCaseStudies,
+  footerQuery,
+  menuQuery,
+  modules,
+  site,
+} from "./queries";
 import { token } from "../lib/token";
 import { QueryOptions } from "next-sanity";
 
@@ -113,6 +119,7 @@ export async function getPost(
           },
           "footer":${footerQuery},
           "menu":${menuQuery},
+          "featuredCaseStudies":${featuredCaseStudies},
           
            ${site}
 

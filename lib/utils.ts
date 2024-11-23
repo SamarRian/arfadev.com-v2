@@ -56,3 +56,26 @@ export const responsive = {
     slidesToSlide: 1, // optional, default to 1.
   },
 };
+
+export const seperateLangDocs = (first: Array<any>, second: Array<any>) => {
+  const firstSlugs = first.map((doc) => doc.slug);
+  const secondSlugs = second.map((doc) => doc.slug);
+  const commonLangDocs = first.filter(({ slug }) => secondSlugs.includes(slug));
+  const firstLangDocs = first.filter(({ slug }) => !secondSlugs.includes(slug));
+  const secondLangDocs = second.filter(
+    ({ slug }) => !firstSlugs.includes(slug)
+  );
+
+  return { commonLangDocs, firstLangDocs, secondLangDocs };
+};
+
+export const convertToSitemap = (arr: Array<any>) => {
+  return arr.map(({ slug, _updatedAt, priority, changeFrequency }: any) => {
+    return {
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/en/${slug.current}`,
+      lastModified: _updatedAt,
+      priority,
+      changeFrequency,
+    };
+  });
+};

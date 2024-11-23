@@ -5,30 +5,47 @@ import { SITEMAP_QUERY } from "@/sanity/data/queries";
 import { sanityFetch } from "@/sanity/lib/client";
 
 const fetchPosts = async () => {
-  const data = await sanityFetch<SanityDocument[]>({
+  return await sanityFetch<SanityDocument[]>({
     query: SITEMAP_QUERY,
-    params: { page: "page" },
+    params: { docs: ["page"] },
   });
-
-  return data;
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts: any = await fetchPosts();
+  const docs: any = await fetchPosts();
 
-  const postEntries = posts.map(
-    ({ slug, _updatedAt, priority, changeFrequency }: any) => {
-      return {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/en/${slug.current}`,
+  const postEntries = docs.map(
+    ({
+      slug,
+      _updatedAt,
+      priority,
+      changeFrequency,
+      language,
+      translations,
+    }: any) => {
+      const documentObj: any = {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}${translations?.length ? "" : "/" + language}/${slug.current}`,
         lastModified: _updatedAt,
         priority,
         changeFrequency,
         alternates: {
-          languages: {
-            de: `${process.env.NEXT_PUBLIC_BASE_URL}/de/${slug.current}`,
-          },
+          languages: {},
         },
       };
+
+      console.log(translations);
+
+      if (
+        translations?.map(
+          ({ language, slug }: { language: string; slug: any }) => {
+            documentObj["alternates"]["languages"][language] =
+              `${process.env.NEXT_PUBLIC_BASE_URL}/${language}/${slug.current}`;
+          }
+        )
+      )
+        console.log(documentObj.alternates);
+
+      return documentObj;
     }
   );
 
