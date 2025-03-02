@@ -71,7 +71,10 @@ export const portableComplex: any = {
             className={buttonVariants({
               variant: value?.styles?.style || "default",
               size: value?.styles?.isLarge ? "lg" : "default",
-              className: cn(value?.styles?.isBlock && "w-full", "py-4 my-3"),
+              className: cn(
+                value?.styles?.isBlock && "w-full",
+                "py-4 my-3 md:ml-4 sm:ml-3 ml-2"
+              ),
             })}
           >
             {children}
