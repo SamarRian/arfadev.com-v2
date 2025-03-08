@@ -2,10 +2,10 @@
 import React from "react";
 import { Button } from "../ui/button";
 
-function PlayButton() {
+function PlayButton({ onClick = () => {} }: { onClick?: any }) {
   return (
     <Button
-      onClick={() => alert("wokring")}
+      onClick={onClick}
       className="z-10 cursor-pointer hover:cursor-pointer group bg-none group "
       aria-label="Play Testimonial"
       variant={"ghost"}
