@@ -1,12 +1,10 @@
 import React from "react";
 import { PortfolioOptions } from "../section-options";
 import Section from "../section";
-import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import CustomImage from "../custom-image";
-import { urlFor } from "@/sanity/lib/image";
 
 // export function PortfolioCard({ reverse = false }: { reverse?: boolean }) {
 //   return (
@@ -125,9 +123,9 @@ export function PortfolioCard({
         )}
       >
         <div className="md:mb-10 md:-rotate-90 md:-translate-y-full">
-          <h3 className="md:text-3xl sm:text-2xl text-xl font-serif text-primary">
+          <p className="md:text-3xl sm:text-2xl text-xl font-serif text-primary">
             {resultOne}
-          </h3>
+          </p>
           <p className="text-sm font-sans text-primary">{resultSecond}</p>
         </div>
         <Button

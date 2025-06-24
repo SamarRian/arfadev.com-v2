@@ -1,5 +1,8 @@
+"use client";
 import { cn } from "@/lib/utils";
 import React from "react";
+import AnimatedText from "./animated/AnimatedText";
+import { motion } from "motion/react";
 
 export interface IOptions {
   title?: string;
@@ -21,21 +24,37 @@ function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col space-y-3 max-w-[85rem] mx-auto lg:pb-24 md:pb-20 sm:pb-16 pb-14 z-20 relative",
+        "flex items-start flex-col space-y-3 max-w-[85rem] mx-auto lg:pb-24 md:pb-20 sm:pb-16 pb-14 z-20 relative",
         className
       )}
     >
       {miniTitle && (
-        <p className="text-sm font-sans border-b inline-block self-start border-current pb-3 max-w-lg">
+        <AnimatedText
+          className={
+            "text-sm font-sans border-b inline-block self-start border-current pb-3 max-w-lg"
+          }
+          Wrapper={motion.p}
+        >
           {miniTitle}
-        </p>
+        </AnimatedText>
       )}
-      <h2 className="lg:text-4xl md:text-3xl text-2xl leading-normal font-serif max-w-lg">
+      <AnimatedText
+        className={
+          "lg:text-4xl md:text-3xl text-2xl leading-normal font-serif max-w-lg"
+        }
+        Wrapper={motion.h2}
+      >
         {title}
-      </h2>
-      <p className="text-md text-sm sm:text-base font-sans max-w-lg text-muted-foreground">
+      </AnimatedText>
+
+      <AnimatedText
+        className={
+          "text-md text-sm sm:text-base font-sans max-w-lg text-muted-foreground"
+        }
+        Wrapper={motion.p}
+      >
         {subtitle}
-      </p>
+      </AnimatedText>
     </div>
   );
 }
@@ -48,12 +67,18 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
         className
       )}
     >
-      <h3 className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-primary">
+      <AnimatedText
+        Wrapper={motion.h3}
+        className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-primary"
+      >
         {title}
-      </h3>
-      <p className="text-md sm:text-base text-sm font-sans text-muted-foreground">
+      </AnimatedText>
+      <AnimatedText
+        Wrapper={motion.p}
+        className="text-md sm:text-base text-sm font-sans text-muted-foreground"
+      >
         {subtitle}
-      </p>
+      </AnimatedText>
     </div>
   );
 }
