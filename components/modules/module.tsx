@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Gallery from "./gallery-module";
 import LandingHero from "./landing-hero";
+import HubspotContactForm from "../hubspot-contact-form";
 
 const PortfolioModule = dynamic(() => import("./portfolio-module"));
 const WhyChooseUs = dynamic(() => import("./why-choose-us"));
@@ -16,6 +17,8 @@ const MegaMenu = dynamic(() => import("./mega-menu").then((el) => el.MegaMenu));
 
 function Module({ module }: any) {
   const type = module._type;
+  console.log(type);
+
   switch (type) {
     case "grid":
       return <GridModule module={module} />;

@@ -3,7 +3,8 @@ import { urlFor } from "@/sanity/lib/image";
 import ContentBody from "./content-body";
 import CustomImage from "../custom-image";
 import { cn, purifyString } from "@/lib/utils";
-import { FormComponent } from "../form";
+import { FormComponent } from "../form-v1";
+import HubspotContactForm from "../hubspot-contact-form";
 
 const GridBlock = ({ block }: any) => {
   const type = block._type;
@@ -32,7 +33,7 @@ const GridBlock = ({ block }: any) => {
     case "bodyContent":
       return <ContentBody module={block} />;
     case "form":
-      return <FormComponent module={block} />;
+      return <HubspotContactForm />;
 
     default:
       return null;

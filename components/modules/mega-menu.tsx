@@ -94,7 +94,7 @@ export function MegaMenu({ module }: { module: any }) {
         </div>
         <div className="md:flex md:items-center md:gap-x-2 hidden items-center md:justify-start">
           <LanguageSwitcher />
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           <Link
             className={cn(
               buttonVariants({
@@ -104,7 +104,7 @@ export function MegaMenu({ module }: { module: any }) {
             )}
             href={"/contact"}
           >
-            Let's Talk
+            Book Appointment
           </Link>
           {/* <ModeToggle/> */}
         </div>

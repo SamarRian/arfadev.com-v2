@@ -303,6 +303,10 @@
   }
 }
 
+.ViralLink__StyledViralLink-ovqlyz-0 fEqgo {
+  display: none !important;
+}
+
 @layer base {
   * {
     @apply border-border;

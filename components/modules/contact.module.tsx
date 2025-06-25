@@ -1,5 +1,5 @@
 import React from "react";
-import { FormComponent } from "../form";
+import { FormComponent } from "../form-v1";
 import Section from "../section";
 import Image from "next/image";
 

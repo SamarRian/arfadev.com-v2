@@ -10,6 +10,7 @@ const SchemaMarkup = dynamic(() => import("@/components/schema-markup"));
 import { HOMEPAGE_QUERY } from "@/sanity/data/queries";
 import { cache } from "react";
 import dynamic from "next/dynamic";
+import HubspotContactForm from "@/components/hubspot-contact-form";
 
 type Props = {
   params: { slug: string[] | string; lang: string };

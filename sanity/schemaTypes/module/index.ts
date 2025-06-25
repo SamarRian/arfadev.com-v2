@@ -11,7 +11,6 @@ import testimonial from "./testimonial";
 import allTeam from "./all-team";
 import allServices from "./all-services";
 import ourProcess from "./our-process";
-import contact from "./contact";
 import oneMember from "./one-member";
 import gallery from "./gallery";
 import grid from "./grid";
@@ -33,7 +32,6 @@ export default [
   allTeam,
   allServices,
   ourProcess,
-  contact,
   oneMember,
   gallery,
   grid,
