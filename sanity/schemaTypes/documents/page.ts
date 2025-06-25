@@ -94,6 +94,7 @@ export default defineType({
         { type: "testimonial", name: "testimonial" },
         { type: "all-team", name: "all-team" },
         { type: "all-services", name: "all-services" },
+        { type: "landing-hero", name: "landing-hero" },
         { type: "process", name: "process" },
         { type: "footer", name: "footer" },
         { type: "contact", name: "contant" },

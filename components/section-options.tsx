@@ -40,7 +40,7 @@ function SectionHeader({
       )}
       <AnimatedText
         className={
-          "lg:text-4xl md:text-3xl text-2xl leading-normal font-serif max-w-lg"
+          "lg:text-4xl md:text-3xl text-2xl leading-normal font-serif max-w-lg text-current"
         }
         Wrapper={motion.h2}
       >
@@ -49,7 +49,7 @@ function SectionHeader({
 
       <AnimatedText
         className={
-          "text-md text-sm sm:text-base font-sans max-w-lg text-muted-foreground"
+          "text-md text-sm sm:text-base font-sans max-w-lg text-current opacity-70"
         }
         Wrapper={motion.p}
       >
@@ -69,13 +69,13 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
     >
       <AnimatedText
         Wrapper={motion.h3}
-        className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-primary"
+        className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-accent"
       >
         {title}
       </AnimatedText>
       <AnimatedText
         Wrapper={motion.p}
-        className="text-md sm:text-base text-sm font-sans text-muted-foreground"
+        className="text-md sm:text-base text-sm font-sans text-background/70"
       >
         {subtitle}
       </AnimatedText>

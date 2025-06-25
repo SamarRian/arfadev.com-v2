@@ -6,52 +6,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import CustomImage from "../custom-image";
 
-// export function PortfolioCard({ reverse = false }: { reverse?: boolean }) {
-//   return (
-//     <div
-//       className={cn(
-//         "max-w-[85rem] mx-auto grid grid-cols-12 gap-x-6 items-end pb-16 border-b border-secondary/40 last:border-none first:mb-16 mb-16"
-//       )}
-//     >
-//       <div
-//         className={cn(
-//           "col-span-6 relative h-[42rem]",
-//           reverse ? "col-start-7" : "col-start-1"
-//         )}
-//       >
-//         <Image src={"/card.jpg"} fill alt="card" className="object-cover" />
-//       </div>
-//       <div
-//         className={cn("col-span-4", reverse ? "col-start-3" : "col-start-7")}
-//       >
-//         <CardHeading
-//           title="1. Chishti Law Firm"
-//           subtitle="Call anytime for immediate and personal attention at no charge."
-//           className="text-foreground"
-//         />
-//         <div className="w-full h-[24rem] relative">
-//           <Image src={"/flask.jpg"} fill alt="card" className="object-cover" />
-//         </div>
-//       </div>
-//       <div
-//         className={cn("col-span-2", reverse ? "col-start-1" : "col-start-11")}
-//       >
-//         <div className="mb-6 -rotate-90 -translate-y-full">
-//           <h3 className="text-6xl font-serif font-medium text-foreground">
-//             400%
-//           </h3>
-//           <p className="text-sm font-sans text-foreground">
-//             Growth in first month
-//           </p>
-//         </div>
-//         <Button variant={"secondary"} className="w-full" asChild>
-//           <Link href={"/"}>Case Study</Link>
-//         </Button>
-//       </div>
-//     </div>
-//   );
-// }
-
 export interface IPortfolioCard {
   index: number;
   title: string;
@@ -76,7 +30,7 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-muted-foreground lg:mb-24 md:mb-20 sm:mb-16 mb-14 last:mb-0 last:pb-0 last:border-0"
+        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-background/30 lg:mb-24 md:mb-20 sm:mb-16 mb-14 last:mb-0 last:pb-0 last:border-0"
       )}
     >
       <div
@@ -123,14 +77,15 @@ export function PortfolioCard({
         )}
       >
         <div className="md:mb-10 md:-rotate-90 md:-translate-y-full">
-          <p className="md:text-3xl sm:text-2xl text-xl font-serif text-primary">
+          <p className="md:text-3xl sm:text-2xl text-xl font-serif text-accent">
             {resultOne}
           </p>
-          <p className="text-sm font-sans text-primary">{resultSecond}</p>
+          <p className="text-sm font-sans text-accent">{resultSecond}</p>
         </div>
         <Button
-          variant={index !== 1 ? "outline" : "default"}
-          className="sm:w-full w-1/2"
+          variant={"outline"}
+          // variant={index !== 1 ? "outline" : "default"}
+          className="sm:w-full w-1/2 border-accent text-accent"
           asChild
         >
           <Link href={`/${page?.slug?.current}` || "/invalid-url"}>
@@ -153,7 +108,7 @@ function PortfolioModule({ module }: any) {
   } = module;
 
   return (
-    <Section className="bg-card" sectionData={metaData}>
+    <Section className="bg-foreground !text-background" sectionData={metaData}>
       {projects.map((project: any, index: number) => {
         return (
           <PortfolioCard

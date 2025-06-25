@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Star } from "@phosphor-icons/react/dist/ssr";
 
 export default {
@@ -70,7 +71,7 @@ export default {
       photo: "photo",
       content: "content.0.children",
     },
-    prepare({ photo, content }: any) {
+    prepare({ photo, content }: unknown) {
       return {
         title: "Hero",
         subtitle: content && content[0]?.text,

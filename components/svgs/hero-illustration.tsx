@@ -43,9 +43,9 @@ const getRandomSize = () => +(Math.random() * (6 - 2) + 2).toFixed(2); // 2–6 
 function HeroIllustration() {
   const { theme, systemTheme } = useTheme();
 
-  const strokeColor = systemTheme === "dark" ? "#ffffff" : "#202020";
+  const strokeColor = "#2B2D42";
 
-  const fill = systemTheme === "dark" ? "#202020" : "#ffffff";
+  const fill = "#F7EDF0";
 
   const rects = useMemo(
     () => [
@@ -54,14 +54,14 @@ function HeroIllustration() {
         y: 348.669,
         w: 76.5383,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 818.551,
         y: 370.427,
         w: 76.5383,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       { x: 906.978, y: 370.427, w: 95.6838, h: 9.78457, fill: "#FF7316" },
       {
@@ -69,42 +69,42 @@ function HeroIllustration() {
         y: 349.041,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 1014.23,
         y: 349.041,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 1014.23,
         y: 370.427,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 1014.23,
         y: 390.257,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 1014.23,
         y: 410.086,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 1014.23,
         y: 429.916,
         w: 68.8438,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       { x: 906.978, y: 390.257, w: 71.465, h: 9.78457, fill: "#FF7316" },
       { x: 906.978, y: 410.086, w: 71.465, h: 9.78457, fill: "#FF7316" },
@@ -114,33 +114,45 @@ function HeroIllustration() {
         y: 390.257,
         w: 76.5383,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 818.551,
         y: 410.086,
         w: 76.5383,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
       {
         x: 818.551,
         y: 429.916,
         w: 76.5383,
         h: 9.78457,
-        fill: systemTheme === "dark" ? "#ffffff" : "#202020",
+        fill: "#2b2d42",
       },
-      { x: 184.211, y: 335.18, w: 174.754, h: 122.028, fill: "white" }, // outer box
-      { x: 221.693, y: 73.1089, w: 137.271, h: 125.17, fill: "white" }, // top box
+      // {
+      //   x: 184.211,
+      //   y: 335.18,
+      //   w: 174.754,
+      //   h: 122.028,
+      //   fill: fill,
+      //   stroke: "url(#paint23_linear_344_556)",
+      // }, // outer box
+      // {
+      //   x: 221.693,
+      //   y: 73.1089,
+      //   w: 137.271,
+      //   h: 125.17,
+      //   fill: fill,
+      //   stroke: "url(#paint23_linear_344_556)",
+      // }, // top box
     ],
-    [systemTheme]
+    []
   );
-
-  alert(strokeColor);
 
   return (
     <svg
-      className="max-w-screen-lg"
+      className="max-w-[50rem]"
       viewBox="0 0 1212 488"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -537,6 +549,22 @@ function HeroIllustration() {
             fill={rect.fill}
           />
         ))}
+        <rect
+          x="184.211"
+          y="335.18"
+          width="174.754"
+          height="122.028"
+          fill={fill}
+          stroke="url(#paint15_linear_344_556)"
+        />
+        <rect
+          x="221.693"
+          y="73.1089"
+          width="137.271"
+          height="125.17"
+          fill={fill}
+          stroke="url(#paint16_linear_344_556)"
+        />
       </motion.g>
       <path
         opacity="0.5"

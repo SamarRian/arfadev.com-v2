@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { buttonVariants } from "./ui/button";
 import CustomImage from "./custom-image";
+import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
@@ -26,7 +27,7 @@ function ServiceCard({
   return (
     <figure
       className={cn(
-        index % 2 === 0 ? "bg-secondary" : "bg-card",
+        index % 2 === 0 ? "bg-secondary" : "bg-muted",
         "h-auto flex flex-col p-6 items-start space-y-4",
         className
       )}
@@ -44,17 +45,17 @@ function ServiceCard({
           />
         </div>
       )}
-      <h3 className="text-2xl font-serif text-brand-black">{title}</h3>
-      <p className="text-sm font-sans text-brand-black">{subtitle}</p>
+      <h3 className="text-2xl font-serif text-secondary-foreground">{title}</h3>
+      <p className="text-sm font-sans text-secondary-foreground">{subtitle}</p>
       {page?.slug && (
         <Link
           className={buttonVariants({
             variant: "link",
-            className: "!text-base mx-0 px-0",
+            className: "!text-base !mx-0 !px-0 !text-secondary-foreground",
           })}
           href={page?.slug?.current || "/"}
         >
-          Learn About {title}
+          More About {title} <ArrowUpRight className="text-base scale-75" />
         </Link>
       )}
     </figure>

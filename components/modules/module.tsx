@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Gallery from "./gallery-module";
+import LandingHero from "./landing-hero";
 
 const PortfolioModule = dynamic(() => import("./portfolio-module"));
 const WhyChooseUs = dynamic(() => import("./why-choose-us"));
@@ -38,6 +39,9 @@ function Module({ module }: any) {
       return <WhyChooseUs module={module} />;
     case "gallery":
       return <Gallery module={module} />;
+
+    case "landing-hero":
+      return <LandingHero module={module} />;
     // return <LawFirmCaseStudies module={module} />;
     default:
       return null;

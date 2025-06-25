@@ -21,7 +21,7 @@ function FooterModule({ module }: any) {
   const socialLinks = module?.socialLinks || [];
 
   return (
-    <footer className="lg:pt-24 md:pt-16 sm:pt-14 pt-12 w-full dark:bg-white bg-black">
+    <footer className="lg:pt-24 md:pt-16 sm:pt-14 pt-12 w-full dark:bg-background bg-foreground">
       <div className="max-w-[85rem] xl:mx-auto lg:mx-8 md:mx-6 mx-4 gap-y-8 md:gap-y-0 grid md:grid-cols-6 grid-cols-1 border-b border-secondary/40 lg:pb-12 md:pb-8 sm:pb-6 pb-4">
         <div className="lg:col-span-2 md:col-span-3 col-span-1 col-start-1 space-y-3">
           {logo && (
@@ -33,10 +33,10 @@ function FooterModule({ module }: any) {
               className="mb-4"
             />
           )}
-          <h3 className="lg:text-3xl text-2xl text-secondary font-serif">
+          <h3 className="lg:text-3xl text-2xl text-background font-serif">
             {metaData.title}
           </h3>
-          <p className="text-sm text-primary font-sans">{metaData.subtitle}</p>
+          <p className="text-sm text-accent font-sans">{metaData.subtitle}</p>
         </div>
         {module?.newsletter && (
           <NewsLetterForm className="lg:col-start-5 col-start-1 lg:col-span-2 md:col-span-3 col-span-1" />

@@ -68,7 +68,7 @@ export function MegaMenu({ module }: { module: any }) {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       animate={hidden ? "hidden" : "visible"}
       className={cn(
-        "w-full z-30 sticky top-0 backdrop-blur-sm bg-white dark:bg-secondary border-b-2 shadow-sm border-secondary dark:border-primary"
+        "w-full z-30 sticky top-0 backdrop-blur-sm bg-background border-b-2 shadow-sm"
       )}
       whileHover={{ y: 0 }}
     >

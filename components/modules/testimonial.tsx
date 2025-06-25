@@ -30,7 +30,7 @@ function Testimonials({ module }: any) {
 
   return (
     <Section sectionData={metaData}>
-      <figure className="max-w-[85rem] grid md:grid-cols-3 grid-cols-1 items-center md:items-start gap-y-8 md:gap-y-0 md:py-12 lg:px-24 md:px-8 px-6 lg:gap-x-24 md:gap-x-16 bg-secondary sm:py-10 py-8">
+      <figure className="max-w-[85rem] grid md:grid-cols-3 grid-cols-1 items-center md:items-start gap-y-8 md:gap-y-0 md:py-12 lg:px-24 md:px-8 px-6 lg:gap-x-24 md:gap-x-16 bg-foreground sm:py-10 py-8">
         <div className="col-span-1 lg:-translate-y-1/4 md:-translate-y-0 relative">
           {client?.photo && (
             <CustomImage

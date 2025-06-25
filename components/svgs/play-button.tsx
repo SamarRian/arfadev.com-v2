@@ -4,11 +4,10 @@ import { Button } from "../ui/button";
 
 function PlayButton({ onClick = () => {} }: { onClick?: any }) {
   return (
-    <Button
+    <button
       onClick={onClick}
-      className="z-10 cursor-pointer hover:cursor-pointer group bg-none group "
+      className="z-10 cursor-pointer hover:cursor-pointer group !bg-none group "
       aria-label="Play Testimonial"
-      variant={"ghost"}
     >
       <svg
         width="72"
@@ -31,7 +30,7 @@ function PlayButton({ onClick = () => {} }: { onClick?: any }) {
           className="fill-primary group-hover:fill-white transition-all duration-200 dark:fill-primary"
         />
       </svg>
-    </Button>
+    </button>
   );
 }
 
