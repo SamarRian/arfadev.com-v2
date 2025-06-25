@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { motion } from "motion/react";
 
-function AnimatedText({ children, Wrapper, className }) {
+function AnimatedText({ children, Wrapper, className }: any) {
   return (
     <div className="relative inline-block overflow-hidden">
       {/* Text Layer */}
