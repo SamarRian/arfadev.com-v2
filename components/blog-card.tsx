@@ -37,10 +37,10 @@ function BlogCard({
       >
         {cover && (
           <CustomImage
-            className="size-full absolute top-0 start-0 object-cover group-hover:scale-110 transition-all duration-500 ease-in-out"
+            className="size-full absolute top-0 start-0 group-hover:scale-110 transition-all duration-500 ease-in-out object-cover"
             alt={cover?.alt}
             fill
-            objectFit={cover.objectFit}
+            objectFit={"cover"}
             imageOBJ={cover}
           />
         )}
