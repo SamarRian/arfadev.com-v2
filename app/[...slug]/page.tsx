@@ -26,10 +26,7 @@ const getPageData = cache(
   }
 );
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
   // Seperate Lang & Slug
   const [language = "en", ...pureSlug] = params?.slug;
@@ -100,10 +97,8 @@ export async function generateStaticParams() {
 
 async function Page({
   params: { slug },
-  searchParams,
 }: {
   params: { slug: string; lang: string };
-  searchParams: any;
 }) {
   const [language = "en", ...pureSlug] = slug;
   const { isEnabled: isDraftMode } = draftMode();

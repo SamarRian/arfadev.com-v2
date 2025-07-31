@@ -30,7 +30,7 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-background/30 lg:mb-24 md:mb-20 sm:mb-16 mb-14 last:mb-0 last:pb-0 last:border-0"
+        "max-w-[85rem] mx-auto grid md:grid-cols-12 grid-cols-1 lg:gap-x-6 md:gap-x-4 items-end lg:pb-24 md:pb-16 border-b border-border lg:mb-24 md:mb-20 sm:mb-16 mb-14 last:mb-0 last:pb-0 last:border-0"
       )}
     >
       <div
@@ -57,7 +57,7 @@ export function PortfolioCard({
         <PortfolioOptions
           title={`${index}. ${title}`}
           subtitle={description}
-          className="text-foreground"
+          // className="text-foreground"
         />
         <div className="w-full h-[24rem] relative">
           {secondCover?.asset && (
@@ -108,7 +108,10 @@ function PortfolioModule({ module }: any) {
   } = module;
 
   return (
-    <Section className="bg-foreground !text-background" sectionData={metaData}>
+    <Section
+      className="bg-muted text-muted-foreground dark:bg-muted dark:text-muted-foreground"
+      sectionData={metaData}
+    >
       {projects.map((project: any, index: number) => {
         return (
           <PortfolioCard

@@ -1,11 +1,12 @@
 import Link from "next/link";
 
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import CustomImage from "./custom-image";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
+import { BentoServices } from "./magicui/services";
 
 export interface IServiceCard {
   index: number;
@@ -24,11 +25,13 @@ function ServiceCard({
   subtitle,
   page,
 }: IServiceCard) {
+  const evenIndex = index % 2 === 0;
+
   return (
     <figure
       className={cn(
-        index % 2 === 0 ? "bg-secondary" : "bg-muted",
-        "h-auto flex flex-col p-6 items-start space-y-4",
+        evenIndex ? "bg-background" : "bg-muted",
+        "h-auto flex flex-col p-6 items-start space-y-4 border border-border",
         className
       )}
     >
@@ -45,18 +48,18 @@ function ServiceCard({
           />
         </div>
       )}
-      <h3 className="text-2xl font-serif text-secondary-foreground">{title}</h3>
-      <p className="text-sm font-sans text-secondary-foreground">{subtitle}</p>
+      <h3 className="text-2xl font-serif text-foreground dark:text-muted-foreground">
+        {title}
+      </h3>
+      <p className="text-sm font-sans text-foreground dark:text-muted-foreground">
+        {subtitle}
+      </p>
       {page?.slug && (
-        <Link
-          className={buttonVariants({
-            variant: "link",
-            className: "!text-base !mx-0 !px-0 !text-secondary-foreground",
-          })}
-          href={page?.slug?.current || "/"}
-        >
-          More About {title} <ArrowUpRight className="text-base scale-75" />
-        </Link>
+        <Button variant={"outline"} className="capitalize" asChild>
+          <Link href={page?.slug?.current || "/"}>
+            More about {title} <ArrowUpRight className="text-base scale-75" />
+          </Link>
+        </Button>
       )}
     </figure>
   );

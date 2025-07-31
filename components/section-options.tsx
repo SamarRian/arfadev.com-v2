@@ -69,13 +69,13 @@ export function PortfolioOptions({ title, subtitle, className }: IOptions) {
     >
       <AnimatedText
         Wrapper={motion.h3}
-        className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-accent"
+        className="lg:text-3xl md:text-2xl text-xl leading-loose font-serif text-muted-foreground"
       >
         {title}
       </AnimatedText>
       <AnimatedText
         Wrapper={motion.p}
-        className="text-md sm:text-base text-sm font-sans text-background/70"
+        className="text-md sm:text-base text-sm font-sans text-muted-foreground"
       >
         {subtitle}
       </AnimatedText>
