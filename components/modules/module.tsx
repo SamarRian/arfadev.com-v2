@@ -1,9 +1,6 @@
 import dynamic from "next/dynamic";
-import Gallery from "./gallery-module";
 import LandingHero from "./landing-hero";
-import HubspotContactForm from "../hubspot-contact-form";
 import GuaranteeModule from "./guarantee-module";
-import Team from "./team";
 
 const PortfolioModule = dynamic(() => import("./portfolio-module"));
 const WhyChooseUs = dynamic(() => import("./why-choose-us"));

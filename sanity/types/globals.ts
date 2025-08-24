@@ -1,10 +1,10 @@
 export interface IReference {
   _type: "reference";
   _ref: string;
-  slug?: IPage;
+  slug?: any;
 }
 
 export interface IPage {
-  slug: { current: string };
+  slug: any;
   title?: string;
 }

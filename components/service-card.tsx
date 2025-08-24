@@ -1,12 +1,10 @@
 import Link from "next/link";
 
-import { Button, buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 import CustomImage from "./custom-image";
 import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { urlFor } from "@/sanity/lib/image";
-import { BentoServices } from "./magicui/services";
 
 export interface IServiceCard {
   index: number;

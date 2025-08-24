@@ -15,7 +15,7 @@ import CustomImage from "../custom-image";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
 
-function Team({ module }) {
+function Team({ module }: any) {
   const metaData = module?.metaData || {};
   const team = module?.team;
 

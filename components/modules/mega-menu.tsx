@@ -22,8 +22,7 @@ import { urlFor } from "@/sanity/lib/image";
 import LanguageSwitcher from "../language-switcher";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { IMenu } from "@/sanity/schemaTypes/documents/menu";
-import { INavLink } from "@/sanity/schemaTypes/objects/navlink";
-import { IMenuLink } from "@/sanity/schemaTypes/objects/menuLink";
+
 import FeaturedItem from "./mega-menu/featured-item";
 
 interface IModule extends IMenu {

@@ -5,6 +5,7 @@ export interface INavLink {
   _type: "navLink";
   title: string;
   url: string;
+  subtitle?: string;
 }
 
 const NavLink = {
