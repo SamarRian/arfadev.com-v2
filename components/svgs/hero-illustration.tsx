@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 const positions = [
   [523.031, 132.175],

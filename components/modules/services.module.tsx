@@ -1,8 +1,6 @@
 import React from "react";
 import Section from "../section";
-import { BentoServices } from "../magicui/services";
 import ServiceCard from "../service-card";
-import StatueOfJustice from "../svgs/statue-of-justice.svg";
 import HeroIllustration from "../svgs/hero-illustration";
 
 function Services({ module }: any) {
