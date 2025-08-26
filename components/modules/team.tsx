@@ -1,21 +1,8 @@
-import React from "react";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
 import Section from "../section";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+
 import CustomImage from "../custom-image";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
 import { PortableText } from "@portabletext/react";
-import { portableSimple } from "../portable-stucture/portable-simple";
 
 function Team({ module }: any) {
   const metaData = module?.metaData || {};
@@ -24,35 +11,30 @@ function Team({ module }: any) {
   return (
     <Section sectionData={metaData}>
       <div className="flex flex-col md:gap-y-6">
-        {team?.map(
-          (
-            { _id, name, email, bio, contact, photo, phone, professions },
-            index
-          ) => (
-            <TeamCard
-              name={name}
-              photo={photo}
-              professions={professions}
-              bio={bio}
-              key={_id}
-              isInverted={index % 2 === 0}
-            />
-          )
-        )}
+        {team?.map(({ name, bio, photo, professions }: any, index: number) => (
+          <TeamCard
+            name={name}
+            photo={photo}
+            professions={professions}
+            bio={bio}
+            key={name}
+            isInverted={index % 2 === 0}
+          />
+        ))}
       </div>
     </Section>
   );
 }
 
-function TeamCard({ name, photo, professions, slug, bio, isInverted }: any) {
-  const href = slug?.current || "/";
+function TeamCard({ name, photo, professions, bio, isInverted }: any) {
+  // const href = slug?.current || "/";
 
   return (
-    <figure className="justify-around flex relative py-3">
+    <figure className="justify-around items-center sm:items-start flex relative py-3 sm:flex-row flex-col ">
       <div
         className={cn(
-          "aspect-[4/5] w-[25vw] relative",
-          isInverted ? "order-1" : "order-2"
+          "aspect-[4/5] w-full sm:w-[25vw] relative",
+          isInverted ? "sm:order-1" : "sm:order-2"
         )}
       >
         <CustomImage
@@ -63,17 +45,15 @@ function TeamCard({ name, photo, professions, slug, bio, isInverted }: any) {
 
       <figcaption
         className={cn(
-          "self-center text-muted-foreground flex flex-col md:gap-y-3 sm:gap-y-2 gap-y-1 w-2/3 max-w-[30rem] p-6",
-          isInverted ? "order-2" : "order-1"
+          "self-center text-muted-foreground flex flex-col md:gap-y-3 sm:gap-y-2 gap-y-1 md:w-2/3 w-full max-w-[30rem] sm:p-6 py-6",
+          isInverted ? "sm:order-2" : "sm:order-1"
         )}
       >
-        <h3 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl font-serif">
-          {name}
-        </h3>
-        <p className="sm:text-sm text-xs md:text-base font-sans text-accent">
+        <h3 className="lg:text-4xl md:text-3xl text-2xl font-serif">{name}</h3>
+        <p className="text-sm md:text-base font-sans text-accent">
           {professions?.join(", ")}
         </p>
-        <div className="prose-sm prose-p:text-xs sm:prose-p:text-sm prose-p:font-sans">
+        <div className="prose-sm prose-p:text-sm prose-p:font-sans">
           <PortableText value={bio} />
         </div>
       </figcaption>
