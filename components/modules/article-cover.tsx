@@ -4,16 +4,15 @@ import CustomImage from "../custom-image";
 function ArticleCover({ cover, title }: { cover: any; title: string }) {
   return (
     <div className="relative h-[70vh] min-h-[400px] w-full px-2 overflow-hidden">
-      {cover && (
-        <CustomImage
-          alt={cover?.alt}
-          className="object-cover"
-          height={400}
-          width={1200}
-          imageOBJ={cover}
-          objectFit={cover?.objectFit}
-        />
-      )}
+      <div className="w-full h-[40vw]">
+        {cover && (
+          <CustomImage
+            alt={cover?.alt}
+            className="object-cover"
+            imageOBJ={cover}
+          />
+        )}
+      </div>
       <h1 className="font-serif lg:leading-normal text-3xl md:text-5xl lg:text-6xl font-bold text-white text-left z-10 col-start-1 col-span-8 pt-8 pb-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] lg:w-auto">
         {title}
       </h1>

@@ -64,7 +64,7 @@ async function BlogsPage(props: { searchParams: any; lang: string }) {
       <div className=" px-4 py-8 max-w-[85rem] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
         <SearchInput className="grid md:hidden" />
         <div className="col-start-1 lg:col-span-2">
-          {posts.map((post: ILargeBlogCard, key: number) => {
+          {posts?.map((post: ILargeBlogCard, key: number) => {
             return (
               <LargeBlogCard
                 key={key}
@@ -85,7 +85,7 @@ async function BlogsPage(props: { searchParams: any; lang: string }) {
         <div className="space-y-6 sticky top-4 self-start">
           <SearchInput className="hidden md:grid" />
           <h2 className="text-2xl mb-4 font-serif">Featured Blogs</h2>
-          {featured.map((post: ILargeBlogCard, key: number) => (
+          {featured?.map((post: ILargeBlogCard, key: number) => (
             <Card key={key} className="group transition-colors">
               <Link
                 href={`/blogs/${post.slug.current}`}
@@ -107,7 +107,7 @@ async function BlogsPage(props: { searchParams: any; lang: string }) {
                   </CardDescription>
                   {post?.tags && (
                     <div className="flex flex-wrap gap-2">
-                      {post.tags.map((tag: string) => (
+                      {post?.tags?.map((tag: string) => (
                         <Badge
                           key={tag}
                           variant="secondary"

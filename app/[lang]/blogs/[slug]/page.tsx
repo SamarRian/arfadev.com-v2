@@ -151,7 +151,7 @@ export default async function Component({
 
           <div className="col-start-1 col-span-8 flex gap-4 py-8">
             {tags &&
-              tags.map((tag: string, key: number) => {
+              tags?.map((tag: string, key: number) => {
                 return <Badge key={key}>{tag}</Badge>;
               })}
           </div>
@@ -178,14 +178,14 @@ export default async function Component({
             Related Posts
           </h3>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-            {relatedPosts.map((blog: any, key: number) => {
+            {relatedPosts?.map((blog: any, key: number) => {
               return <BlogCard {...blog} key={key} />;
             })}
           </div>
         </section>
       )}
       {content &&
-        content.map((module: any, key: number) => {
+        content?.map((module: any, key: number) => {
           return <Module module={module} key={key} />;
         })}
       {footer && <FooterModule module={footer} />}
