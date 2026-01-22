@@ -17,10 +17,10 @@ function LandingHero({ module }: any) {
         <PortableText value={content} components={portableComplex} />
       </div>
 
-      {/* <Safari
+      <Safari
         imageSrc="/assets/dashboard.jpg"
         className="h-[600px] w-[900px] -z-[10]"
-      /> */}
+      />
 
       <DotPattern
         className={cn(
